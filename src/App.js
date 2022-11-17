@@ -4,12 +4,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './App.css';
 import LoginPages from './pages/Login/LoginPages.jsx';
+import ConfirmRegister from './pages/ConfirmRegister/ConfirmRegister.jsx';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" index element={<LoginPages />} />
+        <Route path='/' index element={<LoginPages />} />
+        <Route path='/confirmation' index element={<ConfirmRegister />} />
       </Routes>
     </BrowserRouter>
   );
