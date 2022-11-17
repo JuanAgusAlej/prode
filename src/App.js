@@ -1,12 +1,17 @@
 import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import LoginPages from './pages/Login/LoginPages.jsx';
 
 function App() {
   return (
-    <div className="App">
-      <LoginPages />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" index element={<LoginPages />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
