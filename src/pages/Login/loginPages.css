@@ -1,0 +1,36 @@
+.login{
+    display: flex;
+    flex-direction:column;
+ justify-content: center;
+ align-items: center;
+ height:100vh;
+ background-color: white;
+ border-color: #737373;
+ border: 1px solid black;
+ 
+}
+.btnIdioma {
+    position: relative;
+    margin: 15px;
+}
+.box{
+    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+box-shadow: 5px 5px 15px 5px #000000;
+}
+
+.boxFont{
+    margin: 0;
+    font-family: Georgia, serif;
+    font-size: 25px;
+    letter-spacing: 2px;
+    word-spacing: 2px;
+    color: #FF0808;
+    font-weight: 400;
+    text-decoration: rgb(68, 68, 68);
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none; 
+}
+.boxItems{
+    margin:50px 20px;
+}

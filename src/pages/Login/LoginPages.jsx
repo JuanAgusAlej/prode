@@ -4,11 +4,11 @@ import {
   getAuth,
   signInWithRedirect,
   getRedirectResult,
-  signOut,
 } from 'firebase/auth';
 import GoogleButton from 'react-google-button';
 import { useNavigate } from 'react-router-dom';
 import app from '../../service/firebase';
+import './loginPages.css';
 
 const LoginPages = () => {
   const provider = new GoogleAuthProvider();
@@ -20,25 +20,37 @@ const LoginPages = () => {
     signInWithRedirect(auth, provider);
   };
 
-  const prueba = async () => {
+  const login = async () => {
     const restult = await getRedirectResult(auth);
     console.log('result', restult);
-    if (restult !== null) {
-      navigate('/hola');
+    if (restult !== null || localStorage.getItem('token')) {
+      console.log(restult);
+      localStorage.setItem('token', JSON.stringify(restult.user.uid));
+      navigate('/home');
     }
   };
 
   useEffect(() => {
-    prueba();
+    login();
   }, []);
 
   return (
-    <div>
-      <GoogleButton
-        type="light" // can be light or dark
-        onClick={register}
-      />
-    </div>
+    <>
+      <div className="login">
+        <div className="box text-center">
+        {/* <button className='btnIdioma'>idioma</button> */}
+                  <div className="boxItems ">
+                      <p className='boxFont'>Prode-Mundial</p>
+                      <span className='boxFont'>Tonic3</span>
+                  </div>
+          <GoogleButton
+            className="boxItems"
+            type="dark"
+            onClick={register}
+          />
+        </div>
+      </div>
+    </>
   );
 };
 
