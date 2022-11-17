@@ -4,12 +4,14 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import LoginPages from './pages/Login/LoginPages.jsx';
+import HomePages from './pages/Home/HomePages.jsx';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" index element={<LoginPages />} />
+        <Route path="/home" index element={<HomePages />} />
       </Routes>
     </BrowserRouter>
   );
