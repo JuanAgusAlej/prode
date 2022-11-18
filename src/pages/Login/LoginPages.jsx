@@ -21,15 +21,19 @@ const LoginPages = () => {
   const register = () => {
     signInWithRedirect(auth, provider);
   };
+  const localStorageLogin = async () => {
+    if (localStorage.getItem('token')) {
+      const data = await tokenValidated();
+      navigate(data.direction);
+    }
+  };
 
   const login = async () => {
     const restult = await getRedirectResult(auth);
-    console.log('result', restult);
     if (restult !== null) {
       const data = await userLogin(restult.user);
-      console.log(data);
       if (data.token) {
-        localStorage.setItem('token', JSON.stringify(data.token));
+        localStorage.setItem('token', data.token);
         navigate(data.direction);
       }
       navigate(data.direction);
@@ -37,16 +41,13 @@ const LoginPages = () => {
   };
 
   useEffect(() => {
-    // if (localStorage.getItem('token')) {
-    //   tokenValidated();
-    // }
+    localStorageLogin();
     login();
   }, []);
 
   return (
     <>
       <div className="login">
-
         <div className="box text-center">
           <LoginTitle title="Prode-Mundial" company="Tonic3" />
           <GoogleButton className="boxItems" type="dark" onClick={register} />
