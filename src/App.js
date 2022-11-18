@@ -11,7 +11,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' index element={<LoginPages />} />
-        <Route path='/confirmation' index element={<ConfirmRegister />} />
+        <Route path='/confirmation/:uid' index element={<ConfirmRegister />} />
       </Routes>
     </BrowserRouter>
   );
