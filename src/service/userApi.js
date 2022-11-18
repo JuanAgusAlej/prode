@@ -21,11 +21,9 @@ const userPost = async (userData) => {
 };
 
 export const userLogin = async (userData) => {
-  console.log(url);
   const uidGoogle = userData.uid;
   try {
     const { data } = await axios.post(`${url}/user/login`, { uidGoogle });
-    console.log(data.user.validated);
     if (data.user.validated) {
       data.direction = '/home';
       return data;
@@ -40,5 +38,10 @@ export const userLogin = async (userData) => {
 
 export const tokenValidated = async () => {
   const { data } = await axios(`${url}/user/me`, axiosConfig);
-  console.log(data);
+  if (data.validated) {
+    data.direction = '/home';
+    return data;
+  }
+  data.direction = '/perfil';
+  return data;
 };
