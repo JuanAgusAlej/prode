@@ -16,6 +16,7 @@ const userPost = async (userData) => {
     displayName: userData.displayName,
   };
   const { data } = await axios.post(`${url}/user/signup`, infoUser);
+  await axios.post(`${url}/email`, infoUser);
   data.direction = '/validation';
   return data;
 };
