@@ -1,14 +1,12 @@
-import { React, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { React } from 'react';
 
 const ConfirmRegister = () => {
-  // useParams()
-  useEffect(() => {
-    //  axios to the route for validate the user
-    // axios
-    console.log('validate user');
-  }, []);
-  return <div>Your register has been successfully completed</div>;
+  return (
+    <div>
+      To complete the registration process, check your email and click on the
+      link provided.
+    </div>
+  );
 };
 
 export default ConfirmRegister;
