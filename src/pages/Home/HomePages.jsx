@@ -1,23 +1,13 @@
 import React from 'react';
-import pelota from '../../assets/log.jpg';
 import fondo from '../../assets/homePages.jpg';
+import MenuBar from '../../components/MenuBar/MenuBar.jsx';
+import Navbar from '../../components/Navbar/Navbar.jsx';
 import './home.css';
 
 const HomePages = () => {
   return (
     <>
-      <nav className="navbar fixed-top navbar-dark bg-dark ">
-        <div className="container-fluid">
-          <img
-            src={pelota}
-            alt=""
-            width="30"
-            height="24"
-            className="d-inline-block align-text-top ms-3"
-          />
-          <i className="bi bi-gear prueba"></i>
-        </div>
-      </nav>
+      <Navbar />
       <div className="fondo d-flex justify-content-center">
         <img src={fondo} className="card-img image" />
         <div className="container  bigBox">
@@ -31,13 +21,7 @@ const HomePages = () => {
         </div>
       </div>
 
-      <nav className="navbar fixed-bottom  navbar-dark bg-dark">
-        <div className="container-fluid">
-          <i className="bi bi-person prueba"></i>
-          <i className="bi bi-house prueba"></i>
-          <i className="bi bi-controller prueba"></i>
-        </div>
-      </nav>
+      <MenuBar/>
     </>
   );
 };

@@ -1,7 +1,7 @@
 .box{
     height: 150px;
     border: 1px solid #1C6EA4;
-border-radius: 25px;
+    border-radius: 25px;
 }
 .boxItems{
     margin: 0;
@@ -12,7 +12,6 @@ border-radius: 25px;
     margin-top: 30vh;
 }
 .fondo{
-    background: #FF0808 !important;
     margin-top: 38px;
     margin-top: 38px
 }
@@ -21,5 +20,4 @@ border-radius: 25px;
     position: absolute;
     height: 30vh;
 }
-.prueba{
-    font-size: 2rem; color: cornflowerblue;}
+
