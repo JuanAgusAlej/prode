@@ -1,0 +1,16 @@
+.boxFont{
+    margin: 0;
+    font-family: Georgia, serif;
+    font-size: 25px;
+    letter-spacing: 2px;
+    word-spacing: 2px;
+    color: #FF0808;
+    font-weight: 400;
+    text-decoration: rgb(68, 68, 68);
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none; 
+}
+.boxFont img {
+    max-width: 10%;
+}
