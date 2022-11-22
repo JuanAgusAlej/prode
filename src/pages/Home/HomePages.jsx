@@ -21,7 +21,7 @@ const HomePages = () => {
         </div>
       </div>
 
-      <MenuBar/>
+      <MenuBar />
     </>
   );
 };
