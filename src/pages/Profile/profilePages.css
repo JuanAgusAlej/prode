@@ -1,0 +1,30 @@
+.container1 {
+  display: flex;
+  padding: 5px;
+}
+
+.imgProfileDiv {
+  width: 25%;
+}
+
+.imgProfile {
+  width: 100%;
+}
+
+.userNameDiv {
+  display: flex;
+  align-items: center;
+  width: 75%;
+  text-align: center;
+  justify-content: center;
+}
+
+button {
+  padding-left: 5px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid white;
+  background: white;
+  color: black;
+}

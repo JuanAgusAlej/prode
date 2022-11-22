@@ -1,37 +1,23 @@
 .login{
     display: flex;
     flex-direction:column;
- justify-content: center;
- align-items: center;
- height:100vh;
- background-color: white;
- border-color: #737373;
- border: 1px solid black;
- 
+    justify-content: center;
+    align-items: center;
+    height:100vh;
+    background-color: white;
+    border-color: #737373;
+    border: 1px solid black;
+    background-image: url("../../assets/cancha.jpg");
+    background-size: cover;
 }
-.btnIdioma {
-    position: relative;
-    margin: 15px;
-}
+
 .box{
+    background-color: white;
+    opacity: 0.9;
     -webkit-box-shadow: 0px 0px 50px -10px rgba(255,0,0,0.3); 
 box-shadow: 0px 0px 50px -10px rgba(255,0,0,0.3);
 border: 0px solid #1C6EA4;
 border-radius: 25px;
-}
-
-.boxFont{
-    margin: 0;
-    font-family: Georgia, serif;
-    font-size: 25px;
-    letter-spacing: 2px;
-    word-spacing: 2px;
-    color: #FF0808;
-    font-weight: 400;
-    text-decoration: rgb(68, 68, 68);
-    font-style: normal;
-    font-variant: normal;
-    text-transform: none; 
 }
 .boxItems{
     margin:50px 20px;
