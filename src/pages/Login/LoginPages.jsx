@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import {
   GoogleAuthProvider,
   getAuth,
@@ -9,6 +9,8 @@ import GoogleButton from 'react-google-button';
 import { useNavigate } from 'react-router-dom';
 import app from '../../service/firebase';
 import './loginPages.css';
+import { tokenValidated, userLogin } from '../../service/userApi';
+import LoginTitle from '../../components/LoginTitle/LoginTitle.jsx';
 
 const LoginPages = () => {
   const provider = new GoogleAuthProvider();
@@ -19,18 +21,27 @@ const LoginPages = () => {
   const register = () => {
     signInWithRedirect(auth, provider);
   };
+  const localStorageLogin = async () => {
+    if (localStorage.getItem('token')) {
+      const data = await tokenValidated();
+      navigate(data.direction);
+    }
+  };
 
   const login = async () => {
     const restult = await getRedirectResult(auth);
-    console.log('result', restult);
-    if (restult !== null || localStorage.getItem('token')) {
-      console.log(restult);
-      localStorage.setItem('token', JSON.stringify(restult.user.uid));
-      navigate('/home');
+    if (restult !== null) {
+      const data = await userLogin(restult.user);
+      if (data.token) {
+        localStorage.setItem('token', data.token);
+        navigate(data.direction);
+      }
+      navigate(data.direction);
     }
   };
 
   useEffect(() => {
+    localStorageLogin();
     login();
   }, []);
 
@@ -38,16 +49,8 @@ const LoginPages = () => {
     <>
       <div className="login">
         <div className="box text-center">
-        {/* <button className='btnIdioma'>idioma</button> */}
-                  <div className="boxItems ">
-                      <p className='boxFont'>Prode-Mundial</p>
-                      <span className='boxFont'>Tonic3</span>
-                  </div>
-          <GoogleButton
-            className="boxItems"
-            type="dark"
-            onClick={register}
-          />
+          <LoginTitle title="Prode-Mundial" company="Tonic3" />
+          <GoogleButton className="boxItems" type="dark" onClick={register} />
         </div>
       </div>
     </>
