@@ -1,9 +1,7 @@
 import React from 'react';
-import MenuBar from '../../components/MenuBar/MenuBar.jsx';
-import Navbar from '../../components/Navbar/Navbar.jsx';
 import pelota from '../../assets/Flag_of_Argentina.svg.webp';
 import CardPartidos from '../../components/CardPartidos/CardPartidos.jsx';
-import './fixturePages.css';
+import NavFixtureProde from '../../components/NavFixtureProde/NavFixtureProde.jsx';
 
 const FixturePages = () => {
   const matchs = [
@@ -59,33 +57,7 @@ const FixturePages = () => {
   ];
   return (
     <>
-      <Navbar />
-      <div className="d-flex text-center">
-        <input
-          type="radio"
-          className="btn-check"
-          name="btnradio"
-          id="btnradio1"
-          checked
-        />
-        <label
-          className="btn myButton btn-outline-primary col box d-flex align-items-center justify-content-center"
-          htmlFor="btnradio1">
-          Partidos
-        </label>
-
-        <input
-          type="radio"
-          className="btn-check"
-          name="btnradio"
-          id="btnradio2"
-        />
-        <label
-          className="btn myButton btn-outline-primary col box"
-          htmlFor="btnradio2">
-          Partidos por jugar
-        </label>
-      </div>
+      <NavFixtureProde />
       {matchs.map((match, id) => (
         <CardPartidos key={id} match={match} />
       ))}
@@ -137,7 +109,6 @@ const FixturePages = () => {
         </div>
         <p>15:30hs - 20/11 </p>
       </div> */}
-      <MenuBar />
     </>
   );
 };
