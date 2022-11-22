@@ -1,0 +1,13 @@
+.iconHome {
+    background-color: #1C6EA4;
+    border-radius: 11px;
+}
+.fecha{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.fecha p{
+    font-size: small;
+    margin-inline:15px ;
+}

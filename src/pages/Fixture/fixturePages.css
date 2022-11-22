@@ -1,0 +1,29 @@
+.box{
+    height: auto;
+    border: 1px solid #1C6EA4;
+    border-radius: 15px;
+        margin: 15px;
+}
+.myButton {
+    box-shadow: inset 0px 1px 0px 0px #f5978e;
+    background-color: #893535;
+    border-radius: 6px;
+    border: 1px solid #d02718;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 6px 24px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #810e05;
+}
+.myButton:hover {
+    background-color: #ffffff;
+}
+.myButton:active {
+    position: relative;
+    top: 1px;
+}
+
