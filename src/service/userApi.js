@@ -12,8 +12,8 @@ const userPost = async (userData) => {
   const infoUser = {
     email: userData.email,
     uid: userData.uid,
-    photo: userData.photoURL,
-    displayName: userData.displayName,
+    avatar: userData.photoURL,
+    name: userData.displayName,
   };
   const { data } = await axios.post(`${url}/user/signup`, infoUser);
   await axios.post(`${url}/email`, infoUser);
@@ -22,9 +22,9 @@ const userPost = async (userData) => {
 };
 
 export const userLogin = async (userData) => {
-  const uidGoogle = userData.uid;
+  const { uid } = userData;
   try {
-    const { data } = await axios.post(`${url}/user/login`, { uidGoogle });
+    const { data } = await axios.post(`${url}/user/login`, { uid });
     if (data.user.validated) {
       data.direction = '/home';
       return data;
