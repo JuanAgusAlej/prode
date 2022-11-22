@@ -10,19 +10,23 @@ import HomePages from './pages/Home/HomePages.jsx';
 import FixturePages from './pages/Fixture/FixturePages.jsx';
 import ConfirmRegister from './pages/ConfirmRegister/ConfirmRegister.jsx';
 import ProdePage from './pages/Prode/ProdePage.jsx';
+import MenuBar from './components/MenuBar/MenuBar.jsx';
+import Navbar from './components/Navbar/Navbar.jsx';
 
 function App() {
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
-        <Route path="/" index element={<LoginPages />} />
-        <Route path="/profile" index element={<ProfilePages />} />
-        <Route path="/profile/edit" index element={<ProfileEditorPages />} />
-        <Route path="/home" index element={<HomePages />} />
-        <Route path='/prode' element={<ProdePage />} />
-        <Route path="/fixtur" index element={<FixturePages />} />
+        <Route path='/' index element={<LoginPages />} />
+        <Route path='/profile' index element={<ProfilePages />} />
+        <Route path='/profile/edit' index element={<ProfileEditorPages />} />
+        <Route path='/home' index element={<HomePages />} />
+        <Route path='/fixture/prode' element={<ProdePage />} />
+        <Route path='/fixture' index element={<FixturePages />} />
         <Route path='/validation' index element={<ConfirmRegister />} />
       </Routes>
+      <MenuBar />
     </BrowserRouter>
   );
 }
