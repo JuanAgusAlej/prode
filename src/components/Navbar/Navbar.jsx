@@ -4,7 +4,7 @@ import './navbar.css';
 
 const Navbar = () => {
   return (
-    <nav className="navbar fixed-top navbar-dark bg-dark p-0 ">
+    <nav className="navbar  navbar-dark bg-dark p-0 ">
       <div className="container-fluid my-1 align-items-center mx-2 icon">
         <img
           src={pelota}
