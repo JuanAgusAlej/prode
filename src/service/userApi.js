@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import axios from 'axios';
 
 const url = process.env.REACT_APP_URL;
@@ -16,7 +17,7 @@ const userPost = async (userData) => {
     name: userData.displayName,
   };
   const { data } = await axios.post(`${url}/user/signup`, infoUser);
-  await axios.post(`${url}/email`, infoUser);
+  await axios.post(`${url}/email`, { id: data._id, email: infoUser.email });
   data.direction = '/validation';
   return data;
 };
