@@ -1,0 +1,79 @@
+#root {
+  display: flex;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.matchCard {
+  background-color: #893535;
+  height: fit-content;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 3% 0;
+}
+.col-centered {
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.row {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.middleRow {
+  display: flex;
+  justify-content: center;
+}
+#inputGoalsA {
+  margin: 1% 2% 1% 10%;
+  padding: 0;
+}
+#inputGoalsB {
+  margin: 1% 10% 1% 2%;
+  padding: 0;
+}
+#buttonGoalsA {
+  margin-right: 2%;
+  padding: 0;
+}
+#buttonGoalsB {
+  margin-left: 2%;
+  padding: 0;
+}
+.flagTeam {
+  width: 50px;
+  height: 25px;
+  padding: 0;
+  border-radius: 5px;
+}
+#flagTeamA {
+  margin-left: 5%;
+}
+#flagTeamB {
+  margin-right: 5%;
+}
+.nameTeam {
+  display: flex;
+  width: fit-content;
+  padding: 0;
+  color: white;
+  margin: 0;
+  font-size: larger;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+.input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: #893535;
+  text-align: center;
+  color: white;
+}
