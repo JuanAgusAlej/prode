@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import './profilePages.css';
 import { tokenValidated } from '../../service/userApi';
@@ -8,6 +9,7 @@ import MenuBar from '../../components/MenuBar/MenuBar.jsx';
 const ProfilePages = () => {
   const [user, setUser] = useState({});
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     tokenValidated().then((data) => {
@@ -24,7 +26,7 @@ const ProfilePages = () => {
   if (user === {}) {
     return (
       <div>
-        <p>Cargando datos</p>
+        <p>{t('loading')}</p>
       </div>
     );
   }
@@ -41,7 +43,7 @@ const ProfilePages = () => {
           />
         </div>
         <div className="userNameDiv">
-          <h1 className="userName">{user.name}</h1>
+          <h1 className="userName">{user.alias}</h1>
           <button onClick={buttonHandler}>
             <i className="bi bi-pencil-square"></i>
           </button>
@@ -49,10 +51,18 @@ const ProfilePages = () => {
       </div>
       <div>
         <ul className="list-group list-group-flush">
-          <li className="list-group-item abc">email: {user.email}</li>
-          <li className="list-group-item abc">nombre: {user.alias}</li>
-          <li className="list-group-item abc">region: {user.region}</li>
-          <li className="list-group-item abc">puntos: {user.points}</li>
+          <li className="list-group-item abc">
+            {t('email')}: {user.email}
+          </li>
+          <li className="list-group-item abc">
+            {t('name')}: {user.name}
+          </li>
+          <li className="list-group-item abc">
+            {t('region')}: {user.region}
+          </li>
+          <li className="list-group-item abc">
+            {t('points')}: {user.points}
+          </li>
         </ul>
       </div>
       <MenuBar />
