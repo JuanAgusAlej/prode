@@ -26,11 +26,7 @@ const CountDown = ({ date }) => {
     };
   }, []);
 
-  return (
-    <>
-      {countDown}
-    </>
-  );
+  return <>{countDown}</>;
 };
 
 export default CountDown;

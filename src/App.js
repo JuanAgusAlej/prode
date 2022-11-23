@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -12,9 +13,15 @@ import ConfirmRegister from './pages/ConfirmRegister/ConfirmRegister.jsx';
 import ProdePage from './pages/Prode/ProdePage.jsx';
 import MenuBar from './components/MenuBar/MenuBar.jsx';
 import Navbar from './components/Navbar/Navbar.jsx';
+import { getTournament } from './state/tournament';
 import Tutorial from './pages/Tutorial/Tutorial.jsx';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getTournament());
+  }, []);
   return (
     <BrowserRouter>
       <Navbar />
