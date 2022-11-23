@@ -18,9 +18,13 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <Routes>
+        <Route path="/profile/:id" index element={<ProfilePages />} />
+        <Route
+          path="/profile/:id/edit"
+          index
+          element={<ProfileEditorPages />}
+        />
         <Route path='/' index element={<LoginPages />} />
-        <Route path='/profile' index element={<ProfilePages />} />
-        <Route path='/profile/edit' index element={<ProfileEditorPages />} />
         <Route path='/home' index element={<HomePages />} />
         <Route path='/fixture/prode' element={<ProdePage />} />
         <Route path='/fixture' index element={<FixturePages />} />
