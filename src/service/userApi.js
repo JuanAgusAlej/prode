@@ -9,7 +9,7 @@ const axiosConfig = {
   },
 };
 
-const userPost = async (userData) => {
+const userPost = async userData => {
   const infoUser = {
     email: userData.email,
     uid: userData.uid,
@@ -17,12 +17,13 @@ const userPost = async (userData) => {
     name: userData.displayName,
   };
   const { data } = await axios.post(`${url}/user/signup`, infoUser);
+  localStorage.setItem('token', data.token);
   await axios.post(`${url}/email`, { id: data._id, email: infoUser.email });
   data.direction = '/validation';
   return data;
 };
 
-export const userLogin = async (userData) => {
+export const userLogin = async userData => {
   const { uid } = userData;
   try {
     const { data } = await axios.post(`${url}/user/login`, { uid });
@@ -30,7 +31,7 @@ export const userLogin = async (userData) => {
       data.direction = '/home';
       return data;
     }
-    data.direction = '/profile';
+    data.direction = `/profile/${data._id}`;
     return data;
   } catch (error) {
     const data = await userPost(userData);
@@ -44,11 +45,11 @@ export const tokenValidated = async () => {
     data.direction = '/home';
     return data;
   }
-  data.direction = '/profile';
+  data.direction = `/profile/${data._id}`;
   return data;
 };
 
-export const modifyUser = async (obj) => {
+export const modifyUser = async obj => {
   const { data } = await axios.put(`${url}/user/me`, obj, axiosConfig);
   return data;
 };
