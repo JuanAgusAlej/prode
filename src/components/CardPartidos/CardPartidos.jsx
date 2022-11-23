@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Visitor from '../../commons/Visitor/Visitor.jsx';
 import './cardPartidos.css';
 
