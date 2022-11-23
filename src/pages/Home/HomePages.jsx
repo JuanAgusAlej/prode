@@ -1,13 +1,10 @@
 import React from 'react';
 import fondo from '../../assets/homePages.jpg';
-import MenuBar from '../../components/MenuBar/MenuBar.jsx';
-import Navbar from '../../components/Navbar/Navbar.jsx';
 import './home.css';
 
 const HomePages = () => {
   return (
     <>
-      <Navbar />
       <div className="fondo d-flex justify-content-center">
         <img src={fondo} className="card-img image" />
         <div className="container  bigBox">
@@ -20,8 +17,6 @@ const HomePages = () => {
           </div>
         </div>
       </div>
-
-      <MenuBar />
     </>
   );
 };

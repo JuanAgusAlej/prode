@@ -30,7 +30,7 @@ export const userLogin = async (userData) => {
       data.direction = '/home';
       return data;
     }
-    data.direction = '/perfil';
+    data.direction = '/profile';
     return data;
   } catch (error) {
     const data = await userPost(userData);
@@ -44,7 +44,7 @@ export const tokenValidated = async () => {
     data.direction = '/home';
     return data;
   }
-  data.direction = '/perfil';
+  data.direction = '/profile';
   return data;
 };
 
