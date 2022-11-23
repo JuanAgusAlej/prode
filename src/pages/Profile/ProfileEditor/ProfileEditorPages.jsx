@@ -1,26 +1,51 @@
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './profileEditorPages.css';
 import useInput from '../../../utils/useInput';
 import { iconPaths } from './iconPaths';
+import { tokenValidated, modifyUser } from '../../../service/userApi';
+import Navbar from '../../../components/Navbar/Navbar.jsx';
+import MenuBar from '../../../components/MenuBar/MenuBar.jsx';
 
 const ProfileEditorPages = () => {
   const newUsername = useInput();
   const navigate = useNavigate();
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    tokenValidated().then((data) => {
+      console.log(data);
+      setUser(data);
+    });
+  }, []);
 
   const handleClick = (e, path) => {
     e.preventDefault();
     console.log(path);
+    modifyUser({ avatar: path }).then(() => {
+      navigate(`/profile/${user.id}`);
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(newUsername.value);
-    navigate('/profile');
+    modifyUser({ name: newUsername.value }).then(() => {
+      navigate(`/profile/${user.id}`);
+    });
   };
-  console.log(iconPaths);
+
+  if (user === {}) {
+    return (
+      <div>
+        <p>Cargando datos</p>
+      </div>
+    );
+  }
 
   return (
     <div>
+      <Navbar />
       <div>
         <h1 className="title">MODIFICAR USUARIO</h1>
       </div>
@@ -28,11 +53,7 @@ const ProfileEditorPages = () => {
         <div className="iconChange">
           <div>Icono actual:</div>
           <div>
-            <img
-              src="https://thumbs.dreamstime.com/b/icono-del-perfil-avatar-defecto-placeholder-gris-de-la-foto-102846161.jpg"
-              alt="user icon"
-              className="imgProfile"
-            />
+            <img src={user.avatar} alt="user icon" className="imgProfile" />
           </div>
         </div>
         <div className="iconChange">
@@ -54,7 +75,7 @@ const ProfileEditorPages = () => {
       <div className="usernameDiv">
         <div className="userActualDiv">
           <p>Username actual: </p>
-          <p className="userActual">Usuario</p>
+          <p className="userActual">{user.name}</p>
         </div>
         <div className="usernameChange">
           <p>Cambiar username: </p>
@@ -72,6 +93,7 @@ const ProfileEditorPages = () => {
           Save
         </button>
       </div>
+      <MenuBar />
     </div>
   );
 };

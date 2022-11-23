@@ -47,3 +47,8 @@ export const tokenValidated = async () => {
   data.direction = '/perfil';
   return data;
 };
+
+export const modifyUser = async (obj) => {
+  const { data } = await axios.put(`${url}/user/me`, obj, axiosConfig);
+  return data;
+};

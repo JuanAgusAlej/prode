@@ -16,12 +16,16 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" index element={<LoginPages />} />
-        <Route path="/profile" index element={<ProfilePages />} />
-        <Route path="/profile/edit" index element={<ProfileEditorPages />} />
+        <Route path="/profile/:id" index element={<ProfilePages />} />
+        <Route
+          path="/profile/:id/edit"
+          index
+          element={<ProfileEditorPages />}
+        />
         <Route path="/home" index element={<HomePages />} />
-        <Route path='/prode' element={<ProdePage />} />
+        <Route path="/prode" element={<ProdePage />} />
         <Route path="/fixtur" index element={<FixturePages />} />
-        <Route path='/validation' index element={<ConfirmRegister />} />
+        <Route path="/validation" index element={<ConfirmRegister />} />
       </Routes>
     </BrowserRouter>
   );

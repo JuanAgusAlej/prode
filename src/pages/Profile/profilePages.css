@@ -1,6 +1,8 @@
 .container1 {
   display: flex;
-  padding: 5px;
+  padding: 25px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid gray;
 }
 
 .imgProfileDiv {
@@ -8,7 +10,7 @@
 }
 
 .imgProfile {
-  width: 100%;
+  max-width: 100%;
 }
 
 .userNameDiv {
@@ -17,6 +19,7 @@
   width: 75%;
   text-align: center;
   justify-content: center;
+  padding-left: 10px;
 }
 
 button {
@@ -27,4 +30,10 @@ button {
   border: 1px solid white;
   background: white;
   color: black;
+}
+
+.abc {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  font-size: 22px;
 }
