@@ -12,6 +12,7 @@ import ConfirmRegister from './pages/ConfirmRegister/ConfirmRegister.jsx';
 import ProdePage from './pages/Prode/ProdePage.jsx';
 import MenuBar from './components/MenuBar/MenuBar.jsx';
 import Navbar from './components/Navbar/Navbar.jsx';
+import Tutorial from './pages/Tutorial/Tutorial.jsx';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path='/fixture/prode' element={<ProdePage />} />
         <Route path='/fixture' index element={<FixturePages />} />
         <Route path='/validation' index element={<ConfirmRegister />} />
+        <Route path='/tutorial' index element={<Tutorial />} />
       </Routes>
       <MenuBar />
     </BrowserRouter>

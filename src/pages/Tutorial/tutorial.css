@@ -1,0 +1,51 @@
+body {
+  background-color: rgba(217, 217, 217, 1);
+}
+
+.howToPlay {
+  padding-top: 1rem;
+  text-align: center;
+  color: rgba(194, 75, 75, 1);
+  padding-bottom: 1rem;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 35px;
+  line-height: 29px;
+}
+
+.fix {
+  display: flex;
+  flex-direction: column;
+}
+
+.tutorialDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  
+  align-items: center;
+}
+
+.innerDivText {
+  color: rgba(222, 46, 46, 1);
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 23px;
+  line-height: 18px;
+  height: auto;
+  width: 100%;
+  text-align: center;
+}
+
+.innerDivPhoto {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+.img {
+  width: 100%;
+  border-radius: 6px;
+}
