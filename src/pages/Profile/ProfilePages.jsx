@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './profilePages.css';
 import { tokenValidated } from '../../service/userApi';
-import Navbar from '../../components/Navbar/Navbar.jsx';
-import MenuBar from '../../components/MenuBar/MenuBar.jsx';
 
 const ProfilePages = () => {
   const [user, setUser] = useState({});
@@ -31,7 +29,6 @@ const ProfilePages = () => {
 
   return (
     <div>
-      <Navbar />
       <div className="container1">
         <div className="imgProfileDiv">
           <img
@@ -55,7 +52,6 @@ const ProfilePages = () => {
           <li className="list-group-item abc">puntos: {user.points}</li>
         </ul>
       </div>
-      <MenuBar />
     </div>
   );
 };
