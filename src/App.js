@@ -14,6 +14,7 @@ import ProdePage from './pages/Prode/ProdePage.jsx';
 import MenuBar from './components/MenuBar/MenuBar.jsx';
 import Navbar from './components/Navbar/Navbar.jsx';
 import { getTournament } from './state/tournament';
+import Tutorial from './pages/Tutorial/Tutorial.jsx';
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +37,7 @@ function App() {
         <Route path='/fixture/prode' element={<ProdePage />} />
         <Route path='/fixture' index element={<FixturePages />} />
         <Route path='/validation' index element={<ConfirmRegister />} />
+        <Route path='/tutorial' index element={<Tutorial />} />
       </Routes>
       <MenuBar />
     </BrowserRouter>
