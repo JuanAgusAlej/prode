@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import './profileEditorPages.css';
 import useInput from '../../../utils/useInput';
 import { iconPaths } from './iconPaths';
 import { tokenValidated, modifyUser } from '../../../service/userApi';
-import Navbar from '../../../components/Navbar/Navbar.jsx';
-import MenuBar from '../../../components/MenuBar/MenuBar.jsx';
 
 const ProfileEditorPages = () => {
   const newUsername = useInput();
   const navigate = useNavigate();
   const [user, setUser] = useState({});
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     tokenValidated().then((data) => {
@@ -30,7 +30,7 @@ const ProfileEditorPages = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(newUsername.value);
-    modifyUser({ name: newUsername.value }).then(() => {
+    modifyUser({ alias: newUsername.value }).then(() => {
       navigate(`/profile/${user.id}`);
     });
   };
@@ -38,26 +38,25 @@ const ProfileEditorPages = () => {
   if (user === {}) {
     return (
       <div>
-        <p>Cargando datos</p>
+        <p>{t('loading')}</p>
       </div>
     );
   }
 
   return (
     <div>
-      <Navbar />
       <div>
-        <h1 className="title">MODIFICAR USUARIO</h1>
+        <h1 className="title">{t('modifyUser')}</h1>
       </div>
       <div className="iconDiv">
         <div className="iconChange">
-          <div>Icono actual:</div>
+          <div>{t('currentIcon')}:</div>
           <div>
             <img src={user.avatar} alt="user icon" className="imgProfile" />
           </div>
         </div>
         <div className="iconChange">
-          <div>Cambiar icono:</div>
+          <div>{t('changeIcon')}:</div>
           {iconPaths.map((path) => {
             return (
               <div key={path} className="icons">
@@ -74,11 +73,11 @@ const ProfileEditorPages = () => {
       </div>
       <div className="usernameDiv">
         <div className="userActualDiv">
-          <p>Username actual: </p>
-          <p className="userActual">{user.name}</p>
+          <p>{t('currentUsername')}: </p>
+          <p className="userActual">{user.alias}</p>
         </div>
         <div className="usernameChange">
-          <p>Cambiar username: </p>
+          <p>{t('changeUsername')}: </p>
           <form onSubmit={handleSubmit}>
             <input {...newUsername} type="text" name="usernameChange" />
           </form>
@@ -90,10 +89,9 @@ const ProfileEditorPages = () => {
           className="btn btn-success"
           onClick={handleSubmit}
         >
-          Save
+          {t('save')}
         </button>
       </div>
-      <MenuBar />
     </div>
   );
 };

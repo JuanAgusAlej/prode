@@ -1,16 +1,19 @@
 import React from 'react';
 import InputGoals from '../../commons/Prode/InputGoals.jsx';
 import ButtonsGoals from '../../commons/Prode/ButtonsGoals.jsx';
+import CountDown from '../CountDown/CountDown.jsx';
 
 const MatchCardProde = ({
   handleGoals,
+  handlePrediction,
   teamA,
   goalsA,
   teamB,
   goalsB,
+  date,
 }) => {
   return (
-    <div className='matchCard m-0 p-0'>
+    <div className='matchCard m-0 p-3'>
       <div className='row roww'>
         <ButtonsGoals
           content={'+'}
@@ -52,6 +55,15 @@ const MatchCardProde = ({
           id={'buttonGoalsB'}
           handleGoals={handleGoals}
         />
+      </div>
+      <div className='row roww group'>
+        Group C
+      </div>
+      <div className='row roww group'>
+        <CountDown date={date} />
+      </div>
+      <div className='row roww'>
+        <button className='btn btn-light buttonPredict' onClick={handlePrediction}>Predict</button>
       </div>
     </div>
   );
