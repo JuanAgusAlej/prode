@@ -4,8 +4,6 @@ import './profileEditorPages.css';
 import useInput from '../../../utils/useInput';
 import { iconPaths } from './iconPaths';
 import { tokenValidated, modifyUser } from '../../../service/userApi';
-import Navbar from '../../../components/Navbar/Navbar.jsx';
-import MenuBar from '../../../components/MenuBar/MenuBar.jsx';
 
 const ProfileEditorPages = () => {
   const newUsername = useInput();
@@ -30,7 +28,7 @@ const ProfileEditorPages = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(newUsername.value);
-    modifyUser({ name: newUsername.value }).then(() => {
+    modifyUser({ alias: newUsername.value }).then(() => {
       navigate(`/profile/${user.id}`);
     });
   };
@@ -45,7 +43,6 @@ const ProfileEditorPages = () => {
 
   return (
     <div>
-      <Navbar />
       <div>
         <h1 className="title">MODIFICAR USUARIO</h1>
       </div>
@@ -93,7 +90,6 @@ const ProfileEditorPages = () => {
           Save
         </button>
       </div>
-      <MenuBar />
     </div>
   );
 };
