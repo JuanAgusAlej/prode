@@ -10,22 +10,22 @@ const Visitor = ({
         <div
           className={
             win === 'WON_B' || win === 'PENDING' || win === 'DRAW'
-              ? 'd-flex align-items-center '
-              : 'd-flex align-items-center lose'
+              ? 'd-flex col-5 visitor'
+              : 'd-flex col-5 visitor lose'
           }>
           <p className="mx-2 my-2">{gol}</p>
-          <p className="me-2 my-2">{team.shortName}</p>
           <img src={team.logo} alt="" width="40" height="34" />
+          <p className="me-2 my-2 teamName">{team.shortName}</p>
         </div>
       ) : (
         <div
           className={
             win === 'WON_A' || win === 'PENDING' || win === 'DRAW'
-              ? 'd-flex align-items-center '
-              : 'd-flex align-items-center lose'
+              ? 'd-flex col-5 visitor'
+              : 'd-flex col-5 visitor lose'
           }>
+          <p className="ms-2 my-2 teamName">{team.shortName}</p>
           <img src={team.logo} alt="" width="40" height="34" />
-          <p className="ms-2 my-2 ">{team.shortName}</p>
           <p className="mx-2 my-2">{gol}</p>
         </div>
       )}
