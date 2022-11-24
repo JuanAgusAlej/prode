@@ -7,12 +7,13 @@ import { tokenValidated } from '../../service/userApi';
 const ProfilePages = () => {
   const [user, setUser] = useState({});
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     tokenValidated().then((data) => {
       console.log(data);
       setUser(data);
+      i18n.changeLanguage(data?.language);
     });
   }, []);
 
