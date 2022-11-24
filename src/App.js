@@ -16,6 +16,7 @@ import Navbar from './components/Navbar/Navbar.jsx';
 import { getTournament } from './state/tournament';
 import Tutorial from './pages/Tutorial/Tutorial.jsx';
 import { getUserLocation } from './service/userApi';
+import Leaderboard from './pages/Leaderboard/Leaderboard.jsx';
 
 function App() {
   const [userCountry, setUserCountry] = useState('');
@@ -43,12 +44,13 @@ function App() {
           index
           element={<ProfileEditorPages />}
         />
-        <Route path="/" index element={<LoginPages />} />
-        <Route path="/home" index element={<HomePages />} />
+        <Route path='/' index element={<LoginPages />} />
+        <Route path='/home' index element={<HomePages />} />
         <Route path="/fixture/prode" element={<ProdePage />} />
         <Route path="/fixture" index element={<FixturePages />} />
         <Route path="/validation" index element={<ConfirmRegister />} />
         <Route path="/tutorial" index element={<Tutorial />} />
+        <Route path='/leaderboard' index element={<Leaderboard />} />
       </Routes>
       <MenuBar />
     </BrowserRouter>
