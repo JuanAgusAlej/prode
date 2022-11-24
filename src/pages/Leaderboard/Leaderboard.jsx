@@ -1,18 +1,19 @@
+/* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import './leaderboard.css';
+import { useSelector } from 'react-redux';
+import { getUsers } from '../../service/leaderboard';
 import Leaderboards from '../../components/Leaderboard/Leaderboard.jsx';
 
-const url = process.env.REACT_APP_URL;
-
 const Leaderboard = () => {
+  const tournament = useSelector((state) => state.tournament.tournament);
   const [users, setUsers] = useState([]);
+
   useEffect(() => {
-    axios
-      .get(`${url}/user`)
-      .then((res) => res.data)
-      .then((allUsers) => setUsers(allUsers));
-  }, []);
+    if (tournament) {
+      getUsers(tournament._id).then((data) => setUsers(data));
+    }
+  }, [tournament]);
 
   return <Leaderboards users={users} />;
 };

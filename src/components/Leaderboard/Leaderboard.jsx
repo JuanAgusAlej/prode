@@ -13,7 +13,7 @@ const Leaderboard = ({ users }) => {
           {users.map((user, i) => (
             <tr className='rowColor' key={user.id}>
               <th scope='row'>{i + 1}</th>
-              <td>{user.alias}</td>
+              <td>{user.data[0].alias}</td>
               <td>{user.points}</td>
             </tr>
           ))}
