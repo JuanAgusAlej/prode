@@ -4,7 +4,7 @@ import tutorial from '../../utils/tutorial';
 
 const Tutorial = () => {
   return (
-    <div className='container fix'>
+    <div className='container fix bodyPaging'>
       <div className='howToPlay'>HOW TO PLAY</div>
       <hr />
       {tutorial.map((step, i) => (

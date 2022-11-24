@@ -4,7 +4,7 @@ import './navFixtureProde.css';
 
 const NavFixtureProde = () => {
   const navigate = useNavigate();
-  return <div className='d-flex text-center'>
+  return <div className='d-flex text-center '>
   <input
     type='radio'
     className='btn-check'

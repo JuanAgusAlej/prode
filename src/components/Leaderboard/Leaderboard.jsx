@@ -2,7 +2,7 @@ import React from 'react';
 
 const Leaderboard = ({ users }) => {
   return (
-    <div className='container tableSettings'>
+    <div className='container tableSettings bodyPaging'>
       <table className='table'>
         <thead>
           <tr>
