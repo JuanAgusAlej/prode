@@ -17,6 +17,7 @@ const ProfileEditorPages = () => {
     tokenValidated().then((data) => {
       console.log(data);
       setUser(data);
+      i18n.changeLanguage(data?.language);
     });
   }, []);
 
@@ -117,7 +118,7 @@ const ProfileEditorPages = () => {
       <div className="selectionDiv">
         <div className="idiomaActualDiv">
           <p>{t('currentLanguage')}:</p>
-          <p className="idiomaActual">-campo idioma-</p>
+          <p className="idiomaActual">{user.language}</p>
         </div>
         <div className="selection">
           <select
