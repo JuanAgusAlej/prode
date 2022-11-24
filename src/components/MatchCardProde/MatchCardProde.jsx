@@ -1,25 +1,42 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-underscore-dangle */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import InputGoals from '../../commons/Prode/InputGoals.jsx';
 import ButtonsGoals from '../../commons/Prode/ButtonsGoals.jsx';
 import CountDown from '../CountDown/CountDown.jsx';
+import { postPrediction } from '../../service/predictions';
 
 const MatchCardProde = ({
-  handleGoals,
-  handlePrediction,
   teamA,
-  goalsA,
-  setGoalsA,
   teamB,
-  goalsB,
-  setGoalsB,
   date,
   matchId,
+  imgA,
+  imgB,
   user,
   contentButton,
   setContentButton,
 }) => {
+  const [goalsA, setGoalsA] = useState(0);
+  const [goalsB, setGoalsB] = useState(0);
+
+  const handleGoals = e => {
+    if (e.target.parentNode.id === 'buttonGoalsA') {
+      if (e.target.textContent === '+') setGoalsA(prev => prev + 1);
+      else if (goalsA > 0) setGoalsA(prev => prev - 1);
+    } else if (e.target.parentNode.id === 'buttonGoalsB') {
+      if (e.target.textContent === '+') setGoalsB(prev => prev + 1);
+      else if (goalsB > 0) setGoalsB(prev => prev - 1);
+    }
+  };
+
+  const handlePrediction = (goallsA, goallsB, matchhId) => {
+    postPrediction(goallsA, goallsB, matchhId).then(data => {
+      setContentButton('Edit Prediction');
+      console.log(data);
+    });
+  };
+
   useEffect(() => {
     user.predictions.forEach((pred) => {
       if (pred.matchId === matchId) {
@@ -31,7 +48,7 @@ const MatchCardProde = ({
   }, [user]);
 
   return (
-    <div className='matchCard m-0 p-3'>
+    <div className='matchCard p-3'>
       <div className='row roww'>
         <ButtonsGoals
           content={'+'}
@@ -45,22 +62,22 @@ const MatchCardProde = ({
         />
       </div>
       <div className='row roww middleRow'>
-        <div className='nameTeam'>{teamA}</div>
+        <div className='nameTeam col-2'>{teamA}</div>
         <img
-          src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/1200px-Flag_of_Argentina.svg.png'
+          src={imgA}
           alt='Argentina'
-          className='flagTeam'
+          className='flagTeam col-3'
           id='flagTeamA'
         />
-        <InputGoals id={'inputGoalsA'} value={goalsA} />
-        <InputGoals id={'inputGoalsB'} value={goalsB} />
+        <InputGoals id={'inputGoalsA'} value={goalsA} className='col-1'/>
+        <InputGoals id={'inputGoalsB'} value={goalsB} className='col-1'/>
         <img
-          src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/1200px-Flag_of_Argentina.svg.png'
+          src={imgB}
           alt='Argentina'
-          className='flagTeam'
+          className='flagTeam col-3'
           id='flagTeamB'
         />
-        <div className='nameTeam'>{teamB}</div>
+        <div className='nameTeam col-2'>{teamB}</div>
       </div>
       <div className='row roww'>
         <ButtonsGoals
