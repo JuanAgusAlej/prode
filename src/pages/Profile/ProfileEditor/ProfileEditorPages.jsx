@@ -10,6 +10,7 @@ const ProfileEditorPages = () => {
   const newUsername = useInput();
   const navigate = useNavigate();
   const [user, setUser] = useState({});
+  const [languageChange, setLanguageChange] = useState('');
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
@@ -21,18 +22,46 @@ const ProfileEditorPages = () => {
 
   const handleClick = (e, path) => {
     e.preventDefault();
-    console.log(path);
-    modifyUser({ avatar: path }).then(() => {
+    modifyUser({
+      avatar: path,
+      alias: user.alias,
+      language: user.language,
+    }).then(() => {
       navigate(`/profile/${user.id}`);
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(newUsername.value);
-    modifyUser({ alias: newUsername.value }).then(() => {
-      navigate(`/profile/${user.id}`);
-    });
+    if (newUsername.value !== '' || languageChange !== '') {
+      if (languageChange !== '') {
+        i18n.changeLanguage(languageChange);
+        if (newUsername.value !== '') {
+          modifyUser({
+            avatar: user.avatar,
+            alias: newUsername.value,
+            language: languageChange,
+          }).then(() => navigate(`/profile/${user.id}`));
+        } else {
+          modifyUser({
+            avatar: user.avatar,
+            alias: user.alias,
+            language: languageChange,
+          }).then(() => navigate(`/profile/${user.id}`));
+        }
+      } else {
+        modifyUser({
+          avatar: user.avatar,
+          alias: newUsername.value,
+          language: user.language,
+        }).then(() => navigate(`/profile/${user.id}`));
+      }
+    }
+  };
+
+  const handleLanguage = (e) => {
+    e.preventDefault();
+    setLanguageChange(e.target.value);
   };
 
   if (user === {}) {
@@ -57,18 +86,20 @@ const ProfileEditorPages = () => {
         </div>
         <div className="iconChange">
           <div>{t('changeIcon')}:</div>
-          {iconPaths.map((path) => {
-            return (
-              <div key={path} className="icons">
-                <img
-                  src={path}
-                  alt="icono"
-                  onClick={(e) => handleClick(e, path)}
-                  className="icons"
-                />
-              </div>
-            );
-          })}
+          <div className="iconChange2">
+            {iconPaths.map((path) => {
+              return (
+                <div key={path} className="icons">
+                  <img
+                    src={path}
+                    alt="icono"
+                    onClick={(e) => handleClick(e, path)}
+                    className="icons"
+                  />
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
       <div className="usernameDiv">
@@ -81,6 +112,24 @@ const ProfileEditorPages = () => {
           <form onSubmit={handleSubmit}>
             <input {...newUsername} type="text" name="usernameChange" />
           </form>
+        </div>
+      </div>
+      <div className="selectionDiv">
+        <div className="idiomaActualDiv">
+          <p>{t('currentLanguage')}:</p>
+          <p className="idiomaActual">-campo idioma-</p>
+        </div>
+        <div className="selection">
+          <select
+            className="form-select"
+            aria-label="Default select example"
+            onChange={handleLanguage}
+          >
+            <option defaultValue="">{t('changeLanguage')}</option>
+            <option value="ES">Español</option>
+            <option value="EN">English</option>
+            <option value="PT">Português</option>
+          </select>
         </div>
       </div>
       <div className="buttonDiv">
