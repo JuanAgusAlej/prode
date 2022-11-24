@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import './App.css';
@@ -15,13 +15,24 @@ import MenuBar from './components/MenuBar/MenuBar.jsx';
 import Navbar from './components/Navbar/Navbar.jsx';
 import { getTournament } from './state/tournament';
 import Tutorial from './pages/Tutorial/Tutorial.jsx';
+import { getUserLocation } from './service/userApi';
 
 function App() {
+  const [userCountry, setUserCountry] = useState('');
   const dispatch = useDispatch();
 
   useEffect(() => {
+    getUserLocation()
+      .then((res) => res.data)
+      .then(({ country }) => setUserCountry(country));
+
     dispatch(getTournament());
   }, []);
+
+  if (!['AR', 'BR', 'US'].includes(userCountry) && userCountry !== '') {
+    return '<h2>Sorry, our app is not available in your country<h2>';
+  }
+
   return (
     <BrowserRouter>
       <Navbar />
@@ -32,12 +43,12 @@ function App() {
           index
           element={<ProfileEditorPages />}
         />
-        <Route path='/' index element={<LoginPages />} />
-        <Route path='/home' index element={<HomePages />} />
-        <Route path='/fixture/prode' element={<ProdePage />} />
-        <Route path='/fixture' index element={<FixturePages />} />
-        <Route path='/validation' index element={<ConfirmRegister />} />
-        <Route path='/tutorial' index element={<Tutorial />} />
+        <Route path="/" index element={<LoginPages />} />
+        <Route path="/home" index element={<HomePages />} />
+        <Route path="/fixture/prode" element={<ProdePage />} />
+        <Route path="/fixture" index element={<FixturePages />} />
+        <Route path="/validation" index element={<ConfirmRegister />} />
+        <Route path="/tutorial" index element={<Tutorial />} />
       </Routes>
       <MenuBar />
     </BrowserRouter>
