@@ -17,12 +17,15 @@ const MatchCardProde = ({
   date,
   matchId,
   user,
+  contentButton,
+  setContentButton,
 }) => {
   useEffect(() => {
     user.predictions.forEach((pred) => {
       if (pred.matchId === matchId) {
         setGoalsA(pred.goalsA);
         setGoalsB(pred.goalsB);
+        setContentButton('Edit Prediction');
       }
     });
   }, [user]);
@@ -80,7 +83,7 @@ const MatchCardProde = ({
           className='btn btn-light buttonPredict'
           onClick={() => handlePrediction(goalsA, goalsB, matchId)}
         >
-          Predict
+          {contentButton}
         </button>
       </div>
     </div>
