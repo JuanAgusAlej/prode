@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import './profileEditorPages.css';
 import useInput from '../../../utils/useInput';
 import { iconPaths } from './iconPaths';
@@ -9,34 +10,65 @@ const ProfileEditorPages = () => {
   const newUsername = useInput();
   const navigate = useNavigate();
   const [user, setUser] = useState({});
+  const [languageChange, setLanguageChange] = useState('');
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     tokenValidated().then((data) => {
       console.log(data);
       setUser(data);
+      i18n.changeLanguage(data?.language);
     });
   }, []);
 
   const handleClick = (e, path) => {
     e.preventDefault();
-    console.log(path);
-    modifyUser({ avatar: path }).then(() => {
+    modifyUser({
+      avatar: path,
+      alias: user.alias,
+      language: user.language,
+    }).then(() => {
       navigate(`/profile/${user.id}`);
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(newUsername.value);
-    modifyUser({ alias: newUsername.value }).then(() => {
-      navigate(`/profile/${user.id}`);
-    });
+    if (newUsername.value !== '' || languageChange !== '') {
+      if (languageChange !== '') {
+        i18n.changeLanguage(languageChange);
+        if (newUsername.value !== '') {
+          modifyUser({
+            avatar: user.avatar,
+            alias: newUsername.value,
+            language: languageChange,
+          }).then(() => navigate(`/profile/${user.id}`));
+        } else {
+          modifyUser({
+            avatar: user.avatar,
+            alias: user.alias,
+            language: languageChange,
+          }).then(() => navigate(`/profile/${user.id}`));
+        }
+      } else {
+        modifyUser({
+          avatar: user.avatar,
+          alias: newUsername.value,
+          language: user.language,
+        }).then(() => navigate(`/profile/${user.id}`));
+      }
+    }
+  };
+
+  const handleLanguage = (e) => {
+    e.preventDefault();
+    setLanguageChange(e.target.value);
   };
 
   if (user === {}) {
     return (
       <div>
-        <p>Cargando datos</p>
+        <p>{t('loading')}</p>
       </div>
     );
   }
@@ -44,41 +76,61 @@ const ProfileEditorPages = () => {
   return (
     <div>
       <div>
-        <h1 className="title">MODIFICAR USUARIO</h1>
+        <h1 className="title">{t('modifyUser')}</h1>
       </div>
       <div className="iconDiv">
         <div className="iconChange">
-          <div>Icono actual:</div>
+          <div>{t('currentIcon')}:</div>
           <div>
             <img src={user.avatar} alt="user icon" className="imgProfile" />
           </div>
         </div>
         <div className="iconChange">
-          <div>Cambiar icono:</div>
-          {iconPaths.map((path) => {
-            return (
-              <div key={path} className="icons">
-                <img
-                  src={path}
-                  alt="icono"
-                  onClick={(e) => handleClick(e, path)}
-                  className="icons"
-                />
-              </div>
-            );
-          })}
+          <div>{t('changeIcon')}:</div>
+          <div className="iconChange2">
+            {iconPaths.map((path) => {
+              return (
+                <div key={path} className="icons">
+                  <img
+                    src={path}
+                    alt="icono"
+                    onClick={(e) => handleClick(e, path)}
+                    className="icons"
+                  />
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
       <div className="usernameDiv">
         <div className="userActualDiv">
-          <p>Username actual: </p>
-          <p className="userActual">{user.name}</p>
+          <p>{t('currentUsername')}: </p>
+          <p className="userActual">{user.alias}</p>
         </div>
         <div className="usernameChange">
-          <p>Cambiar username: </p>
+          <p>{t('changeUsername')}: </p>
           <form onSubmit={handleSubmit}>
             <input {...newUsername} type="text" name="usernameChange" />
           </form>
+        </div>
+      </div>
+      <div className="selectionDiv">
+        <div className="idiomaActualDiv">
+          <p>{t('currentLanguage')}:</p>
+          <p className="idiomaActual">{user.language}</p>
+        </div>
+        <div className="selection">
+          <select
+            className="form-select"
+            aria-label="Default select example"
+            onChange={handleLanguage}
+          >
+            <option defaultValue="">{t('changeLanguage')}</option>
+            <option value="ES">Español</option>
+            <option value="EN">English</option>
+            <option value="PT">Português</option>
+          </select>
         </div>
       </div>
       <div className="buttonDiv">
@@ -87,7 +139,7 @@ const ProfileEditorPages = () => {
           className="btn btn-success"
           onClick={handleSubmit}
         >
-          Save
+          {t('save')}
         </button>
       </div>
     </div>

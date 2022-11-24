@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import fondo from '../../assets/homePages.jpg';
 import './home.css';
 
 const HomePages = () => {
+  const { i18n } = useTranslation();
+  const { user } = useSelector((state) => state);
+
+  useEffect(() => {
+    if (user) {
+      i18n.changeLanguage(user?.userData?.language);
+    }
+  }, [user]);
+
   return (
     <>
       <div className="fondo d-flex justify-content-center">
