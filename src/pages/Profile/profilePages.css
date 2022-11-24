@@ -1,8 +1,17 @@
+.profileDiv {
+  margin-top: 42px;
+}
+
 .container1 {
   display: flex;
   padding: 25px;
   padding-bottom: 25px;
   border-bottom: 1px solid gray;
+}
+
+.btnEdit {
+  background-color: rgba(217, 217, 217, 1);
+  border: 0px;
 }
 
 .imgProfileDiv {
@@ -36,4 +45,5 @@ button {
   padding-top: 25px;
   padding-bottom: 25px;
   font-size: 22px;
+  background-color: rgba(217, 217, 217, 1);
 }
