@@ -1,6 +1,7 @@
 .iconHome {
-    background-color: #1C6EA4;
+    background-color: #893535;
     border-radius: 11px;
+    color: white;
 }
 .fecha{
     display: flex;

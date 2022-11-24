@@ -17,7 +17,7 @@ const HomePages = () => {
 
   return (
     <>
-      <div className="fondo d-flex justify-content-center">
+      <div className="fondo d-flex justify-content-center text-center">
         <img src={fondo} className="card-img image" />
         <div className="container  bigBox">
           <div className="row ">

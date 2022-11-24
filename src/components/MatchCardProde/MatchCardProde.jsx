@@ -1,4 +1,6 @@
-import React from 'react';
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-underscore-dangle */
+import React, { useEffect } from 'react';
 import InputGoals from '../../commons/Prode/InputGoals.jsx';
 import ButtonsGoals from '../../commons/Prode/ButtonsGoals.jsx';
 import CountDown from '../CountDown/CountDown.jsx';
@@ -8,10 +10,26 @@ const MatchCardProde = ({
   handlePrediction,
   teamA,
   goalsA,
+  setGoalsA,
   teamB,
   goalsB,
+  setGoalsB,
   date,
+  matchId,
+  user,
+  contentButton,
+  setContentButton,
 }) => {
+  useEffect(() => {
+    user.predictions.forEach((pred) => {
+      if (pred.matchId === matchId) {
+        setGoalsA(pred.goalsA);
+        setGoalsB(pred.goalsB);
+        setContentButton('Edit Prediction');
+      }
+    });
+  }, [user]);
+
   return (
     <div className='matchCard m-0 p-3'>
       <div className='row roww'>
@@ -56,14 +74,17 @@ const MatchCardProde = ({
           handleGoals={handleGoals}
         />
       </div>
-      <div className='row roww group'>
-        Group C
-      </div>
+      <div className='row roww group'>Group C</div>
       <div className='row roww group'>
         <CountDown date={date} />
       </div>
       <div className='row roww'>
-        <button className='btn btn-light buttonPredict' onClick={handlePrediction}>Predict</button>
+        <button
+          className='btn btn-light buttonPredict'
+          onClick={() => handlePrediction(goalsA, goalsB, matchId)}
+        >
+          {contentButton}
+        </button>
       </div>
     </div>
   );

@@ -49,7 +49,7 @@ const Navbar = () => {
         ) : (
           <p className="m-0"></p>
         )}
-        <i className="bi mb-1 bi-gear  "></i>
+        <i className="bi bi-gear  "></i>
       </div>
     </nav>
   );
