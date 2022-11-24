@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import axios from 'axios';
 
 const url = process.env.REACT_APP_URL;
@@ -8,15 +9,23 @@ const axiosConfig = {
   },
 };
 
+export const getUserLocation = async () => {
+  const data = await axios.get('https://ipinfo.io/json?token=e2a963c63ce0e0');
+  return data;
+};
+
 const userPost = async (userData) => {
   const infoUser = {
     email: userData.email,
     uid: userData.uid,
     avatar: userData.photoURL,
     name: userData.displayName,
+    region: userData.country,
+    timezone: userData.timezone,
   };
   const { data } = await axios.post(`${url}/user/signup`, infoUser);
-  await axios.post(`${url}/email`, infoUser);
+  localStorage.setItem('token', data.token);
+  await axios.post(`${url}/email`, { id: data._id, email: infoUser.email });
   data.direction = '/validation';
   return data;
 };
@@ -29,10 +38,15 @@ export const userLogin = async (userData) => {
       data.direction = '/home';
       return data;
     }
-    data.direction = '/perfil';
+    data.direction = `/profile/${data._id}`;
     return data;
   } catch (error) {
-    const data = await userPost(userData);
+    const { data: userLocation } = await getUserLocation();
+    const data = await userPost({
+      ...userData,
+      country: userLocation.country,
+      timezone: userLocation.timezone,
+    });
     return data;
   }
 };
@@ -43,6 +57,11 @@ export const tokenValidated = async () => {
     data.direction = '/home';
     return data;
   }
-  data.direction = '/perfil';
+  data.direction = `/profile/${data._id}`;
+  return data;
+};
+
+export const modifyUser = async (obj) => {
+  const { data } = await axios.put(`${url}/user/me`, obj, axiosConfig);
   return data;
 };
