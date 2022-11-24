@@ -1,24 +1,26 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import InputGoals from '../../commons/Prode/InputGoals.jsx';
 import ButtonsGoals from '../../commons/Prode/ButtonsGoals.jsx';
 import CountDown from '../CountDown/CountDown.jsx';
 import { postPrediction } from '../../service/predictions';
+import { getUser } from '../../state/user';
 
 const MatchCardProde = ({
   teamA,
   teamB,
   date,
-  matchId,
+  match,
   imgA,
   imgB,
   user,
-  contentButton,
-  setContentButton,
 }) => {
   const [goalsA, setGoalsA] = useState(0);
   const [goalsB, setGoalsB] = useState(0);
+  const [predicted, setPredicted] = useState('no-predicted');
+  const dispatch = useDispatch();
 
   const handleGoals = e => {
     if (e.target.parentNode.id === 'buttonGoalsA') {
@@ -32,20 +34,24 @@ const MatchCardProde = ({
 
   const handlePrediction = (goallsA, goallsB, matchhId) => {
     postPrediction(goallsA, goallsB, matchhId).then(data => {
-      setContentButton('Edit Prediction');
+      setPredicted('predicted');
       console.log(data);
     });
   };
 
   useEffect(() => {
     user.predictions.forEach((pred) => {
-      if (pred.matchId === matchId) {
+      if (pred.matchId === match._id) {
         setGoalsA(pred.goalsA);
         setGoalsB(pred.goalsB);
-        setContentButton('Edit Prediction');
+        setPredicted('predicted');
       }
     });
   }, [user]);
+
+  useEffect(() => {
+    dispatch(getUser());
+  }, []);
 
   return (
     <div className='matchCard p-3'>
@@ -62,7 +68,7 @@ const MatchCardProde = ({
         />
       </div>
       <div className='row roww middleRow'>
-        <div className='nameTeam col-2'>{teamA}</div>
+        <div className='nameTeam col-2'>{teamA.shortName}</div>
         <img
           src={imgA}
           alt='Argentina'
@@ -77,7 +83,7 @@ const MatchCardProde = ({
           className='flagTeam col-3'
           id='flagTeamB'
         />
-        <div className='nameTeam col-2'>{teamB}</div>
+        <div className='nameTeam col-2'>{teamB.shortName}</div>
       </div>
       <div className='row roww'>
         <ButtonsGoals
@@ -91,16 +97,16 @@ const MatchCardProde = ({
           handleGoals={handleGoals}
         />
       </div>
-      <div className='row roww group'>Group C</div>
+      <div className='row roww group'>{match.instance}</div>
       <div className='row roww group'>
         <CountDown date={date} />
       </div>
       <div className='row roww'>
         <button
           className='btn btn-light buttonPredict'
-          onClick={() => handlePrediction(goalsA, goalsB, matchId)}
+          onClick={() => handlePrediction(goalsA, goalsB, match._id)}
         >
-          {contentButton}
+          {predicted === 'predicted' ? 'Edit Prediction' : 'Predict'}
         </button>
       </div>
     </div>

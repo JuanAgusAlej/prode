@@ -10,7 +10,6 @@ import { getMatches } from '../../service/matches';
 
 const ProdePage = () => {
   const [matches, setMatches] = useState([]);
-  const [contentButton, setContentButton] = useState('Predict');
   const tournament = useSelector(state => state.tournament.tournament);
   const user = useSelector(state => state.user.userData);
 
@@ -35,21 +34,19 @@ const ProdePage = () => {
         {matches.length
           ? matches.map(match => (
               <MatchCardProde
-                teamA={match.teamAId.shortName}
-                teamB={match.teamBId.shortName}
+                teamA={match.teamAId}
+                teamB={match.teamBId}
                 date={match.date}
-                matchId={match._id}
+                match={match}
                 imgA={match.teamAId.logo}
                 imgB={match.teamBId.logo}
                 user={user}
-                contentButton={contentButton}
-                setContentButton={setContentButton}
                 key={match._id}
               />
           ))
           : null}
       </div>
-    </>
+    </div>
   );
 };
 
