@@ -28,7 +28,7 @@ const ProdePage = () => {
   };
 
   const handlePrediction = (goallsA, goallsB, matchId) => {
-    postPrediction(goallsA, goallsB, matchId).then(data => console.log(data));
+    postPrediction(goallsA, goallsB, matchId).then(() => setContentButton('Edit Prediction'));
   };
 
   useEffect(() => {
