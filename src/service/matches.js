@@ -8,9 +8,7 @@ const axiosConfig = {
   },
 };
 
-export const getMatches = async () => {
-  const matches = await axios.get(`${url}/match`, axiosConfig);
-  console.log(matches.data);
-  matches.data.splice(1); // temporal
+export const getMatches = async (id) => {
+  const matches = await axios.get(`${url}/tournament/${id}/match`, axiosConfig);
   return matches.data;
 };
