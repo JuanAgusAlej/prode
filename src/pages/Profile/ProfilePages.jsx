@@ -7,7 +7,7 @@ import { tokenValidated } from '../../service/userApi';
 const ProfilePages = () => {
   const [user, setUser] = useState({});
   const navigate = useNavigate();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     tokenValidated().then((data) => {
@@ -30,7 +30,7 @@ const ProfilePages = () => {
   }
 
   return (
-    <div>
+    <div className="profileDiv">
       <div className="container1">
         <div className="imgProfileDiv">
           <img
@@ -41,7 +41,7 @@ const ProfilePages = () => {
         </div>
         <div className="userNameDiv">
           <h1 className="userName">{user.alias}</h1>
-          <button onClick={buttonHandler}>
+          <button className="btnEdit" onClick={buttonHandler}>
             <i className="bi bi-pencil-square"></i>
           </button>
         </div>
