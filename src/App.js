@@ -29,8 +29,8 @@ function App() {
       .then((res) => res.data)
       .then(({ country }) => setUserCountry(country));
 
-    dispatch(getTournament());
     dispatch(getUser());
+    dispatch(getTournament());
   }, []);
 
   if (!['AR', 'BR', 'US'].includes(userCountry) && userCountry !== '') {

@@ -10,6 +10,5 @@ const axiosConfig = {
 
 export const getMatches = async (id) => {
   const matches = await axios.get(`${url}/tournament/${id}/match`, axiosConfig);
-  console.log(matches.data);
   return matches.data;
 };
