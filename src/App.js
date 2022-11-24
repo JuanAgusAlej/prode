@@ -15,12 +15,14 @@ import MenuBar from './components/MenuBar/MenuBar.jsx';
 import Navbar from './components/Navbar/Navbar.jsx';
 import { getTournament } from './state/tournament';
 import Tutorial from './pages/Tutorial/Tutorial.jsx';
+import { getUser } from './state/user';
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getTournament());
+    dispatch(getUser());
   }, []);
   return (
     <BrowserRouter>

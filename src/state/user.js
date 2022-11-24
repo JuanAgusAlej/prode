@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const initialState = {
   isLoading: false,
-  tournament: null,
+  userData: null,
 };
 
 const url = process.env.REACT_APP_URL;
@@ -14,31 +14,31 @@ const axiosConfig = {
   },
 };
 
-export const getTournament = createAsyncThunk('GET_TOURNAMENT', async () => {
+export const getUser = createAsyncThunk('GET_USER', async () => {
   try {
-    const tournament = await axios.get(`${url}/tournament`, axiosConfig);
-    return tournament.data;
+    const user = await axios.get(`${url}/user/me`, axiosConfig);
+    return user.data;
   } catch (e) {
     throw new Error(e.message);
   }
 });
 
-const tournamentSlice = createSlice({
-  name: 'tournament',
+const userSlice = createSlice({
+  name: 'user',
   initialState,
   reducers: {},
   extraReducers: {
-    [getTournament.pending]: state => {
+    [getUser.pending]: state => {
       state.isLoading = true;
     },
-    [getTournament.fulfilled]: (state, action) => {
+    [getUser.fulfilled]: (state, action) => {
       state.isLoading = false;
-      state.tournament = action.payload;
+      state.userData = action.payload;
     },
-    [getTournament.rejected]: state => {
+    [getUser.rejected]: state => {
       state.isLoading = false;
     },
   },
 });
 
-export default tournamentSlice.reducer;
+export default userSlice.reducer;
