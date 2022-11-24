@@ -10,7 +10,7 @@
 </div>
 
 ------------
-Proyecto realizado como practica profecionar del Coding Bootcamp de Plataforma 5 a mano de la empresa Tonic3.
+Proyecto realizado como practica profesional del Coding Bootcamp de Plataforma 5 a mano de la empresa Tonic3.
 
 ## Descripcion
 Crear una PWA, reutilizable y adaptable, llave en mano, para la realización de Prodes para eventos deportivos. 

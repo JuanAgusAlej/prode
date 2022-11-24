@@ -9,12 +9,19 @@ const axiosConfig = {
   },
 };
 
-const userPost = async userData => {
+export const getUserLocation = async () => {
+  const data = await axios.get('https://ipinfo.io/json?token=e2a963c63ce0e0');
+  return data;
+};
+
+const userPost = async (userData) => {
   const infoUser = {
     email: userData.email,
     uid: userData.uid,
     avatar: userData.photoURL,
     name: userData.displayName,
+    region: userData.country,
+    timezone: userData.timezone,
   };
   const { data } = await axios.post(`${url}/user/signup`, infoUser);
   localStorage.setItem('token', data.token);
@@ -23,7 +30,7 @@ const userPost = async userData => {
   return data;
 };
 
-export const userLogin = async userData => {
+export const userLogin = async (userData) => {
   const { uid } = userData;
   try {
     const { data } = await axios.post(`${url}/user/login`, { uid });
@@ -31,10 +38,17 @@ export const userLogin = async userData => {
       data.direction = '/home';
       return data;
     }
-    data.direction = `/profile/${data._id}`;
+
+    data.direction = `profile/${data.id}/edit`;
+
     return data;
   } catch (error) {
-    const data = await userPost(userData);
+    const { data: userLocation } = await getUserLocation();
+    const data = await userPost({
+      ...userData,
+      country: userLocation.country,
+      timezone: userLocation.timezone,
+    });
     return data;
   }
 };
@@ -45,11 +59,11 @@ export const tokenValidated = async () => {
     data.direction = '/home';
     return data;
   }
-  data.direction = `/profile/${data._id}`;
+  data.direction = `profile/${data.id}/edit`;
   return data;
 };
 
-export const modifyUser = async obj => {
+export const modifyUser = async (obj) => {
   const { data } = await axios.put(`${url}/user/me`, obj, axiosConfig);
   return data;
 };

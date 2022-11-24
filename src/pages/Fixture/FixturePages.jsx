@@ -2,6 +2,7 @@ import React from 'react';
 import pelota from '../../assets/Flag_of_Argentina.svg.webp';
 import CardPartidos from '../../components/CardPartidos/CardPartidos.jsx';
 import NavFixtureProde from '../../components/NavFixtureProde/NavFixtureProde.jsx';
+import '../style.css';
 
 const FixturePages = () => {
   const matchs = [
@@ -54,9 +55,73 @@ const FixturePages = () => {
       goalsB: 2,
       result: 'bra',
     },
+    {
+      date: '20/11',
+      teamA: {
+        name: 'arg',
+        country: 'arg',
+        logo: pelota,
+      },
+      goalsA: 1,
+      teamB: {
+        name: 'bra',
+        country: 'bra',
+        logo: pelota,
+      },
+      goalsB: 2,
+      result: 'bra',
+    },
+    {
+      date: '20/11',
+      teamA: {
+        name: 'arg',
+        country: 'arg',
+        logo: pelota,
+      },
+      goalsA: 1,
+      teamB: {
+        name: 'bra',
+        country: 'bra',
+        logo: pelota,
+      },
+      goalsB: 2,
+      result: 'bra',
+    },
+    {
+      date: '20/11',
+      teamA: {
+        name: 'arg',
+        country: 'arg',
+        logo: pelota,
+      },
+      goalsA: 1,
+      teamB: {
+        name: 'bra',
+        country: 'bra',
+        logo: pelota,
+      },
+      goalsB: 2,
+      result: 'bra',
+    },
+    {
+      date: '20/11',
+      teamA: {
+        name: 'arg',
+        country: 'arg',
+        logo: pelota,
+      },
+      goalsA: 1,
+      teamB: {
+        name: 'bra',
+        country: 'bra',
+        logo: pelota,
+      },
+      goalsB: 2,
+      result: 'bra',
+    },
   ];
   return (
-    <>
+    <div className="bodyPaging">
       <NavFixtureProde />
       {matchs.map((match, id) => (
         <CardPartidos key={id} match={match} />
@@ -109,7 +174,7 @@ const FixturePages = () => {
         </div>
         <p>15:30hs - 20/11 </p>
       </div> */}
-    </>
+    </div>
   );
 };
 
