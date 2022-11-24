@@ -49,7 +49,7 @@ const ProdePage = () => {
           ))
           : null}
       </div>
-    </>
+    </div>
   );
 };
 
