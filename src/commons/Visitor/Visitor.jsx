@@ -9,7 +9,7 @@ const Visitor = ({
       {!local ? (
         <div
           className={
-            win === team.name || win === ''
+            win === 'WON_B' || win === 'PENDING'
               ? 'd-flex align-items-center '
               : 'd-flex align-items-center lose'
           }>
@@ -20,7 +20,7 @@ const Visitor = ({
       ) : (
         <div
           className={
-            win === team.name || win === ''
+            win === 'WON_A' || win === 'PENDING'
               ? 'd-flex align-items-center '
               : 'd-flex align-items-center lose'
           }>
