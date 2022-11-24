@@ -29,7 +29,7 @@ const ProdePage = () => {
   }, [tournament]);
 
   return (
-    <>
+    <div className='bodyPaging'>
       <NavFixtureProde />
       <div className='container'>
         {matches.length

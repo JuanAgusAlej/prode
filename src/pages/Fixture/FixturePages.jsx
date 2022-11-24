@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 import CardPartidos from '../../components/CardPartidos/CardPartidos.jsx';
 import NavFixtureProde from '../../components/NavFixtureProde/NavFixtureProde.jsx';
 import { getMatches } from '../../service/matches';
-import '../style.css';
 
 const FixturePages = () => {
   const [matchs, setMatchs] = useState([]);
