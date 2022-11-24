@@ -46,7 +46,7 @@ const ProdePage = () => {
   }, [tournament]);
 
   return (
-    <>
+    <div className='bodyPaging'>
       <NavFixtureProde />
       {matches.length
         ? matches.map(match => (
@@ -68,7 +68,7 @@ const ProdePage = () => {
             />
         ))
         : null}
-    </>
+    </div>
   );
 };
 

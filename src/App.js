@@ -54,7 +54,7 @@ function App() {
         <Route path='/validation' index element={<ConfirmRegister />} />
         <Route path='/tutorial' index element={<Tutorial />} />
         <Route path='/leaderboard' index element={<Leaderboard />} />
-        <Route path='*' index element={<Page404 />} />
+        <Route path='/*' index element={<Page404 />} />
       </Routes>
       <MenuBar />
     </BrowserRouter>
