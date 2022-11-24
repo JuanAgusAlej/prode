@@ -13,6 +13,7 @@ const ProdePage = () => {
   const [goalsA, setGoalsA] = useState(0);
   const [goalsB, setGoalsB] = useState(0);
   const [matches, setMatches] = useState([]);
+  const [contentButton, setContentButton] = useState('Predict');
   const tournament = useSelector(state => state.tournament.tournament);
   const user = useSelector(state => state.user.userData);
 
@@ -61,6 +62,8 @@ const ProdePage = () => {
               date={match.date}
               matchId={match._id}
               user={user}
+              contentButton={contentButton}
+              setContentButton={setContentButton}
               key={match._id}
             />
         ))
