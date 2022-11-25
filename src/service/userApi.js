@@ -1,13 +1,8 @@
 /* eslint-disable no-underscore-dangle */
 import axios from 'axios';
+import { setAxiosConfig } from '../utils/axiosConfig';
 
 const url = process.env.REACT_APP_URL;
-const axiosConfig = {
-  headers: {
-    'Content-Type': 'application/json;charset=UTF-8',
-    token: localStorage.getItem('token'),
-  },
-};
 
 export const getUserLocation = async () => {
   const data = await axios.get('https://ipinfo.io/json?token=e2a963c63ce0e0');
@@ -54,6 +49,7 @@ export const userLogin = async (userData) => {
 };
 
 export const tokenValidated = async () => {
+  const axiosConfig = setAxiosConfig();
   const { data } = await axios(`${url}/user/me`, axiosConfig);
   if (data.validated) {
     data.direction = '/home';
@@ -64,6 +60,7 @@ export const tokenValidated = async () => {
 };
 
 export const modifyUser = async (obj) => {
+  const axiosConfig = setAxiosConfig();
   const { data } = await axios.put(`${url}/user/me`, obj, axiosConfig);
   return data;
 };

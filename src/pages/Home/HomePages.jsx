@@ -1,19 +1,27 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import fondo from '../../assets/homePages.jpg';
 import './home.css';
+import { getUser } from '../../state/user';
+import { getTournament } from '../../state/tournament';
 
 const HomePages = () => {
   const { t, i18n } = useTranslation();
   const { user } = useSelector((state) => state);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (user) {
       i18n.changeLanguage(user?.userData?.language);
     }
   }, [user]);
+
+  useEffect(() => {
+    dispatch(getUser());
+    dispatch(getTournament());
+  }, []);
 
   return (
     <>
