@@ -2,6 +2,7 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import InputGoals from '../../commons/Prode/InputGoals.jsx';
 import ButtonsGoals from '../../commons/Prode/ButtonsGoals.jsx';
 import CountDown from '../CountDown/CountDown.jsx';
@@ -21,19 +22,20 @@ const MatchCardProde = ({
   const [goalsB, setGoalsB] = useState(0);
   const [predicted, setPredicted] = useState('no-predicted');
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
-  const handleGoals = e => {
+  const handleGoals = (e) => {
     if (e.target.parentNode.id === 'buttonGoalsA') {
-      if (e.target.textContent === '+') setGoalsA(prev => prev + 1);
-      else if (goalsA > 0) setGoalsA(prev => prev - 1);
+      if (e.target.textContent === '+') setGoalsA((prev) => prev + 1);
+      else if (goalsA > 0) setGoalsA((prev) => prev - 1);
     } else if (e.target.parentNode.id === 'buttonGoalsB') {
-      if (e.target.textContent === '+') setGoalsB(prev => prev + 1);
-      else if (goalsB > 0) setGoalsB(prev => prev - 1);
+      if (e.target.textContent === '+') setGoalsB((prev) => prev + 1);
+      else if (goalsB > 0) setGoalsB((prev) => prev - 1);
     }
   };
 
   const handlePrediction = (goallsA, goallsB, matchhId) => {
-    postPrediction(goallsA, goallsB, matchhId).then(data => {
+    postPrediction(goallsA, goallsB, matchhId).then((data) => {
       setPredicted('predicted');
       console.log(data);
     });
@@ -54,8 +56,8 @@ const MatchCardProde = ({
   }, []);
 
   return (
-    <div className='matchCard p-3'>
-      <div className='row roww'>
+    <div className="matchCard p-3">
+      <div className="row roww">
         <ButtonsGoals
           content={'+'}
           id={'buttonGoalsA'}
@@ -67,25 +69,25 @@ const MatchCardProde = ({
           handleGoals={handleGoals}
         />
       </div>
-      <div className='row roww middleRow'>
-        <div className='nameTeam col-2'>{teamA.shortName}</div>
+      <div className="row roww middleRow">
+        <div className="nameTeam col-2">{teamA.shortName}</div>
         <img
           src={imgA}
-          alt='Argentina'
-          className='flagTeam col-3'
-          id='flagTeamA'
+          alt="Argentina"
+          className="flagTeam col-3"
+          id="flagTeamA"
         />
-        <InputGoals id={'inputGoalsA'} value={goalsA} className='col-1'/>
-        <InputGoals id={'inputGoalsB'} value={goalsB} className='col-1'/>
+        <InputGoals id={'inputGoalsA'} value={goalsA} className="col-1" />
+        <InputGoals id={'inputGoalsB'} value={goalsB} className="col-1" />
         <img
           src={imgB}
-          alt='Argentina'
-          className='flagTeam col-3'
-          id='flagTeamB'
+          alt="Argentina"
+          className="flagTeam col-3"
+          id="flagTeamB"
         />
-        <div className='nameTeam col-2'>{teamB.shortName}</div>
+        <div className="nameTeam col-2">{teamB.shortName}</div>
       </div>
-      <div className='row roww'>
+      <div className="row roww">
         <ButtonsGoals
           content={'-'}
           id={'buttonGoalsA'}
@@ -97,16 +99,16 @@ const MatchCardProde = ({
           handleGoals={handleGoals}
         />
       </div>
-      <div className='row roww group'>{match.instance}</div>
-      <div className='row roww group'>
+      <div className="row roww group">{match.instance}</div>
+      <div className="row roww group">
         <CountDown date={date} />
       </div>
-      <div className='row roww'>
+      <div className="row roww">
         <button
-          className='btn btn-light buttonPredict'
+          className="btn btn-light buttonPredict"
           onClick={() => handlePrediction(goalsA, goalsB, match._id)}
         >
-          {predicted === 'predicted' ? 'Edit Prediction' : 'Predict'}
+          {predicted === 'predicted' ? t('predictEdit') : t('predict')}
         </button>
       </div>
     </div>

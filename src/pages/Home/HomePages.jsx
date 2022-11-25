@@ -6,7 +6,7 @@ import fondo from '../../assets/homePages.jpg';
 import './home.css';
 
 const HomePages = () => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { user } = useSelector((state) => state);
 
   useEffect(() => {
@@ -22,15 +22,15 @@ const HomePages = () => {
         <div className="container  bigBox">
           <div className="row ">
             <Link className="col-10 offset-1 box " to={'/fixture'}>
-              <div>fixture</div>
+              <div>{t('fixture')}</div>
             </Link>
           </div>
           <div className="row my-3 justify-content-md-center">
             <Link className="col box boxItems" to={'/tutorial'}>
-              <div>tutorial</div>
+              <div>{t('tutorial')}</div>
             </Link>
             <Link className="col box boxItems" to={'/sdfsdfd'}>
-              <div>Premios</div>
+              <div>{t('prizes')}</div>
             </Link>
           </div>
         </div>
