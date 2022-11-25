@@ -1,0 +1,25 @@
+.login{
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    height:100vh;
+    background-color: white;
+    border-color: #737373;
+    border: 1px solid black;
+    background-image: url("../../assets/cancha.jpg");
+    background-size: cover;
+}
+
+.box{
+    background-color: white;
+    opacity: 0.9;
+    -webkit-box-shadow: 0px 0px 50px -10px rgba(255,0,0,0.3); 
+box-shadow: 0px 0px 50px -10px rgba(255,0,0,0.3);
+border: 0px solid #1C6EA4;
+border-radius: 25px;
+    padding-bottom: 15px;
+}
+.boxItems{
+    margin:50px 20px;
+}

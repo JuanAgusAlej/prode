@@ -1,0 +1,98 @@
+.matchCard {
+  background-color: #893535;
+  height: fit-content;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 3%;
+  border-radius: 10px;
+  margin-bottom: 3%;
+}
+.col-centered {
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.roww {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.middleRow {
+  display: flex;
+  justify-content: space-evenly;
+}
+#inputGoalsA {
+  /* margin: 1% 2% 1% 10%; */
+  padding: 0;
+}
+#inputGoalsB {
+  /* margin: 1% 10% 1% 2%; */
+  padding: 0;
+}
+#buttonGoalsA {
+  margin-right: 2%;
+  padding: 0;
+}
+#buttonGoalsB {
+  margin-left: 2%;
+  padding: 0;
+}
+.flagTeam {
+  width: 40px;
+  height: 34px;
+  padding: 0;
+  border-radius: 5px;
+}
+#flagTeamA {
+  margin-left: 5%;
+}
+#flagTeamB {
+  margin-right: 5%;
+}
+.nameTeam {
+  display: flex;
+  width: fit-content;
+  padding: 0;
+  color: white;
+  margin: 0;
+  font-size: larger;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+.input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: #893535;
+  text-align: center;
+  color: white;
+}
+.buttonPredict {
+  margin-top: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.group {
+  margin-top: 1%;
+  color: white;
+  font-weight: bold;
+}
+@media (max-width: 425px) {
+  .group {
+    font-size: 15px;
+    font-weight: normal;
+  }
+}
+@media (max-width: 380px) {
+  .group {
+    font-size: 11px;
+    font-weight: normal;
+  }
+  .nameTeam {
+    font-size: 15px;
+  }
+}

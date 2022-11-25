@@ -1,0 +1,22 @@
+.iconHome {
+    background-color: #893535;
+    border-radius: 11px;
+    color: white;
+}
+.fecha{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-direction: row;
+}
+.fecha p{
+    font-size: small;
+    margin-inline:15px ;
+}
+.cont {
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+.instance {
+    text-align: center;
+}

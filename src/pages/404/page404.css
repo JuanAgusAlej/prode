@@ -1,0 +1,22 @@
+.c404 {
+  margin-top: 50%;
+  color: rgba(194, 75, 75, 1);
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 35px;
+  line-height: 29px;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.i404 {
+  margin-top: 2rem;
+  text-align: center;
+  height: 14rem;
+}
+
+.img {
+  width: 100%;
+  border-radius: 6px;
+}

@@ -1,0 +1,44 @@
+{
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "extends": ["airbnb-base", "plugin:react/recommended"],
+  "plugins": ["react"],
+  "rules": {
+    "linebreak-style": 0,
+    "no-unused-vars": "warn",
+    "no-console": "off",
+    "arrow-body-style": "off",
+    "indent": "warn",
+    "consistent-return": "off",
+    "no-else-return": "off",
+    "global-require": "off",
+    "no-param-reassign": ["error", { "props": false }],
+    "new-cap": "off",
+    "arrow-parens": "off",
+    "prefer-destructuring": "warn",
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": [0, { "ignore": ["children"] }],
+    "import/no-extraneous-dependencies": [
+      "warn",
+      { "devDependencies": ["**/*.stories.js", "**/*.spec.js"] }
+    ],
+    "import/prefer-default-export": "off"
+  },
+  "ignorePatterns": ["dist/", "node_modules/", "storybook-static/"],
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true,
+    "jest": true
+  }
+}

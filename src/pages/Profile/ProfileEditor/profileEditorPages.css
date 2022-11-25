@@ -1,0 +1,74 @@
+.usernameChange {
+  display: flex;
+  margin-top: 15px;
+}
+button {
+  width: 100px;
+}
+.imgProfile {
+  width: 100px;
+  margin-left: 20px;
+}
+.iconChange {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 20px;
+}
+.iconChange2 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.icons {
+  width: 50px;
+}
+.title {
+  text-align: center;
+  border-bottom: 1px solid gray;
+}
+.buttonDiv {
+  align-items: center;
+  text-align: center;
+  margin-top: 30px;
+}
+.icons {
+  padding-left: 10px;
+}
+.iconDiv {
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-bottom: 12px;
+  border-bottom: 1px solid gray;
+}
+.usernameDiv {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 30px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid gray;
+}
+.userActualDiv {
+  display: flex;
+}
+.userActual {
+  width: 50%;
+  font-weight: bold;
+  text-align: center;
+  align-items: center;
+}
+.selectionDiv {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 30px;
+  padding-bottom: 12px;
+}
+.idiomaActualDiv {
+  display: flex;
+}
+.idiomaActual {
+  width: 50%;
+  font-weight: bold;
+  text-align: center;
+  align-items: center;
+}
