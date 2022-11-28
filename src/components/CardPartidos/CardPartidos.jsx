@@ -16,27 +16,29 @@ const CardPartidos = ({ match }) => {
     }
   }, []);
   return (
-    <div className="iconHome d-flex m-3 flex-column align-items-center ">
+    <div className="iconHome d-flex flex-column m-3">
       <div className="fecha mt-1">
         <p>{time}</p>
         <p>{fecha}</p>
       </div>
-      <div className="d-flex m-2">
+      <div className="d-flex m-2 row cont">
         <Visitor
           gol={match.goalsA}
           team={match.teamAId}
           local={true}
           win={match.result}
-        />
-        <p className="my-2">-</p>
+          className='col-5'
+          />
+        <p className="my-2 col-1 instance">-</p>
         <Visitor
           gol={match.goalsB}
           team={match.teamBId}
           local={false}
           win={match.result}
+          className='col-5'
         />
       </div>
-      <p>{match.instace}</p>
+      <p className='instance'>{match.instance}</p>
     </div>
   );
 };

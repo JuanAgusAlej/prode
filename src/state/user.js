@@ -7,15 +7,18 @@ const initialState = {
 };
 
 const url = process.env.REACT_APP_URL;
-const axiosConfig = {
-  headers: {
-    'Content-Type': 'application/json;charset=UTF-8',
-    token: localStorage.getItem('token'),
-  },
+const setAxiosConfig = () => {
+  return {
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8',
+      token: localStorage.getItem('token'),
+    },
+  };
 };
 
 export const getUser = createAsyncThunk('GET_USER', async () => {
   try {
+    const axiosConfig = setAxiosConfig();
     const user = await axios.get(`${url}/user/me`, axiosConfig);
     return user.data;
   } catch (e) {

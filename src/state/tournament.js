@@ -7,15 +7,18 @@ const initialState = {
 };
 
 const url = process.env.REACT_APP_URL;
-const axiosConfig = {
-  headers: {
-    'Content-Type': 'application/json;charset=UTF-8',
-    token: localStorage.getItem('token'),
-  },
+const setAxiosConfig = () => {
+  return {
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8',
+      token: localStorage.getItem('token'),
+    },
+  };
 };
 
 export const getTournament = createAsyncThunk('GET_TOURNAMENT', async () => {
   try {
+    const axiosConfig = setAxiosConfig();
     const tournament = await axios.get(`${url}/tournament`, axiosConfig);
     return tournament.data;
   } catch (e) {

@@ -13,9 +13,7 @@ import ConfirmRegister from './pages/ConfirmRegister/ConfirmRegister.jsx';
 import ProdePage from './pages/Prode/ProdePage.jsx';
 import MenuBar from './components/MenuBar/MenuBar.jsx';
 import Navbar from './components/Navbar/Navbar.jsx';
-import { getTournament } from './state/tournament';
 import Tutorial from './pages/Tutorial/Tutorial.jsx';
-import { getUser } from './state/user';
 import { getUserLocation } from './service/userApi';
 import SettingsPages from './pages/settings/SettingsPages.jsx';
 import Leaderboard from './pages/Leaderboard/Leaderboard.jsx';
@@ -23,15 +21,11 @@ import Page404 from './pages/404/Page404.jsx';
 
 function App() {
   const [userCountry, setUserCountry] = useState('');
-  const dispatch = useDispatch();
 
   useEffect(() => {
     getUserLocation()
       .then((res) => res.data)
       .then(({ country }) => setUserCountry(country));
-
-    dispatch(getUser());
-    dispatch(getTournament());
   }, []);
 
   if (!['AR', 'BR', 'US'].includes(userCountry) && userCountry !== '') {
