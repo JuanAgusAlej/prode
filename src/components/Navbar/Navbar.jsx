@@ -1,18 +1,20 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import pelota from '../../assets/log.jpg';
 import { tokenValidated } from '../../service/userApi';
+import { setAxiosConfig } from '../../utils/axiosConfig';
 import './navbar.css';
 
 const Navbar = () => {
+  const url = process.env.REACT_APP_URL;
   const location = useLocation();
   const navigate = useNavigate();
   const [hide, setHide] = useState(false);
-  const [user, setUser] = useState(null);
+  const [userPoints, setuserPoints] = useState(0);
   const localStorageLogin = async () => {
     if (localStorage.getItem('token')) {
       const data = await tokenValidated();
-      setUser(data);
       if (!data.validated && location.pathname !== `/${data.direction}`) {
         navigate(data.direction);
       }
@@ -20,6 +22,24 @@ const Navbar = () => {
       navigate('/');
     }
   };
+
+  useEffect(() => {
+    const getUserPoints = async () => {
+      try {
+        const axiosConfig = setAxiosConfig();
+        const data = await axios.get(`${url}/user/me`, axiosConfig);
+        if (data.data.points) setuserPoints(data.data.points);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getUserPoints();
+    const interval = setInterval(() => {
+      getUserPoints();
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   useEffect(() => {
     if (location.pathname === '/' || location.pathname === '/validation') {
       setHide(true);
@@ -30,27 +50,28 @@ const Navbar = () => {
   }, [location.pathname]);
 
   return (
-    <nav className="navbar fixed-top navbar-dark bg-dark p-0 ">
+    <nav className='navbar fixed-top navbar-dark bg-dark p-0 '>
       <div
         className={
           hide === true
             ? 'd-none'
             : 'container-fluid my-1 align-items-center mx-2 icon'
-        }>
+        }
+      >
         <img
           src={pelota}
-          alt=""
-          width="30"
-          height="24"
-          className="d-inline-block align-text-top"
+          alt=''
+          width='30'
+          height='24'
+          className='d-inline-block align-text-top'
         />
-        {user !== null ? (
-          <p className="m-0">{user?.points}pts</p>
+        {userPoints ? (
+          <p className='m-0'>{userPoints} pts</p>
         ) : (
-          <p className="m-0"></p>
+          <p className='m-0'></p>
         )}
         <Link to={'/settings'}>
-          <i className="bi mb-1 bi-gear  "></i>
+          <i className='bi mb-1 bi-gear  '></i>
         </Link>
       </div>
     </nav>
