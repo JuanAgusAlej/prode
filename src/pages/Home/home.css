@@ -1,7 +1,14 @@
 .box{
     height: 150px;
-    border: 1px solid #1C6EA4;
+    border: 1px solid #893535;
     border-radius: 25px;
+    background-color: #893535;
+    color: white;
+
+}
+    
+.box a {
+        text-decoration: none;
 }
 .boxItems{
     margin: 0;

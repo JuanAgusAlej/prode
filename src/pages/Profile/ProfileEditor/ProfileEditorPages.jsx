@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import './profileEditorPages.css';
 import useInput from '../../../utils/useInput';
 import { iconPaths } from './iconPaths';
+import { getUser } from '../../../state/user';
 import { tokenValidated, modifyUser } from '../../../service/userApi';
 
 const ProfileEditorPages = () => {
+  const dispatch = useDispatch();
   const newUsername = useInput();
   const navigate = useNavigate();
   const [user, setUser] = useState({});
@@ -15,7 +18,6 @@ const ProfileEditorPages = () => {
 
   useEffect(() => {
     tokenValidated().then((data) => {
-      console.log(data);
       setUser(data);
       i18n.changeLanguage(data?.language);
     });
@@ -57,6 +59,7 @@ const ProfileEditorPages = () => {
           language: user.language,
         }).then(() => navigate(`/profile/${user.id}`));
       }
+      dispatch(getUser());
     }
   };
 

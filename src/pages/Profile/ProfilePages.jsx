@@ -11,7 +11,6 @@ const ProfilePages = () => {
 
   useEffect(() => {
     tokenValidated().then((data) => {
-      console.log(data);
       setUser(data);
       i18n.changeLanguage(data?.language);
     });

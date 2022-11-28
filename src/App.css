@@ -1,1 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@1,800&display=swap');
+.bodyPaging {
+    padding-block: 42px;
+}
+

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import pelota from '../../assets/log.jpg';
 import { tokenValidated } from '../../service/userApi';
 import './navbar.css';
@@ -49,7 +49,9 @@ const Navbar = () => {
         ) : (
           <p className="m-0"></p>
         )}
-        <i className="bi bi-gear  "></i>
+        <Link to={'/settings'}>
+          <i className="bi mb-1 bi-gear  "></i>
+        </Link>
       </div>
     </nav>
   );
