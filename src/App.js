@@ -18,6 +18,7 @@ import Tutorial from './pages/Tutorial/Tutorial.jsx';
 import { getUser } from './state/user';
 import { getUserLocation } from './service/userApi';
 import Leaderboard from './pages/Leaderboard/Leaderboard.jsx';
+import Prizes from './pages/Prizes/Prizes.jsx';
 import Page404 from './pages/404/Page404.jsx';
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
         <Route path='/validation' index element={<ConfirmRegister />} />
         <Route path='/tutorial' index element={<Tutorial />} />
         <Route path='/leaderboard' index element={<Leaderboard />} />
+        <Route path='/prizes' index element={<Prizes />} />
         <Route path='*' index element={<Page404 />} />
       </Routes>
       <MenuBar />
