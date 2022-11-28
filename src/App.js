@@ -43,12 +43,11 @@ function App() {
           index
           element={<ProfileEditorPages />}
         />
-        
         <Route path='/' index element={<LoginPages />} />
         <Route path='/home' index element={<HomePages />} />
         <Route path='/fixture/prode' element={<ProdePage />} />
         <Route path='/fixture' index element={<FixturePages />} />
-        <Route path="/settings" index element={<SettingsPages />} />
+        <Route path='/settings' index element={<SettingsPages />} />
         <Route path='/validation' index element={<ConfirmRegister />} />
         <Route path='/tutorial' index element={<Tutorial />} />
         <Route path='/leaderboard' index element={<Leaderboard />} />
