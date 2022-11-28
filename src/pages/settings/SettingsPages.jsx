@@ -1,12 +1,17 @@
 /* eslint-disable array-callback-return */
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const SettingsPages = () => {
   const { user } = useSelector((state) => state);
   const [notifications, setNotifications] = useState();
   const [notificationsKeys, setNotificationsKeys] = useState();
   const [language, setLanguage] = useState();
+  const updateDatosSetting = () => {
+    console.log(language);
+    console.log(notifications);
+  };
   useEffect(() => {
     if (!user.isLoading) {
       setNotificationsKeys(Object.keys(user.userData.notifications));
@@ -14,7 +19,11 @@ const SettingsPages = () => {
       setLanguage(user.userData.language);
     }
   }, [user]);
-  console.log(notificationsKeys);
+  const onClickLogout = () => {
+    console.log(language);
+    console.log(notifications);
+    localStorage.removeItem('token');
+  };
   const handleChange = (e) => {
     console.log(e.target.checked);
     setNotifications({
@@ -28,11 +37,11 @@ const SettingsPages = () => {
   return (
     <>
       {notifications ? (
-        <div className="bodyPaging m-5 ">
+        <div className="bodyPaging m-3 ">
           <div className="">
-            <p>Idioma</p>
+            <h5>Idioma</h5>
             <select
-              className="form-select"
+              className="form-select my-3"
               onChange={handleClick}
               aria-label="Default select example">
               <option value="EN" selected={language === 'EN'}>
@@ -46,7 +55,7 @@ const SettingsPages = () => {
               </option>
             </select>
           </div>
-          <div className="my-5">
+          <div className="my-4">
             <p>Notificaciones</p>
             <div className="d-flex row">
               <p className="col-4">{notificationsKeys[0]}</p>
@@ -67,6 +76,30 @@ const SettingsPages = () => {
                 onChange={handleChange}
                 checked={notifications?.[notificationsKeys[1]]}
               />
+            </div>
+          </div>
+          <div className="container">
+            <div className="row text-center">
+              <div className="col-sm-12 my-3">
+                <Link to={'/'}>
+                  <button
+                    type="button"
+                    className="btn btn-secondary p-0"
+                    onClick={() => onClickLogout()}>
+                    Logout
+                  </button>
+                </Link>
+              </div>
+              <div className="col-sm-12">
+                <Link to={'/home'}>
+                  <button
+                    type="button"
+                    className="btn btn-secondary p-0"
+                    onClick={() => updateDatosSetting()}>
+                    Guardar
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
