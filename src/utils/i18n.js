@@ -46,6 +46,7 @@ const resources = {
       leftToPlay: 'left to play',
       user: 'User',
       totalPoints: 'Total points',
+      notificationNewPoints: 'You have earned {{points}} points',
     },
   },
   ES: {
@@ -89,6 +90,7 @@ const resources = {
       leftToPlay: 'restantes para jugar',
       user: 'Usuario',
       totalPoints: 'Puntos totales',
+      notificationNewPoints: 'Has ganado {{points}} puntos',
     },
   },
   PT: {
@@ -132,6 +134,7 @@ const resources = {
       leftToPlay: 'restante para jogar',
       user: 'Usuario',
       totalPoints: 'Total de pontos',
+      notificationNewPoints: 'Você ganhou {{points}} pontos',
     },
   },
 };
