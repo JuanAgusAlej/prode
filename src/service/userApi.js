@@ -70,3 +70,8 @@ export const modifyUserSettings = async (obj) => {
   const { data } = await axios.put(`${url}/user/me/settings`, obj, axiosConfig);
   return data;
 };
+
+export const setPushToken = async (token) => {
+  const axiosConfig = setAxiosConfig();
+  await axios.put(`${url}/user/me/push`, { token }, axiosConfig);
+};
