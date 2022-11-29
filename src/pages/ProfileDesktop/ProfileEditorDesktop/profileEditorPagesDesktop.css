@@ -1,0 +1,102 @@
+.usernameChange {
+  display: flex;
+  margin-top: 15px;
+}
+button {
+  width: 100px;
+}
+.imgProfile {
+  width: 100px;
+  margin-left: 20px;
+}
+.iconChange {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 20px;
+}
+.iconChange2 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.icons {
+  width: 50px;
+}
+.title {
+  text-align: center;
+  margin-top: 38px;
+}
+.buttonDiv {
+  align-items: center;
+  text-align: center;
+  margin-bottom: 59px;
+  margin-top: 30px;
+}
+.icons {
+  padding-left: 10px;
+}
+.iconDiv {
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-bottom: 12px;
+  border-bottom: 1px solid gray;
+}
+.usernameDiv {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 30px;
+  padding-bottom: 12px;
+}
+.userActualDiv {
+  display: flex;
+}
+.userActual {
+  width: 50%;
+  font-weight: bold;
+  text-align: center;
+  align-items: center;
+}
+.emailActual {
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  align-items: center;
+}
+.selectionDiv {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 30px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid gray;
+}
+.idiomaActualDiv {
+  display: flex;
+}
+.idiomaActual {
+  width: 50%;
+  font-weight: bold;
+  text-align: center;
+  align-items: center;
+}
+.notificationsDiv {
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-bottom: 12px;
+}
+.changesDiv {
+  display: flex;
+}
+.changes1 {
+  width: 50%;
+  border-right: 1px solid gray;
+}
+.changes2 {
+  width: 50%;
+}
+.formUsername {
+  margin-left: 10px;
+}
+.inputUsername {
+  width: 100%;
+}
