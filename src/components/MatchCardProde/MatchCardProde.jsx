@@ -73,7 +73,7 @@ const MatchCardProde = ({
         <div className="nameTeam col-2">{teamA.shortName}</div>
         <img
           src={imgA}
-          alt="Argentina"
+          alt="flagTeam"
           className="flagTeam col-3"
           id="flagTeamA"
         />
@@ -81,7 +81,7 @@ const MatchCardProde = ({
         <InputGoals id={'inputGoalsB'} value={goalsB} className="col-1" />
         <img
           src={imgB}
-          alt="Argentina"
+          alt="flagTeam"
           className="flagTeam col-3"
           id="flagTeamB"
         />
