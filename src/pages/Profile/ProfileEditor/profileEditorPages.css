@@ -25,12 +25,13 @@ button {
 }
 .title {
   text-align: center;
+  margin-top: 38px;
   border-bottom: 1px solid gray;
 }
 .buttonDiv {
   align-items: center;
   text-align: center;
-  margin-top: 30px;
+  margin-bottom: 59px;
 }
 .icons {
   padding-left: 10px;
@@ -57,11 +58,18 @@ button {
   text-align: center;
   align-items: center;
 }
+.emailActual {
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  align-items: center;
+}
 .selectionDiv {
   margin-left: 5%;
   margin-right: 5%;
   margin-top: 30px;
   padding-bottom: 12px;
+  border-bottom: 1px solid gray;
 }
 .idiomaActualDiv {
   display: flex;
@@ -71,4 +79,9 @@ button {
   font-weight: bold;
   text-align: center;
   align-items: center;
+}
+.notificationsDiv {
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-bottom: 12px;
 }

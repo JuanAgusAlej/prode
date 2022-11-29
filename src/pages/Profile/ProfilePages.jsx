@@ -1,27 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import './profilePages.css';
-import { tokenValidated } from '../../service/userApi';
+import { getUser } from '../../state/user';
 
 const ProfilePages = () => {
-  const [user, setUser] = useState({});
+  const { user } = useSelector((state) => state);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
-    tokenValidated().then((data) => {
-      setUser(data);
-      i18n.changeLanguage(data?.language);
-    });
+    dispatch(getUser());
   }, []);
+
+  useEffect(() => {
+    if (!user.isLoading) {
+      i18n.changeLanguage(user?.userData?.language);
+    }
+  }, [user]);
 
   const buttonHandler = (e) => {
     e.preventDefault();
-    navigate(`/profile/${user.id}/edit`);
+    navigate(`/profile/${user.userData.id}/edit`);
   };
 
-  if (user === {}) {
+  if (user.isLoading) {
     return (
       <div>
         <p>{t('loading')}</p>
@@ -34,13 +39,13 @@ const ProfilePages = () => {
       <div className="container1">
         <div className="imgProfileDiv">
           <img
-            src={user.avatar}
+            src={user?.userData?.avatar}
             alt="icon placeholder"
             className="imgProfile"
           />
         </div>
         <div className="userNameDiv">
-          <h1 className="userName">{user.alias}</h1>
+          <h1 className="userName">{user?.userData?.alias}</h1>
           <button className="btnEdit" onClick={buttonHandler}>
             <i className="bi bi-pencil-square"></i>
           </button>
@@ -49,16 +54,19 @@ const ProfilePages = () => {
       <div>
         <ul className="list-group list-group-flush">
           <li className="list-group-item abc">
-            {t('email')}: {user.email}
+            {t('email')}: {user?.userData?.email}
           </li>
           <li className="list-group-item abc">
-            {t('name')}: {user.name}
+            {t('name')}: {user?.userData?.name}
           </li>
           <li className="list-group-item abc">
-            {t('region')}: {user.region}
+            {t('region')}: {user?.userData?.region}
           </li>
           <li className="list-group-item abc">
-            {t('points')}: {user.points}
+            {t('points')}: {user?.userData?.points}
+          </li>
+          <li className="list-group-item abc">
+            {t('language')}: {user?.userData?.language}
           </li>
         </ul>
       </div>
