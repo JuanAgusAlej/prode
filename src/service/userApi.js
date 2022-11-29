@@ -64,3 +64,9 @@ export const modifyUser = async (obj) => {
   const { data } = await axios.put(`${url}/user/me`, obj, axiosConfig);
   return data;
 };
+
+export const modifyUserSettings = async (obj) => {
+  const axiosConfig = setAxiosConfig();
+  const { data } = await axios.put(`${url}/user/me/settings`, obj, axiosConfig);
+  return data;
+};
