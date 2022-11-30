@@ -41,7 +41,7 @@ const HomeDesktop = () => {
   }, []);
 
   return (
-    <div className='father'>
+    <div className='father fondo'>
       <div className='menu col-1'>menu</div>
       <div className='children'>
         <div className='row divImg'></div>
