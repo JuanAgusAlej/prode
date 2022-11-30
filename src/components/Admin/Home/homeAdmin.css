@@ -1,0 +1,10 @@
+.boxHomeAdmin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 0px solid #1C6EA4;
+    border-radius: 40px;
+    background-color: #893535;
+    color: white;
+    min-height: 450px;
+}

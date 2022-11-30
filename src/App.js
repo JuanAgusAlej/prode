@@ -24,6 +24,7 @@ import Leaderboard from './pages/Leaderboard/Leaderboard.jsx';
 import Prizes from './pages/Prizes/Prizes.jsx';
 import Page404 from './pages/404/Page404.jsx';
 import { onMessageListener } from './service/firebase';
+import AdminPages from './pages/Admin/AdminPages.jsx';
 
 function App() {
   const [userCountry, setUserCountry] = useState('');
@@ -75,6 +76,11 @@ function App() {
         <Route path="/leaderboard" index element={<Leaderboard />} />
         <Route path="/prizes" index element={<Prizes />} />
         <Route path="*" index element={<Page404 />} />
+        <Route path="/admin" index element={<AdminPages />} />
+        <Route path="/admin/users" index element={<AdminPages />} />
+        <Route path="/admin/teams" index element={<AdminPages />} />
+        <Route path="/admin/tournaments" index element={<AdminPages />} />
+        <Route path="/admin/matchs" index element={<AdminPages />} />
       </Routes>
       <MenuBar />
     </BrowserRouter>
