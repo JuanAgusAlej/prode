@@ -60,7 +60,7 @@ const HomeDesktop = () => {
                 : null}
             </div>
             <div className='col-5 container'>
-              {matches.length
+              {matches.length && user
                 ? matches.map(match => (
                     <MatchCardProde
                       teamA={match.teamAId}
