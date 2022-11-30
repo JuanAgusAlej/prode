@@ -20,7 +20,6 @@ const userPost = async (userData) => {
   };
   const { data } = await axios.post(`${url}/user/signup`, infoUser);
   localStorage.setItem('token', data.token);
-  await axios.post(`${url}/email`, { id: data._id, email: infoUser.email });
   data.direction = '/validation';
   return data;
 };
