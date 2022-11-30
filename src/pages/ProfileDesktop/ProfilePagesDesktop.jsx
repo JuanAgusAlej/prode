@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import './profilePagesDesktop.css';
 import { getUser } from '../../state/user';
 
-const ProfilePages = () => {
+const ProfilePagesDesktop = () => {
   const { user } = useSelector((state) => state);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -74,4 +74,4 @@ const ProfilePages = () => {
   );
 };
 
-export default ProfilePages;
+export default ProfilePagesDesktop;
