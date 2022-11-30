@@ -8,7 +8,7 @@ import { iconPaths } from './iconPathsDesktop';
 import { getUser } from '../../../state/user';
 import { modifyUser, modifyUserSettings } from '../../../service/userApi';
 
-const ProfileEditorPages = () => {
+const ProfileEditorPagesDesktop = () => {
   const { user } = useSelector((state) => state);
   const [notifications, setNotifications] = useState();
   const [notificationsKeys, setNotificationsKeys] = useState();
@@ -109,7 +109,7 @@ const ProfileEditorPages = () => {
       <div>
         <h1 className="title">{t('modifyUser')}</h1>
       </div>
-      <div className="usernameDiv">
+      <div className="usernameDiv2">
         <p className="emailActual">{user?.userData?.email}</p>
       </div>
       <div className="changesDiv">
@@ -143,7 +143,7 @@ const ProfileEditorPages = () => {
               </div>
             </div>
           </div>
-          <div className="usernameDiv">
+          <div className="usernameDiv2">
             <div className="userActualDiv">
               <p>{t('currentUsername')}: </p>
               <p className="userActual">{user?.userData?.alias}</p>
@@ -226,4 +226,4 @@ const ProfileEditorPages = () => {
   );
 };
 
-export default ProfileEditorPages;
+export default ProfileEditorPagesDesktop;
