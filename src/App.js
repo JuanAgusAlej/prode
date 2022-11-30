@@ -33,7 +33,6 @@ function App() {
   const [size, setSize] = useState('');
   const [userCountry, setUserCountry] = useState('');
   const { t } = useTranslation();
-  const [Home, setHome] = useState(null);
 
   useEffect(() => {
     if (screen.width > 1023) {
@@ -77,7 +76,7 @@ function App() {
             element={<ProfileEditorPagesDesktop />}
           />
           <Route path="/" index element={<LoginPages />} />
-          <Route path="/home" index element={<HomePages />} />
+          <Route path="/home" index element={<HomeDesktop />} />
           <Route path="/validation" index element={<ConfirmRegister />} />
           <Route path="/tutorial" index element={<Tutorial />} />
           <Route path="/prizes" index element={<Prizes />} />
@@ -90,7 +89,7 @@ function App() {
   return (
     <BrowserRouter>
       <ToastContainer />
-      {/* <Navbar /> */}
+      <Navbar />
       <Routes>
         <Route path="/profile/:id" index element={<ProfilePages />} />
         <Route
@@ -99,7 +98,7 @@ function App() {
           element={<ProfileEditorPages />}
         />
         <Route path="/" index element={<LoginPages />} />
-        <Route path="/home" index element={window.innerWidth >= 1000 ? <HomeDesktop /> : <HomePages />} />
+        <Route path="/home" index element={<HomePages />} />
         <Route path="/fixture/prode" element={<ProdePage />} />
         <Route path="/fixture" index element={<FixturePages />} />
         <Route path="/validation" index element={<ConfirmRegister />} />
@@ -108,7 +107,7 @@ function App() {
         <Route path="/prizes" index element={<Prizes />} />
         <Route path="*" index element={<Page404 />} />
       </Routes>
-      {/* <MenuBar /> */}
+      <MenuBar />
     </BrowserRouter>
   );
 }
