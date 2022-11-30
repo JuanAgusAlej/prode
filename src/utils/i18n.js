@@ -47,6 +47,7 @@ const resources = {
       user: 'User',
       totalPoints: 'Total points',
       notificationNewPoints: 'You have earned {{points}} points',
+      leaderboard: 'Leaderboard',
     },
   },
   ES: {
@@ -91,6 +92,7 @@ const resources = {
       user: 'Usuario',
       totalPoints: 'Puntos totales',
       notificationNewPoints: 'Has ganado {{points}} puntos',
+      leaderboard: 'Tabla de posiciones',
     },
   },
   PT: {
@@ -135,6 +137,7 @@ const resources = {
       user: 'Usuario',
       totalPoints: 'Total de pontos',
       notificationNewPoints: 'Você ganhou {{points}} pontos',
+      leaderboard: 'Tabela de posições',
     },
   },
 };
