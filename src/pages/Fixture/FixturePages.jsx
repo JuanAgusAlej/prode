@@ -23,13 +23,15 @@ const FixturePages = () => {
   return (
     <div className="bodyPaging">
       <NavFixtureProde />
-      {!tournament.isLoading ? (
-        matchs?.map((match) => (
-          <CardPartidos key={match._id} match={match} />
-        ))
-      ) : (
-        <></>
-      )}
+      <div className='container'>
+        {!tournament.isLoading ? (
+          matchs?.map((match) => (
+            <CardPartidos key={match._id} match={match} />
+          ))
+        ) : (
+          <></>
+        )}
+      </div>
     </div>
   );
 };

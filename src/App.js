@@ -12,6 +12,7 @@ import LoginPages from './pages/Login/LoginPages.jsx';
 import ProfilePages from './pages/Profile/ProfilePages.jsx';
 import ProfileEditorPages from './pages/Profile/ProfileEditor/ProfileEditorPages.jsx';
 import HomePages from './pages/Home/HomePages.jsx';
+import HomeDesktop from './pages/Home/HomeDesktop.jsx';
 import FixturePages from './pages/Fixture/FixturePages.jsx';
 import ConfirmRegister from './pages/ConfirmRegister/ConfirmRegister.jsx';
 import ProdePage from './pages/Prode/ProdePage.jsx';
@@ -28,6 +29,7 @@ import { onMessageListener } from './service/firebase';
 function App() {
   const [userCountry, setUserCountry] = useState('');
   const { t } = useTranslation();
+  const [Home, setHome] = useState(null);
 
   useEffect(() => {
     getUserLocation()
@@ -57,7 +59,7 @@ function App() {
   return (
     <BrowserRouter>
       <ToastContainer />
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
         <Route path="/profile/:id" index element={<ProfilePages />} />
         <Route
@@ -66,7 +68,7 @@ function App() {
           element={<ProfileEditorPages />}
         />
         <Route path="/" index element={<LoginPages />} />
-        <Route path="/home" index element={<HomePages />} />
+        <Route path="/home" index element={window.innerWidth >= 1000 ? <HomeDesktop /> : <HomePages />} />
         <Route path="/fixture/prode" element={<ProdePage />} />
         <Route path="/fixture" index element={<FixturePages />} />
         <Route path="/settings" index element={<SettingsPages />} />
@@ -76,7 +78,7 @@ function App() {
         <Route path="/prizes" index element={<Prizes />} />
         <Route path="*" index element={<Page404 />} />
       </Routes>
-      <MenuBar />
+      {/* <MenuBar /> */}
     </BrowserRouter>
   );
 }

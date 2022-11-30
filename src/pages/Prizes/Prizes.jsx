@@ -14,7 +14,7 @@ const Prizes = () => {
   return (
     <div className='bodyPaging'>
       {prizes.length ? (
-        <div className='Price container'>
+        <div className='prize container'>
           <div>
             <img
               className='cup'
