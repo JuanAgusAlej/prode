@@ -17,7 +17,7 @@ const NavFixtureProde = () => {
         onChange={() => {}}
       />
       <label
-        className="btn myButton btn-outline-primary col box d-flex align-items-center justify-content-center"
+        className="btn myButton btn-outline-primary col boxx d-flex align-items-center justify-content-center"
         htmlFor="btnradio1"
         onClick={() => navigate('/fixture')}
       >
@@ -32,7 +32,7 @@ const NavFixtureProde = () => {
         onChange={() => {}}
       />
       <label
-        className="btn myButton btn-outline-primary col box"
+        className="btn myButton btn-outline-primary col boxx"
         htmlFor="btnradio2"
         onClick={() => navigate('/fixture/prode')}
       >

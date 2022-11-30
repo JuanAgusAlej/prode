@@ -71,20 +71,28 @@ const MatchCardProde = ({
       </div>
       <div className="row roww middleRow">
         <div className="nameTeam col-2">{teamA.shortName}</div>
-        <img
-          src={imgA}
-          alt="flagTeam"
-          className="flagTeam col-3"
-          id="flagTeamA"
-        />
+        <div className='col-3'>
+          <div className='divFlag'>
+            <img
+              src={imgA}
+              alt="flagTeam"
+              className="flagTeam"
+              id="flagTeamA"
+            />
+          </div>
+        </div>
         <InputGoals id={'inputGoalsA'} value={goalsA} className="col-1" />
         <InputGoals id={'inputGoalsB'} value={goalsB} className="col-1" />
-        <img
-          src={imgB}
-          alt="flagTeam"
-          className="flagTeam col-3"
-          id="flagTeamB"
-        />
+        <div className='col-3'>
+          <div className='divFlag'>
+            <img
+              src={imgB}
+              alt="flagTeam"
+              className="flagTeam"
+              id="flagTeamB"
+            />
+          </div>
+        </div>
         <div className="nameTeam col-2">{teamB.shortName}</div>
       </div>
       <div className="row roww">
