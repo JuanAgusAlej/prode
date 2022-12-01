@@ -103,7 +103,7 @@ const ProfilePagesDesktop = () => {
             </ul>
           </div>
           <div className="info2">
-            <div className="resul">Your last results</div>
+            <div className="resul">{t('yourLastResults')}</div>
             {!tournament.isLoading ? (
               matchs?.map((match) => (
                 <CardPartidos key={match._id} match={match} />

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { tokenValidated } from '../../service/userApi';
 import { setAxiosConfig } from '../../utils/axiosConfig';
 import ButtonSiderbars from './ButtonSiderbars.jsx';
@@ -8,6 +9,7 @@ import './siderbars.css';
 
 const Siderbars = ({ dropdown, adm }) => {
   const url = process.env.REACT_APP_URL;
+  const { t } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
   const [user, setUser] = useState();
@@ -26,23 +28,23 @@ const Siderbars = ({ dropdown, adm }) => {
 
   let buttons = [
     {
-      text: 'Dashboard',
+      text: t('dashboard'),
       direction: '/admin',
     },
     {
-      text: 'Users',
+      text: t('users'),
       direction: '/admin/users',
     },
     {
-      text: 'Teams',
+      text: t('teams'),
       direction: '/admin/teams',
     },
     {
-      text: 'Tournament',
+      text: t('tournament'),
       direction: '/admin/tournaments',
     },
     {
-      text: 'Match',
+      text: t('matchs'),
       direction: '/admin/matchs',
     },
   ];
@@ -50,19 +52,19 @@ const Siderbars = ({ dropdown, adm }) => {
   if (!adm) {
     buttons = [
       {
-        text: 'Home',
+        text: t('home'),
         direction: '/home',
       },
       {
-        text: 'Profile',
+        text: t('profile'),
         direction: '/profile/asd',
       },
       {
-        text: 'Prizes',
+        text: t('prizes'),
         direction: '/prizes',
       },
       {
-        text: 'Tutorial',
+        text: t('tutorial'),
         direction: '/tutorial',
       },
     ];
