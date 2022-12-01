@@ -49,3 +49,13 @@ body {
   width: 100%;
   border-radius: 6px;
 }
+.father {
+  display: flex;
+  min-height: 100vh;
+}
+.children {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-left: 10px;
+}

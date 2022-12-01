@@ -59,7 +59,7 @@ const HomeDesktop = () => {
   return (
     <div className="father">
       <div className="menu col-1">
-      <Siderbars dropdown={false}/>
+        <Siderbars dropdown={false} adm={false} />
       </div>
       <div className="children">
         <div className="row divImg"></div>
@@ -74,7 +74,7 @@ const HomeDesktop = () => {
               {tournament
                 ? matchs?.map((match) => (
                     <CardPartidos key={match._id} match={match} />
-                ))
+                  ))
                 : null}
             </div>
             <div className="col-5 container">
@@ -90,7 +90,7 @@ const HomeDesktop = () => {
                       user={user}
                       key={match._id}
                     />
-                ))
+                  ))
                 : null}
             </div>
             <div className="col-3 container">

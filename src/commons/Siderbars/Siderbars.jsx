@@ -6,7 +6,7 @@ import { setAxiosConfig } from '../../utils/axiosConfig';
 import ButtonSiderbars from './ButtonSiderbars.jsx';
 import './siderbars.css';
 
-const Siderbars = ({ dropdown }) => {
+const Siderbars = ({ dropdown, adm }) => {
   const url = process.env.REACT_APP_URL;
   const location = useLocation();
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ const Siderbars = ({ dropdown }) => {
     }
   };
 
-  const buttons = [
+  let buttons = [
     {
       text: 'Home',
       direction: '/admin',
@@ -46,6 +46,27 @@ const Siderbars = ({ dropdown }) => {
       direction: '/admin/matchs',
     },
   ];
+
+  if (!adm) {
+    buttons = [
+      {
+        text: 'Home',
+        direction: '/home',
+      },
+      {
+        text: 'Profile',
+        direction: '/profile/asd',
+      },
+      {
+        text: 'Prizes',
+        direction: '/prizes',
+      },
+      {
+        text: 'Tutorial',
+        direction: '/tutorial',
+      },
+    ];
+  }
 
   useEffect(() => {
     localStorageLogin();
@@ -72,7 +93,6 @@ const Siderbars = ({ dropdown }) => {
   };
 
   return (
-
     <div className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark  navBarAdmin sticky-top">
       <ul className="nav  nav-pills flex-column mb-auto ">
         {buttons.map((button, i) => (
@@ -99,10 +119,12 @@ const Siderbars = ({ dropdown }) => {
           </Link>
         </div>
       ) : (
-          <div className="dropdown text-center">
-            <Link className="nav-link bi-box-arrow-in-left" to={'/'}
-          onClick={() => onClickLogout()}>
-          </Link>
+        <div className="dropdown text-center">
+          <Link
+            className="nav-link bi-box-arrow-in-left"
+            to={'/'}
+            onClick={() => onClickLogout()}
+          ></Link>
         </div>
       )}
     </div>
