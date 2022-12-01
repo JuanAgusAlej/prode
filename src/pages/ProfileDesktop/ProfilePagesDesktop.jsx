@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import './profilePages.css';
+import './profilePagesDesktop.css';
 import { getUser } from '../../state/user';
 
 const ProfilePages = () => {
@@ -41,7 +41,7 @@ const ProfilePages = () => {
           <img
             src={user?.userData?.avatar}
             alt="icon placeholder"
-            className="imgProfile"
+            className="imgProfile2"
           />
         </div>
         <div className="userNameDiv">
@@ -51,7 +51,7 @@ const ProfilePages = () => {
           </button>
         </div>
       </div>
-      <div>
+      <div className="container2">
         <ul className="list-group list-group-flush">
           <li className="list-group-item abc">
             {t('email')}: {user?.userData?.email}
