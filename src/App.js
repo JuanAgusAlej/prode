@@ -70,7 +70,6 @@ function App() {
       <BrowserRouter>
         <ToastContainer />
         <Metrics />
-        {/* <Navbar /> */}
         <Routes>
           <Route path='/profile/:id' index element={<ProfilePagesDesktop />} />
           <Route

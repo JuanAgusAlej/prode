@@ -6,7 +6,7 @@ import { setAxiosConfig } from '../../utils/axiosConfig';
 import ButtonSiderbars from './ButtonSiderbars.jsx';
 import './siderbars.css';
 
-const Siderbars = ({ buttons, dropdown }) => {
+const Siderbars = ({ dropdown }) => {
   const url = process.env.REACT_APP_URL;
   const location = useLocation();
   const navigate = useNavigate();
@@ -16,7 +16,6 @@ const Siderbars = ({ buttons, dropdown }) => {
     if (localStorage.getItem('token')) {
       const data = await tokenValidated();
       setUser(data);
-      console.log(data);
       if (!data.validated && location.pathname !== `/${data.direction}`) {
         navigate(data.direction);
       }
@@ -24,6 +23,29 @@ const Siderbars = ({ buttons, dropdown }) => {
       navigate('/');
     }
   };
+
+  const buttons = [
+    {
+      text: 'Home',
+      direction: '/admin',
+    },
+    {
+      text: 'Users',
+      direction: '/admin/users',
+    },
+    {
+      text: 'Teams',
+      direction: '/admin/teams',
+    },
+    {
+      text: 'Tournament',
+      direction: '/admin/tournaments',
+    },
+    {
+      text: 'Match',
+      direction: '/admin/matchs',
+    },
+  ];
 
   useEffect(() => {
     localStorageLogin();
@@ -60,7 +82,7 @@ const Siderbars = ({ buttons, dropdown }) => {
             direction={button.direction}
           />
         ))}
-        {user?.role ? (
+        {user?.role === 'ADMIN_ROLE' ? (
           <ButtonSiderbars
             key={buttons.length + 1}
             text={'Admin'}
