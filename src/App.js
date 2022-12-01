@@ -8,7 +8,6 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { useTranslation } from 'react-i18next';
-
 import LoginPages from './pages/Login/LoginPages.jsx';
 import ProfilePages from './pages/Profile/ProfilePages.jsx';
 import ProfileEditorPages from './pages/Profile/ProfileEditor/ProfileEditorPages.jsx';
@@ -29,6 +28,7 @@ import { onMessageListener } from './service/firebase';
 import AdminPages from './pages/Admin/AdminPages.jsx';
 import ProfilePagesDesktop from './pages/ProfileDesktop/ProfilePagesDesktop.jsx';
 import ProfileEditorPagesDesktop from './pages/ProfileDesktop/ProfileEditorDesktop/ProfileEditorPagesDesktop.jsx';
+import Metrics from './components/Metrics/Metrics';
 
 function App() {
   const [size, setSize] = useState('');
@@ -54,7 +54,7 @@ function App() {
             <b>{payload.data.match}</b>
             <br />
             {t('notificationNewPoints', { points: payload.data.points })}
-          </div>,
+          </div>
         );
       }
     })
@@ -68,6 +68,7 @@ function App() {
     return (
       <BrowserRouter>
         <ToastContainer />
+        <Metrics />
         {/* <Navbar /> */}
         <Routes>
           <Route path="/profile/:id" index element={<ProfilePagesDesktop />} />
@@ -95,6 +96,7 @@ function App() {
   return (
     <BrowserRouter>
       <ToastContainer />
+      <Metrics />
       <Navbar />
       <Routes>
         <Route path="/profile/:id" index element={<ProfilePages />} />

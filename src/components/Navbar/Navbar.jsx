@@ -71,11 +71,8 @@ const Navbar = () => {
           height="24"
           className="d-inline-block align-text-top"
         />
-        {userPoints ? (
-          <p className="m-0">{userPoints} pts</p>
-        ) : (
-          <p className="m-0"></p>
-        )}
+        <p className="m-0">{userPoints} pts</p>
+
         <Link to={'/settings'}>
             <i className="bi mb-1 bi-gear" onClick={() => onClickLogout()}></i>
         </Link>

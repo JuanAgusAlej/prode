@@ -1,3 +1,5 @@
+/* eslint-disable operator-linebreak */
+/* eslint-disable nonblock-statement-body-position */
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -51,8 +53,14 @@ const HomeDesktop = () => {
         const dataFiltered = data.filter((match) => {
           const matchDate = new Date(`${match.date}`);
           const now = new Date();
-          if (matchDate.getTime() - 7200000 > now.getTime()) return true;
-          else return false;
+          if (
+            matchDate.getTime() - 7200000 > now.getTime() &&
+            match.result === 'PENDING'
+          ) {
+            return true;
+          } else {
+            return false;
+          }
         });
         setMatches(dataFiltered);
       });
