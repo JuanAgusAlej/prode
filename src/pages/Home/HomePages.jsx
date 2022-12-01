@@ -25,20 +25,20 @@ const HomePages = () => {
 
   return (
     <>
-      <div className="fondo d-flex justify-content-center text-center">
-        <img src={fondo} className="card-img image" />
-        <div className="container  bigBox">
-          <div className="row ">
-            <Link className="col-10 offset-1 box " to={'/fixture'}>
-              <div>{t('fixture')}</div>
+      <div className="fondo">
+        <div className='row divImag'></div>
+        <div className="row bigBox">
+          <div className="col row rows">
+            <Link className="link" to={'/fixture'}>
+              <div className='boxItems box primmaryBox'>{t('Fixture')}</div>
             </Link>
           </div>
-          <div className="row my-3 justify-content-md-center">
-            <Link className="col box boxItems" to={'/tutorial'}>
-              <div>{t('tutorial')}</div>
+          <div className="row rows">
+            <Link className="col link" to={'/tutorial'}>
+              <div className='boxItems box secondaryBox'>{t('Tutorial')}</div>
             </Link>
-            <Link className="col box boxItems" to={'/sdfsdfd'}>
-              <div>{t('prizes')}</div>
+            <Link className="col link" to={'/prizes'}>
+              <div className='boxItems box secondaryBox'>{t('Prizes')}</div>
             </Link>
           </div>
         </div>

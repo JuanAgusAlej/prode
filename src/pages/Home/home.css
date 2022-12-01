@@ -1,29 +1,44 @@
-.box{
-    height: 150px;
-    border: 1px solid #893535;
-    border-radius: 25px;
-    background-color: #893535;
-    color: white;
-
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  border: 1px solid #ba3d3d;
+  border-radius: 25px;
+  background-color: #ba3d3d;
+  color: white;
+  font-weight: 900;
 }
-    
-.box a {
-        text-decoration: none;
+.primmaryBox {
+  font-size: 40px;
+  margin: 0vh 5vh;
+  box-shadow: 4px 6px 13px 0px rgba(0, 0, 0, 0.4);
 }
-.boxItems{
-    margin: 0;
-    margin: 0px 20px;
+.secondaryBox {
+  font-size: 24px;
+  height: 150px;
+  box-shadow: 4px 6px 13px 0px rgba(0, 0, 0, 0.4);
+}
+.rows {
+  height: 200px;
+  padding: 0;
+}
+.row {
+  --bs-gutter-x: 0;
+}
+.link {
+  text-decoration: none;
+  padding: 0;
 }
 .bigBox {
-    position: absolute;
-    margin-top: 30vh;
+  margin-top: -9vh;
 }
-.fondo{
-    margin-top: 38px;
-    margin-top: 38px
+.fondo {
+  margin-top: 38px;
 }
-
-.image{
-    position: absolute;
-    height: 30vh;
+.divImag {
+  height: 300px;
+  background-image: url('../../assets/homeDesktop.jpg');
+  background-position: -375px -197px;
+  box-shadow: 4px 6px 13px 0px rgba(0, 0, 0, 0.4);
 }

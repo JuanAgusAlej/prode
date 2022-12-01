@@ -2,6 +2,8 @@
     background-color: #893535;
     border-radius: 11px;
     color: white;
+    margin-bottom: 3%;
+    box-shadow: 4px 6px 13px 0px rgba(0, 0, 0, 0.4)
 }
 .fecha{
     display: flex;
