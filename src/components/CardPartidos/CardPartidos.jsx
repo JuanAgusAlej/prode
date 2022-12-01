@@ -22,6 +22,7 @@ const CardPartidos = ({ match }) => {
     user?.predictions.forEach(pred => {
       if (pred.matchId === match._id) {
         setPrediction(pred);
+        console.log(pred);
       }
     });
   }, []);
@@ -62,21 +63,21 @@ const CardPartidos = ({ match }) => {
         {prediction.state === true ? (
           <>
             <div className='col-5 predDiv predDivLeft win'>
-              {prediction.goalsA ? prediction.goalsA : '-'}
+              {prediction.goalsA}
             </div>
             <div className='col-1 predDiv instance win'>-</div>
             <div className='col-5 predDiv predDivRight win'>
-              {prediction.goalsB ? prediction.goalsB : '-'}
+              {prediction.goalsB}
             </div>
           </>
         ) : (
           <>
             <div className='col-5 predDiv predDivLeft los'>
-              {prediction.goalsA ? prediction.goalsA : '-'}
+              {prediction.goalsA}
             </div>
             <div className='col-1 predDiv instance los'>-</div>
             <div className='col-5 predDiv predDivRight los'>
-              {prediction.goalsB ? prediction.goalsB : '-'}
+              {prediction.goalsB}
             </div>
           </>
         )}
