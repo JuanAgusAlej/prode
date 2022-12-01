@@ -8,7 +8,7 @@ const UserAdmin = () => {
     loading: true,
     data: [],
   });
-  const [update, setUpdate] = useState(false);
+  const [update, setUpdate] = useState('');
   const usuarioGet = async () => {
     const user = await getUsersAll();
     setUsers({
@@ -19,7 +19,6 @@ const UserAdmin = () => {
 
   useEffect(() => {
     usuarioGet();
-    setUpdate(false);
   }, [update]);
 
   return (
@@ -38,7 +37,9 @@ const UserAdmin = () => {
             <UserTable key={user.uid} user={user} setUpdate={setUpdate} />
           ))
         ) : (
-          <p>Loading</p>
+          <tr>
+            <td>Loading</td>
+          </tr>
         )}
       </tbody>
     </table>

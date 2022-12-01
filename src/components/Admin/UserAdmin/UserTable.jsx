@@ -1,3 +1,4 @@
+/* eslint-disable operator-linebreak */
 /* eslint-disable no-underscore-dangle */
 import React from 'react';
 import Swal from 'sweetalert2';
@@ -13,39 +14,40 @@ const UserTable = ({ user, setUpdate }) => {
   });
   const activeUser = () => {
     const text = user.state
-      ? `Eliminar al usuario ${user.name}`
-      : `Reactivar al usuario ${user.name}`;
+      ? `Block user ${user.name}`
+      : `Unblock user ${user.name}`;
     MySwal.fire({
-      title: 'Estas seguro?',
+      title: 'Are you sure?',
       text,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#FF3270',
       cancelButtonColor: '#12a696',
-      confirmButtonText: 'yeah, do it!',
+      confirmButtonText: 'Yes',
     }).then(async (result) => {
       if (result.isConfirmed) {
-        deleteUser(user._id);
-        setUpdate(true);
+        await deleteUser(user._id);
+        setUpdate(`${user.id}-${Math.random()}`);
       }
     });
   };
   const changeRolUser = () => {
-    const text = user.state
-      ? `Dar permiso administrador a ${user.name}`
-      : `Sacar permiso administrador a ${user.name}`;
+    const text =
+      user.role === 'USER_ROLE'
+        ? `Grant administrartor permissions to ${user.name}`
+        : `Remove administrartor permissions to ${user.name}`;
     MySwal.fire({
-      title: 'Estas seguro?',
+      title: 'Are you sure?',
       text,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#FF3270',
       cancelButtonColor: '#12a696',
-      confirmButtonText: 'yeah, do it!',
+      confirmButtonText: 'Yes',
     }).then(async (result) => {
       if (result.isConfirmed) {
-        changeRolUserApi(user._id);
-        setUpdate(true);
+        await changeRolUserApi(user._id);
+        setUpdate(`${user.id}-${Math.random()}`);
       }
     });
   };
@@ -54,14 +56,15 @@ const UserTable = ({ user, setUpdate }) => {
       <td>{user.alias}</td>
       <td>{user.name}</td>
       <td>{user.email}</td>
-      <td>{user.state ? <p>Activo</p> : <p>Desactivado</p>}</td>
+      <td>{user.state ? 'Active' : 'Blocked'}</td>
       <td className="col-2">
         {user.state ? (
           <button
             type="button"
             className="btn btn-danger me-3 p-0"
             style={{ width: 50, fontSize: 20 }}
-            onClick={() => activeUser()}>
+            onClick={() => activeUser()}
+          >
             <i className="bi bi-person-fill-slash"></i>
           </button>
         ) : (
@@ -69,7 +72,8 @@ const UserTable = ({ user, setUpdate }) => {
             type="button"
             className="btn btn-success me-3 p-0"
             style={{ width: 50, fontSize: 20 }}
-            onClick={() => activeUser()}>
+            onClick={() => activeUser()}
+          >
             <i className="bi bi-person-fill-add"></i>
           </button>
         )}
@@ -78,7 +82,8 @@ const UserTable = ({ user, setUpdate }) => {
             type="button"
             className="btn btn-success m-0 p-0"
             onClick={() => changeRolUser()}
-            style={{ width: 50, fontSize: 20 }}>
+            style={{ width: 50, fontSize: 20 }}
+          >
             <i className="bi bi-person-fill-up"></i>
           </button>
         ) : (
@@ -86,7 +91,8 @@ const UserTable = ({ user, setUpdate }) => {
             type="button"
             className="btn btn-warning m-0 p-0"
             onClick={() => changeRolUser()}
-            style={{ width: 50, fontSize: 20 }}>
+            style={{ width: 50, fontSize: 20 }}
+          >
             <i className="bi bi-person-fill-down"></i>
           </button>
         )}
