@@ -22,31 +22,9 @@ const HomeDesktop = () => {
   const [users, setUsers] = useState([]);
   const tournament = useSelector((state) => state.tournament.tournament);
   const user = useSelector((state) => state.user.userData);
-  const buttons = [
-    {
-      text: 'Home',
-      direction: '/admin',
-    },
-    {
-      text: 'Users',
-      direction: '/admin/users',
-    },
-    {
-      text: 'Teams',
-      direction: '/admin/teams',
-    },
-    {
-      text: 'Tournament',
-      direction: '/admin/tournaments',
-    },
-    {
-      text: 'Match',
-      direction: '/admin/matchs',
-    },
-  ];
+
   useEffect(() => {
     if (tournament) {
-      console.log(tournament);
       getUsers(tournament._id).then((data) => setUsers(data));
       getMatches(tournament._id).then((data) => {
         setMatchs(data);
@@ -81,9 +59,9 @@ const HomeDesktop = () => {
   return (
     <div className="father fondo">
       <div className="menu col-1">
-        <Siderbars buttons={buttons} dropdown={false}/>
+      <Siderbars dropdown={false}/>
       </div>
-      <div className="children m-3">
+      <div className="children">
         <div className="row divImg"></div>
         <div className="container">
           <div className="row headers">
@@ -96,7 +74,7 @@ const HomeDesktop = () => {
               {tournament
                 ? matchs?.map((match) => (
                     <CardPartidos key={match._id} match={match} />
-                  ))
+                ))
                 : null}
             </div>
             <div className="col-5 container">
@@ -112,7 +90,7 @@ const HomeDesktop = () => {
                       user={user}
                       key={match._id}
                     />
-                  ))
+                ))
                 : null}
             </div>
             <div className="col-3 container">
