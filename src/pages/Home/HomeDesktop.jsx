@@ -57,7 +57,7 @@ const HomeDesktop = () => {
   }, []);
 
   return (
-    <div className="father fondo">
+    <div className="father">
       <div className="menu col-1">
       <Siderbars dropdown={false}/>
       </div>
