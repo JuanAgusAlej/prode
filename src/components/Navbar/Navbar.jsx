@@ -48,30 +48,31 @@ const Navbar = () => {
     }
     localStorageLogin();
   }, [location.pathname]);
-
+  const onClickLogout = () => {
+    localStorage.removeItem('token');
+  };
   return (
-    <nav className='navbar fixed-top navbar-dark bg-dark p-0 '>
+    <nav className="navbar fixed-top navbar-dark bg-dark p-0 ">
       <div
         className={
           hide === true
             ? 'd-none'
             : 'container-fluid my-1 align-items-center mx-2 icon'
-        }
-      >
+        }>
         <img
           src={pelota}
-          alt=''
-          width='30'
-          height='24'
-          className='d-inline-block align-text-top'
+          alt=""
+          width="30"
+          height="24"
+          className="d-inline-block align-text-top"
         />
         {userPoints ? (
-          <p className='m-0'>{userPoints} pts</p>
+          <p className="m-0">{userPoints} pts</p>
         ) : (
-          <p className='m-0'></p>
+          <p className="m-0"></p>
         )}
         <Link to={'/settings'}>
-          <i className='bi mb-1 bi-gear  '></i>
+            <i className="bi mb-1 bi-gear" onClick={() => onClickLogout()}></i>
         </Link>
       </div>
     </nav>
