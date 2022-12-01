@@ -7,7 +7,7 @@ const Leaderboard = ({ users }) => {
 
   return (
     <div className="container tableSettings bodyPaging">
-      <table className="table">
+      <table className="table leaderboard">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -16,7 +16,7 @@ const Leaderboard = ({ users }) => {
           </tr>
           {users.map((user, i) => (
             <tr className="rowColor" key={user._id}>
-              <th scope="row">{i + 1}</th>
+              <td className='position' scope="row">{i + 1}</td>
               <td>{user.data[0].alias}</td>
               <td>{user.points}</td>
             </tr>

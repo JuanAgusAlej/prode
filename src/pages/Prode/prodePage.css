@@ -7,6 +7,7 @@
   padding: 3%;
   border-radius: 10px;
   margin-bottom: 3%;
+  box-shadow: 4px 6px 13px 0px rgba(0, 0, 0, 0.4)
 }
 .col-centered {
   margin: 0 auto;
@@ -41,16 +42,17 @@
   padding: 0;
 }
 .flagTeam {
-  width: 40px;
-  height: 34px;
+  width: 50%;
+  height: 50%;
   padding: 0;
   border-radius: 5px;
+  object-fit: cover;
+  margin: 0;
 }
-#flagTeamA {
-  margin-left: 5%;
-}
-#flagTeamB {
-  margin-right: 5%;
+.divFlag {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
 }
 .nameTeam {
   display: flex;

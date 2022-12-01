@@ -1,8 +1,16 @@
 .tableSettings {
   text-align: center;
   background-color: rgba(186, 61, 61, 1);
+  background-color: #893535;
+  border-radius: 10px;
+  box-shadow: 4px 6px 13px 0px rgba(0, 0, 0, 0.4)
 }
-
 .rowColor {
   background-color: rgba(217, 217, 217, 1);
+}
+.leaderboard th{
+  color: white;
+}
+.position {
+  color: black;
 }

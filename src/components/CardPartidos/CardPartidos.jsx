@@ -16,7 +16,7 @@ const CardPartidos = ({ match }) => {
     }
   }, []);
   return (
-    <div className="iconHome d-flex flex-column m-3">
+    <div className="iconHome d-flex flex-column">
       <div className="fecha mt-1">
         <p>{time}</p>
         <p>{fecha}</p>

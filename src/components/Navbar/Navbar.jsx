@@ -40,27 +40,29 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    if (location.pathname === '/' || location.pathname === '/validation') {
+    console.log(location.pathname.search('admin'));
+    if (
+      location.pathname === '/'
+      || location.pathname === '/validation'
+      || location.pathname.search('admin') === 1
+    ) {
       setHide(true);
     } else {
       setHide(false);
     }
     localStorageLogin();
   }, [location.pathname]);
-
   const onClickLogout = () => {
     localStorage.removeItem('token');
   };
-
   return (
-    <nav className='navbar fixed-top navbar-dark bg-dark p-0 '>
+    <nav className="navbar fixed-top navbar-dark bg-dark p-0 ">
       <div
         className={
           hide === true
             ? 'd-none'
             : 'container-fluid my-1 align-items-center mx-2 icon'
-        }
-      >
+        }>
         <img
           src='https://tonic3.com/static/Tonic3_RGB_1-c2d1d8ad7f534000ba675313197f5fe4.webp'
           alt=''
