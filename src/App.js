@@ -58,7 +58,7 @@ function App() {
   return (
     <BrowserRouter>
       <ToastContainer />
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
         <Route path="/profile/:id" index element={<ProfilePages />} />
         <Route
@@ -75,12 +75,12 @@ function App() {
         <Route path="/tutorial" index element={<Tutorial />} />
         <Route path="/leaderboard" index element={<Leaderboard />} />
         <Route path="/prizes" index element={<Prizes />} />
-        <Route path="*" index element={<Page404 />} />
         <Route path="/admin" index element={<AdminPages />} />
         <Route path="/admin/users" index element={<AdminPages />} />
         <Route path="/admin/teams" index element={<AdminPages />} />
         <Route path="/admin/tournaments" index element={<AdminPages />} />
         <Route path="/admin/matchs" index element={<AdminPages />} />
+        <Route path="*" index element={<Page404 />} />
       </Routes>
       <MenuBar />
     </BrowserRouter>

@@ -1,117 +1,113 @@
-import React from 'react';
-import prueba from '../../../assets/Flag_of_Argentina.svg.webp';
-import pruebaDos from '../../../assets/homePages.jpg';
+/* eslint-disable no-underscore-dangle */
+import React, { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
+import { getTeamsAll, createdTeamApi } from '../../../service/teamsApi';
+import TeamTable from './TeamTable.jsx';
 
 const TeamAdmin = () => {
-  const edit = () => {
-    console.log('edit');
+  const MySwal = Swal.mixin({
+    customClass: {
+      confirmButton: 'btn btn-success py-0 ms-2',
+      cancelButton: 'btn btn-danger py-0 ms-2',
+    },
+    buttonsStyling: false,
+  });
+
+  const [teams, setTeams] = useState({
+    loading: true,
+    data: [],
+  });
+
+  const update = () => {
+    setTeams({
+      loading: true,
+      data: teams,
+    });
+  };
+
+  const teamsGet = async () => {
+    const team = await getTeamsAll();
+    setTeams({
+      loading: false,
+      data: team,
+    });
+  };
+
+  useEffect(() => {
+    if (teams.loading) {
+      teamsGet();
+    }
+  }, [teams.loading]);
+
+  const createdTeam = () => {
+    MySwal.fire({
+      title: 'Crear Team',
+      html: `<input type="text" id='name'  class="swal2-input" placeholder="name">
+              <input type="text" id='country'  class="swal2-input" placeholder="country">
+              <input type="text"  id='logo'  class="swal2-input" placeholder="logo">
+              <input type="text" id='shortName'  class="swal2-input" placeholder="shortName">
+              `,
+      focusConfirm: false,
+      confirmButtonText: 'Created',
+      preConfirm: () => {
+        const name = Swal.getPopup().querySelector('#name').value;
+        const country = Swal.getPopup().querySelector('#country').value;
+        const logo = Swal.getPopup().querySelector('#logo').value;
+        const shortName = Swal.getPopup().querySelector('#shortName').value;
+        if (!name || !country || !logo || !shortName) {
+          Swal.showValidationMessage('Completar los datos');
+        }
+        const dato = {
+          name,
+          country,
+          logo,
+          shortName,
+        };
+        return dato;
+      },
+    }).then(async (result) => {
+      console.log(result);
+      if (result.isConfirmed) {
+        const info = await createdTeamApi(result.value);
+        console.log(info);
+        if (!info.error) {
+          MySwal.fire('Creado', `${result.value.name}`, 'success').then(
+            update(),
+          );
+        } else {
+          MySwal.fire('Error', `${info.message}`, 'error');
+        }
+      }
+    });
   };
   return (
-    <table className="table m-5">
-      <thead>
-        <tr>
-          <th scope="col-4">#</th>
-          <th scope="col-4">Name</th>
-          <th scope="col-4">Country</th>
-          <th scope="col-4">Logo</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>
-            Mark
-            <button
-              type="button"
-              className="btn btn-link p-0"
-              style={{
-                width: 25,
-                height: 25,
-                fontSize: 16,
-                marginLeft: 5,
-                color: 'black',
-              }}>
-              <i className="bi bi-pencil-square"></i>
-            </button>
-          </td>
-          <td>
-            Otto
-            <button
-              type="button"
-              className="btn btn-link p-0"
-              style={{
-                width: 25,
-                height: 25,
-                fontSize: 16,
-                color: 'black',
-                marginLeft: 5,
-              }}>
-              <i className="bi bi-pencil-square"></i>
-            </button>
-          </td>
-          <td>
-            <img src={prueba} style={{ maxWidth: 50 }}></img>
-            <button
-              type="button"
-              className="btn btn-link p-0"
-              style={{
-                width: 25,
-                height: 25,
-                fontSize: 16,
-                color: 'black',
-                marginLeft: 5,
-              }}
-              onClick={() => edit()}>
-              <i className="bi bi-pencil-square"></i>
-            </button>
-          </td>
-          <td className="col-2">
-            <button
-              type="button"
-              className="btn btn-danger m-0 p-0"
-              style={{ width: 50, fontSize: 20 }}
-              onClick={() => edit()}>
-              <i className="bi bi-trash"></i>
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>
-            <img src={pruebaDos} style={{ maxWidth: 50 }}></img>
-            <button
-              type="button"
-              className="btn btn-link p-0"
-              style={{
-                width: 25,
-                height: 25,
-                fontSize: 16,
-                color: 'black',
-                marginLeft: 5,
-              }}
-              onClick={() => edit()}>
-              <i className="bi bi-pencil-square"></i>
-            </button>
-          </td>
-          <td className="col-2">
-            <button
-              type="button"
-              className="btn btn-danger m-0 p-0"
-              style={{ width: 50, fontSize: 20 }}
-              onClick={() => edit()}>
-              <i className="bi bi-trash"></i>
-            </button>
-          </td>
-        </tr>
-        {/* <tr>
-          <th scope="row">3</th>
-          <td colSpan="2">Larry the Bird</td>
-          <td>@twitter</td>
-        </tr> */}
-      </tbody>
-    </table>
+    <>
+      <table className="table m-5">
+        <thead>
+          <button
+            type="button"
+            className="btn btn-success m-0 p-0 bi bi-plus"
+            style={{ fontSize: 16 }}
+            onClick={() => createdTeam()}>
+            Team
+          </button>
+          <tr>
+            <th scope="col-4">Name</th>
+            <th scope="col-4">Country</th>
+            <th scope="col-4">Logo</th>
+          </tr>
+        </thead>
+        <tbody>
+          {teams.loading ? (
+            <p>Loading</p>
+          ) : (
+            teams.data.map((team) => (
+              <TeamTable key={team._id} team={team} update={update} />
+            ))
+          )}
+        </tbody>
+      </table>
+    </>
   );
 };
 

@@ -11,13 +11,34 @@ const AdminPages = () => {
     setPath(location.pathname);
     console.log(screen.width);
   }, [location]);
-
+  const buttons = [
+    {
+      text: 'Home',
+      direction: '/admin',
+    },
+    {
+      text: 'Users',
+      direction: '/admin/users',
+    },
+    {
+      text: 'Teams',
+      direction: '/admin/teams',
+    },
+    {
+      text: 'Tournament',
+      direction: '/admin/tournaments',
+    },
+    {
+      text: 'Match',
+      direction: '/admin/matchs',
+    },
+  ];
   console.log(path);
   return (
     <div className="container-fluid">
       <div className="row">
         <div className="col-1 p-0">
-          <Siderbars />
+          <Siderbars buttons={buttons} dropdown={true} />
         </div>
         <div className="admin col-10">
           <Root pathname={path} />

@@ -4,6 +4,7 @@ import MatchAdmin from '../../../components/Admin/Match/MatchAdmin.jsx';
 import TeamAdmin from '../../../components/Admin/TeamAdmin/TeamAdmin.jsx';
 import TournamentAdmin from '../../../components/Admin/TournamentAdmin/TournamentAdmin.jsx';
 import UserAdmin from '../../../components/Admin/UserAdmin/UserAdmin.jsx';
+import Page404 from '../../404/Page404.jsx';
 
 const Root = ({ pathname }) => {
   switch (pathname) {
@@ -19,8 +20,10 @@ const Root = ({ pathname }) => {
     case '/admin/matchs':
       return <MatchAdmin />;
 
-    default:
+    case '/admin':
       return <HomAdmin />;
+    default:
+      return <Page404 />;
   }
 };
 
