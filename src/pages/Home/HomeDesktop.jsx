@@ -1,6 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import './homeDesktop.css';
 import { getTournament } from '../../state/tournament';
 import { getUser } from '../../state/user';
@@ -12,6 +13,7 @@ import { getUsers } from '../../service/leaderboard';
 
 const HomeDesktop = () => {
   const dispatch = useDispatch();
+  const { t, i18n } = useTranslation();
   const [matchs, setMatchs] = useState([]);
   const [matches, setMatches] = useState([]);
   const [users, setUsers] = useState([]);
@@ -36,6 +38,12 @@ const HomeDesktop = () => {
   }, [tournament]);
 
   useEffect(() => {
+    if (user) {
+      i18n.changeLanguage(user?.language);
+    }
+  }, [user]);
+
+  useEffect(() => {
     dispatch(getUser());
     dispatch(getTournament());
   }, []);
@@ -47,8 +55,8 @@ const HomeDesktop = () => {
         <div className='row divImg'></div>
         <div className='container'>
           <div className='row headers'>
-            <div className='col-4'>Partidos Jugados</div>
-            <div className='col-5'>Partidos por Jugar</div>
+            <div className='col-4'>{t('Matches played')}</div>
+            <div className='col-5'>{t('Matches for play')}</div>
             <div className='col-3'>Leaderboard</div>
           </div>
           <div className='row'>

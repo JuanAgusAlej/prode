@@ -77,7 +77,6 @@ const MatchCardProde = ({
               src={imgA}
               alt="flagTeam"
               className="flagTeam"
-              id="flagTeamA"
             />
           </div>
         </div>
@@ -89,7 +88,6 @@ const MatchCardProde = ({
               src={imgB}
               alt="flagTeam"
               className="flagTeam"
-              id="flagTeamB"
             />
           </div>
         </div>

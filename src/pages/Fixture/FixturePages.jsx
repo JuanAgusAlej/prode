@@ -8,13 +8,13 @@ import { getMatches } from '../../service/matches';
 const FixturePages = () => {
   const [matchs, setMatchs] = useState([]);
   const { tournament } = useSelector((state) => state);
+
   const matchsGet = async () => {
     const data = await getMatches(tournament.tournament._id);
-    console.log(data);
     setMatchs(data);
   };
+
   useEffect(() => {
-    console.log(tournament);
     if (!tournament.isLoading) {
       matchsGet();
     }
