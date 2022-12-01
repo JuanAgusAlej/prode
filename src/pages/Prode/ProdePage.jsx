@@ -1,3 +1,5 @@
+/* eslint-disable nonblock-statement-body-position */
+/* eslint-disable operator-linebreak */
 /* eslint-disable comma-dangle */
 /* eslint-disable radix */
 /* eslint-disable no-underscore-dangle */
@@ -10,17 +12,24 @@ import { getMatches } from '../../service/matches';
 
 const ProdePage = () => {
   const [matches, setMatches] = useState([]);
-  const tournament = useSelector(state => state.tournament.tournament);
-  const user = useSelector(state => state.user.userData);
+  const tournament = useSelector((state) => state.tournament.tournament);
+  const user = useSelector((state) => state.user.userData);
 
   useEffect(() => {
     if (tournament) {
-      getMatches(tournament._id).then(data => {
-        const dataFiltered = data.filter(match => {
+      getMatches(tournament._id).then((data) => {
+        const dataFiltered = data.filter((match) => {
+          console.log(match);
           const matchDate = new Date(`${match.date}`);
           const now = new Date();
-          if (matchDate.getTime() - 7200000 > now.getTime()) return true;
-          else return false;
+          if (
+            matchDate.getTime() - 7200000 > now.getTime() &&
+            match.result === 'PENDING'
+          ) {
+            return true;
+          } else {
+            return false;
+          }
         });
         setMatches(dataFiltered);
       });
@@ -28,11 +37,11 @@ const ProdePage = () => {
   }, [tournament]);
 
   return (
-    <div className='bodyPaging'>
+    <div className="bodyPaging">
       <NavFixtureProde />
-      <div className='container'>
+      <div className="container">
         {matches.length
-          ? matches.map(match => (
+          ? matches.map((match) => (
               <MatchCardProde
                 teamA={match.teamAId}
                 teamB={match.teamBId}
@@ -43,7 +52,7 @@ const ProdePage = () => {
                 user={user}
                 key={match._id}
               />
-          ))
+            ))
           : null}
       </div>
     </div>
