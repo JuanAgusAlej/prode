@@ -9,7 +9,7 @@ const Page404Desktop = () => {
       <div className='id404 container'>
         <img
           className='desImg'
-          src='https://previews.123rf.com/images/sania01/sania011911/sania01191100169/135546530-a-soccer-ball-with-an-unusual-pattern-lies-among-the-fallen-autumn-leaves-in-the-forest-forgotten-th.jpg'
+          src='https://www.cutralcoalinstante.com/wp-content/uploads/2017/10/pelota-pinchada.jpg'
           alt='chilecampeon'
         />
       </div>

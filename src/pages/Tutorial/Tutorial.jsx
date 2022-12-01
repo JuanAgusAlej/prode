@@ -15,85 +15,85 @@ const Tutorial = () => {
   }, [user]);
 
   return (
-    <div className="container fix bodyPaging">
-      <div className="howToPlay">{t('howToPlay')}</div>
+    <div className="container fix bodyPaging mt-2">
+      <div className="howToPlayMobil">{t('howToPlayMobil')}</div>
       <hr />
       <div>
-        <div className="tutorialDiv">
-          <div className="innerDivText">{t('tuto1')}</div>
-          <div className="innerDivPhoto">
+        <div className="tutorialDivMobil">
+          <div className="innerDivTextMobil">{t('tuto1')}</div>
+          <div className="innerDivPhotoMobil">
             <img className="img" src={tutorial[0].img} alt="tutorialImg" />
           </div>
         </div>
         <hr />
       </div>
       <div>
-        <div className="tutorialDiv">
-          <div className="innerDivText">{t('tuto2')}</div>
-          <div className="innerDivPhoto">
+        <div className="tutorialDivMobil">
+          <div className="innerDivTextMobil">{t('tuto2')}</div>
+          <div className="innerDivPhotoMobil">
             <img className="img" src={tutorial[1].img} alt="tutorialImg" />
           </div>
         </div>
         <hr />
       </div>
       <div>
-        <div className="tutorialDiv">
-          <div className="innerDivText">{t('tuto3')}</div>
-          <div className="innerDivPhoto">
+        <div className="tutorialDivMobil">
+          <div className="innerDivTextMobil">{t('tuto3')}</div>
+          <div className="innerDivPhotoMobil">
             <img className="img" src={tutorial[2].img} alt="tutorialImg" />
           </div>
         </div>
         <hr />
       </div>
       <div>
-        <div className="tutorialDiv">
-          <div className="innerDivText">{t('tuto4')}</div>
-          <div className="innerDivPhoto">
+        <div className="tutorialDivMobil">
+          <div className="innerDivTextMobil">{t('tuto4')}</div>
+          <div className="innerDivPhotoMobil">
             <img className="img" src={tutorial[3].img} alt="tutorialImg" />
           </div>
         </div>
         <hr />
       </div>
       <div>
-        <div className="tutorialDiv">
-          <div className="innerDivText">{t('tuto5')}</div>
-          <div className="innerDivPhoto">
+        <div className="tutorialDivMobil">
+          <div className="innerDivTextMobil">{t('tuto5')}</div>
+          <div className="innerDivPhotoMobil">
             <img className="img" src={tutorial[4].img} alt="tutorialImg" />
           </div>
         </div>
         <hr />
       </div>
       <div>
-        <div className="tutorialDiv">
-          <div className="innerDivText">{t('tuto6')}</div>
-          <div className="innerDivPhoto">
+        <div className="tutorialDivMobil">
+          <div className="innerDivTextMobil">{t('tuto6')}</div>
+          <div className="innerDivPhotoMobil">
             <img className="img" src={tutorial[5].img} alt="tutorialImg" />
           </div>
         </div>
         <hr />
       </div>
       <div>
-        <div className="tutorialDiv">
-          <div className="innerDivText">{t('tuto7')}</div>
-          <div className="innerDivPhoto">
+        <div className="tutorialDivMobil">
+          <div className="innerDivTextMobil">{t('tuto7')}</div>
+          <div className="innerDivPhotoMobil">
             <img className="img" src={tutorial[6].img} alt="tutorialImg" />
           </div>
         </div>
         <hr />
       </div>
       <div>
-        <div className="tutorialDiv">
-          <div className="innerDivText">{t('tuto8')}</div>
-          <div className="innerDivPhoto">
+        <div className="tutorialDivMobil">
+          <div className="innerDivTextMobil">{t('tuto8')}</div>
+          <div className="innerDivPhotoMobil">
             <img className="img" src={tutorial[7].img} alt="tutorialImg" />
           </div>
         </div>
         <hr />
       </div>
       <div>
-        <div className="tutorialDiv">
-          <div className="innerDivText">{t('tuto9')}</div>
-          <div className="innerDivPhoto">
+        <div className="tutorialDivMobil">
+          <div className="innerDivTextMobil">{t('tuto9')}</div>
+          <div className="innerDivPhotoMobil">
             <img className="img" src={tutorial[8].img} alt="tutorialImg" />
           </div>
         </div>

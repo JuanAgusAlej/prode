@@ -2,7 +2,7 @@ body {
   background-color: rgba(217, 217, 217, 1);
 }
 
-.howToPlay {
+.howToPlayMobil {
   padding-top: 1rem;
   text-align: center;
   color: rgba(194, 75, 75, 1);
@@ -14,12 +14,12 @@ body {
   line-height: 29px;
 }
 
-.fix {
+.fixMobil {
   display: flex;
   flex-direction: column;
 }
 
-.tutorialDiv {
+.tutorialDivMobil {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -27,7 +27,7 @@ body {
   align-items: center;
 }
 
-.innerDivText {
+.innerDivTextMobil {
   color: rgba(222, 46, 46, 1);
   font-family: 'Inter';
   font-style: normal;
@@ -39,7 +39,7 @@ body {
   text-align: center;
 }
 
-.innerDivPhoto {
+.innerDivPhotoMobil {
   height: 100%;
   width: 100%;
   text-align: center;
