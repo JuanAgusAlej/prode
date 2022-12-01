@@ -5,7 +5,7 @@ import './siderbars.css';
 
 const Siderbars = ({ buttons, dropdown }) => {
   return (
-    <div className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark  navBarAdmin ">
+    <div className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark  navBarAdmin sticky-top">
       <ul className="nav  nav-pills flex-column mb-auto ">
         {buttons.map((button, i) => (
           <ButtonSiderbars
