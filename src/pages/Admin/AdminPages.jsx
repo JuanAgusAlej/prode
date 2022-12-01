@@ -35,7 +35,7 @@ const AdminPages = () => {
   ];
   console.log(path);
   return (
-    <div className="container-fluid">
+    <div className="container-fluid p-0">
       <div className="row">
         <div className="col-1 p-0">
           <Siderbars buttons={buttons} dropdown={true} />

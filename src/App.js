@@ -30,7 +30,6 @@ import AdminPages from './pages/Admin/AdminPages.jsx';
 import ProfilePagesDesktop from './pages/ProfileDesktop/ProfilePagesDesktop.jsx';
 import ProfileEditorPagesDesktop from './pages/ProfileDesktop/ProfileEditorDesktop/ProfileEditorPagesDesktop.jsx';
 
-
 function App() {
   const [size, setSize] = useState('');
   const [userCountry, setUserCountry] = useState('');
@@ -69,7 +68,7 @@ function App() {
     return (
       <BrowserRouter>
         <ToastContainer />
-        <Navbar />
+        {/* <Navbar /> */}
         <Routes>
           <Route path="/profile/:id" index element={<ProfilePagesDesktop />} />
           <Route
@@ -96,7 +95,7 @@ function App() {
   return (
     <BrowserRouter>
       <ToastContainer />
-      {/* <Navbar /> */}
+      <Navbar />
       <Routes>
         <Route path="/profile/:id" index element={<ProfilePages />} />
         <Route
