@@ -19,13 +19,15 @@ const CardPartidos = ({ match }) => {
     } else {
       setTime(`${hours}:${minutes}`);
     }
+  }, []);
+
+  useEffect(() => {
     user?.predictions.forEach(pred => {
       if (pred.matchId === match._id) {
         setPrediction(pred);
-        console.log(pred);
       }
     });
-  }, []);
+  }, [user]);
 
   return (
     <div className='iconHome d-flex flex-column'>
