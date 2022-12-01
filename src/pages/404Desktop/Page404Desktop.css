@@ -1,0 +1,21 @@
+.cd404 {
+  color: rgba(194, 75, 75, 1);
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 35px;
+  line-height: 29px;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.id404 {
+  margin-top: 2rem;
+  text-align: center;
+  height: 14rem;
+}
+
+.desImg {
+  width: 70%;
+  border-radius: 6px;
+}

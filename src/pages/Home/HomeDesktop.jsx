@@ -25,23 +25,19 @@ const HomeDesktop = () => {
   const buttons = [
     {
       text: 'Home',
-      direction: '/admin',
+      direction: '/',
     },
     {
-      text: 'Users',
-      direction: '/admin/users',
+      text: 'Tutorial',
+      direction: '/tutorial',
     },
     {
-      text: 'Teams',
-      direction: '/admin/teams',
+      text: 'Prizes',
+      direction: '/prizes',
     },
     {
-      text: 'Tournament',
-      direction: '/admin/tournaments',
-    },
-    {
-      text: 'Match',
-      direction: '/admin/matchs',
+      text: 'User',
+      direction: '/user',
     },
   ];
   useEffect(() => {
