@@ -1,19 +1,18 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import pelota from '../../assets/log.jpg';
 import { tokenValidated } from '../../service/userApi';
-import { setAxiosConfig } from '../../utils/axiosConfig';
 import './navbar.css';
 
 const Navbar = () => {
-  const url = process.env.REACT_APP_URL;
   const location = useLocation();
   const navigate = useNavigate();
   const [hide, setHide] = useState(false);
-  const [userPoints, setuserPoints] = useState(0);
+  const [user, setUser] = useState(null);
   const localStorageLogin = async () => {
     if (localStorage.getItem('token')) {
       const data = await tokenValidated();
+      setUser(data);
       if (!data.validated && location.pathname !== `/${data.direction}`) {
         navigate(data.direction);
       }
@@ -21,24 +20,6 @@ const Navbar = () => {
       navigate('/');
     }
   };
-
-  useEffect(() => {
-    const getUserPoints = async () => {
-      try {
-        const axiosConfig = setAxiosConfig();
-        const data = await axios.get(`${url}/user/me`, axiosConfig);
-        if (data.data.points) setuserPoints(data.data.points);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getUserPoints();
-    const interval = setInterval(() => {
-      getUserPoints();
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
   useEffect(() => {
     if (location.pathname === '/' || location.pathname === '/validation') {
       setHide(true);
@@ -48,37 +29,27 @@ const Navbar = () => {
     localStorageLogin();
   }, [location.pathname]);
 
-  const onClickLogout = () => {
-    localStorage.removeItem('token');
-  };
-
   return (
-    <nav className='navbar fixed-top navbar-dark bg-dark p-0 '>
+    <nav className="navbar fixed-top navbar-dark bg-dark p-0 ">
       <div
         className={
           hide === true
             ? 'd-none'
             : 'container-fluid my-1 align-items-center mx-2 icon'
-        }
-      >
+        }>
         <img
-          src='https://tonic3.com/static/Tonic3_RGB_1-c2d1d8ad7f534000ba675313197f5fe4.webp'
-          alt=''
-          width='30'
-          height='24'
-          className='d-inline-block align-text-top'
+          src={pelota}
+          alt=""
+          width="30"
+          height="24"
+          className="d-inline-block align-text-top"
         />
-        {userPoints ? (
-          <p className='m-0'>{userPoints} pts</p>
+        {user !== null ? (
+          <p className="m-0">{user?.points}pts</p>
         ) : (
-          <p className='m-0'></p>
+          <p className="m-0"></p>
         )}
-        <Link to={'/'}>
-          <i
-            className='bi bi-box-arrow-in-left'
-            onClick={() => onClickLogout()}
-          ></i>
-        </Link>
+        <i className="bi bi-gear  "></i>
       </div>
     </nav>
   );

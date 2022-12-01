@@ -7,7 +7,7 @@ import {
 } from 'firebase/auth';
 import GoogleButton from 'react-google-button';
 import { useNavigate } from 'react-router-dom';
-import { app, getTokenPush } from '../../service/firebase';
+import app from '../../service/firebase';
 import './loginPages.css';
 import { tokenValidated, userLogin } from '../../service/userApi';
 import LoginTitle from '../../components/LoginTitle/LoginTitle.jsx';
@@ -34,7 +34,6 @@ const LoginPages = () => {
       const data = await userLogin(restult.user);
       if (data.token) {
         localStorage.setItem('token', data.token);
-        getTokenPush();
         navigate(data.direction);
       }
       navigate(data.direction);

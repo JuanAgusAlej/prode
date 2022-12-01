@@ -1,8 +1,3 @@
-/* eslint-disable implicit-arrow-linebreak */
-/* eslint-disable comma-dangle */
-/* eslint-disable prefer-template */
-/* eslint-disable prefer-regex-literals */
-/* eslint-disable no-underscore-dangle */
 /* eslint-disable no-restricted-globals */
 
 // This service worker can be customized!
@@ -55,8 +50,7 @@ registerRoute(
 // precache, in this case same-origin .png requests like those from in public/
 registerRoute(
   // Add in any other file extensions or routing criteria as needed.
-  ({ url }) =>
-    url.origin === self.location.origin && url.pathname.endsWith('.png'), // Customize this strategy as needed, e.g., by changing to CacheFirst.
+  ({ url }) => url.origin === self.location.origin && url.pathname.endsWith('.png'), // Customize this strategy as needed, e.g., by changing to CacheFirst.
   new StaleWhileRevalidate({
     cacheName: 'images',
     plugins: [
