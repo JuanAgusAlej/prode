@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import pelota from '../../assets/log.jpg';
 import { tokenValidated } from '../../service/userApi';
 import { setAxiosConfig } from '../../utils/axiosConfig';
 import './navbar.css';
@@ -41,7 +40,12 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    if (location.pathname === '/' || location.pathname === '/validation') {
+    console.log(location.pathname.search('admin'));
+    if (
+      location.pathname === '/'
+      || location.pathname === '/validation'
+      || location.pathname.search('admin') === 1
+    ) {
       setHide(true);
     } else {
       setHide(false);
@@ -60,19 +64,22 @@ const Navbar = () => {
             : 'container-fluid my-1 align-items-center mx-2 icon'
         }>
         <img
-          src={pelota}
-          alt=""
-          width="30"
-          height="24"
-          className="d-inline-block align-text-top"
+          src='https://tonic3.com/static/Tonic3_RGB_1-c2d1d8ad7f534000ba675313197f5fe4.webp'
+          alt=''
+          width='30'
+          height='24'
+          className='d-inline-block align-text-top'
         />
         {userPoints ? (
-          <p className="m-0">{userPoints} pts</p>
+          <p className='m-0'>{userPoints} pts</p>
         ) : (
-          <p className="m-0"></p>
+          <p className='m-0'></p>
         )}
-        <Link to={'/settings'}>
-            <i className="bi mb-1 bi-gear" onClick={() => onClickLogout()}></i>
+        <Link to={'/'}>
+          <i
+            className='bi bi-box-arrow-in-left'
+            onClick={() => onClickLogout()}
+          ></i>
         </Link>
       </div>
     </nav>

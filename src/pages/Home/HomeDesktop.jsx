@@ -1,3 +1,5 @@
+/* eslint-disable operator-linebreak */
+/* eslint-disable nonblock-statement-body-position */
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,6 +12,7 @@ import CardPartidos from '../../components/CardPartidos/CardPartidos.jsx';
 import MatchCardProde from '../../components/MatchCardProde/MatchCardProde.jsx';
 import Leaderboard from '../../components/Leaderboard/Leaderboard.jsx';
 import { getUsers } from '../../service/leaderboard';
+import Siderbars from '../../commons/Siderbars/Siderbars.jsx';
 
 const HomeDesktop = () => {
   const dispatch = useDispatch();
@@ -22,15 +25,20 @@ const HomeDesktop = () => {
 
   useEffect(() => {
     if (tournament) {
-      console.log(tournament);
       getUsers(tournament._id).then((data) => setUsers(data));
       getMatches(tournament._id).then((data) => {
         setMatchs(data);
         const dataFiltered = data.filter((match) => {
           const matchDate = new Date(`${match.date}`);
           const now = new Date();
-          if (matchDate.getTime() - 7200000 > now.getTime()) return true;
-          else return false;
+          if (
+            matchDate.getTime() - 7200000 > now.getTime() &&
+            match.result === 'PENDING'
+          ) {
+            return true;
+          } else {
+            return false;
+          }
         });
         setMatches(dataFiltered);
       });
@@ -39,7 +47,7 @@ const HomeDesktop = () => {
 
   useEffect(() => {
     if (user) {
-      i18n.changeLanguage(user?.userData?.language);
+      i18n.changeLanguage(user?.language);
     }
   }, [user]);
 
@@ -49,8 +57,10 @@ const HomeDesktop = () => {
   }, []);
 
   return (
-    <div className="father fondo">
-      <div className="menu col-1">menu</div>
+    <div className="father">
+      <div className="menu col-1">
+      <Siderbars dropdown={false}/>
+      </div>
       <div className="children">
         <div className="row divImg"></div>
         <div className="container">
@@ -64,7 +74,7 @@ const HomeDesktop = () => {
               {tournament
                 ? matchs?.map((match) => (
                     <CardPartidos key={match._id} match={match} />
-                  ))
+                ))
                 : null}
             </div>
             <div className="col-5 container">
@@ -80,7 +90,7 @@ const HomeDesktop = () => {
                       user={user}
                       key={match._id}
                     />
-                  ))
+                ))
                 : null}
             </div>
             <div className="col-3 container">

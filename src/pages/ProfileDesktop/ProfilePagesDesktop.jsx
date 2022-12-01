@@ -1,18 +1,38 @@
-import React, { useEffect } from 'react';
+/* eslint-disable no-underscore-dangle */
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+import CardPartidos from '../../components/CardPartidos/CardPartidos.jsx';
 import './profilePagesDesktop.css';
 import { getUser } from '../../state/user';
+import { getTournament } from '../../state/tournament';
+import { getMatches } from '../../service/matches';
 
 const ProfilePagesDesktop = () => {
+  const [matchs, setMatchs] = useState([]);
+  const { tournament } = useSelector((state) => state);
   const { user } = useSelector((state) => state);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
 
+  const matchsGet = async () => {
+    const data = await getMatches(tournament.tournament._id);
+    console.log(data);
+    const arr = [];
+    arr.push(
+      data[data.length - 1],
+      data[data.length - 2],
+      data[data.length - 3],
+    );
+    console.log(arr);
+    setMatchs(arr);
+  };
+
   useEffect(() => {
     dispatch(getUser());
+    dispatch(getTournament());
   }, []);
 
   useEffect(() => {
@@ -20,6 +40,12 @@ const ProfilePagesDesktop = () => {
       i18n.changeLanguage(user?.userData?.language);
     }
   }, [user]);
+
+  useEffect(() => {
+    if (!tournament.isLoading) {
+      matchsGet();
+    }
+  }, [tournament]);
 
   const buttonHandler = (e) => {
     e.preventDefault();
@@ -35,7 +61,7 @@ const ProfilePagesDesktop = () => {
   }
 
   return (
-    <div className="profileDiv">
+    <div>
       <div className="container1">
         <div className="imgProfileDiv">
           <img
@@ -52,23 +78,35 @@ const ProfilePagesDesktop = () => {
         </div>
       </div>
       <div className="container2">
-        <ul className="list-group list-group-flush">
-          <li className="list-group-item abc">
-            {t('email')}: {user?.userData?.email}
-          </li>
-          <li className="list-group-item abc">
-            {t('name')}: {user?.userData?.name}
-          </li>
-          <li className="list-group-item abc">
-            {t('region')}: {user?.userData?.region}
-          </li>
-          <li className="list-group-item abc">
-            {t('points')}: {user?.userData?.points}
-          </li>
-          <li className="list-group-item abc">
-            {t('language')}: {user?.userData?.language}
-          </li>
-        </ul>
+        <div className="info1">
+          <ul className="list-group list-group-flush">
+            <li className="list-group-item abc">
+              {t('email')}: {user?.userData?.email}
+            </li>
+            <li className="list-group-item abc">
+              {t('name')}: {user?.userData?.name}
+            </li>
+            <li className="list-group-item abc">
+              {t('region')}: {user?.userData?.region}
+            </li>
+            <li className="list-group-item abc">
+              {t('points')}: {user?.userData?.points}
+            </li>
+            <li className="list-group-item abc">
+              {t('language')}: {user?.userData?.language}
+            </li>
+          </ul>
+        </div>
+        <div className="info2">
+          <div className="resul">Your last results</div>
+          {!tournament.isLoading ? (
+            matchs?.map((match) => (
+              <CardPartidos key={match._id} match={match} />
+            ))
+          ) : (
+            <></>
+          )}
+        </div>
       </div>
     </div>
   );
