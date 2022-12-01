@@ -53,16 +53,20 @@ const TeamTable = ({ team, update }) => {
   return (
     <tr>
       <td>
+        <img src={team.logo} style={{ maxWidth: 50 }}></img>
+        <ButtonsTeamTable action={editTeam} objectKey="logo" />
+      </td>
+      <td>
         {team.name}
         <ButtonsTeamTable action={editTeam} objectKey="name" />
       </td>
       <td>
-        {team.country}
-        <ButtonsTeamTable action={editTeam} objectKey="country" />
+        {team.shortName}
+        <ButtonsTeamTable action={editTeam} objectKey="shortName" />
       </td>
       <td>
-        <img src={team.logo} style={{ maxWidth: 50 }}></img>
-        <ButtonsTeamTable action={editTeam} objectKey="logo" />
+        {team.country}
+        <ButtonsTeamTable action={editTeam} objectKey="country" />
       </td>
       <td className="col-2">
         <button

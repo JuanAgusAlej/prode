@@ -92,9 +92,10 @@ const TeamAdmin = () => {
             Team
           </button>
           <tr>
-            <th scope="col-4">Name</th>
-            <th scope="col-4">Country</th>
             <th scope="col-4">Logo</th>
+            <th scope="col-4">Name</th>
+            <th scope="col-4">Short Name</th>
+            <th scope="col-4">Country</th>
           </tr>
         </thead>
         <tbody>

@@ -1,0 +1,10 @@
+.modal {
+    display: none;
+}
+
+.modal.is-open {
+    display: block;
+    margin-left: 30vw;
+    margin-top: 15vh;
+    max-width: 35%;
+}
