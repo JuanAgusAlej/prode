@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
+import { useTranslation } from 'react-i18next';
 
 import LoginPages from './pages/Login/LoginPages.jsx';
 import ProfilePages from './pages/Profile/ProfilePages.jsx';
@@ -26,6 +27,7 @@ import { onMessageListener } from './service/firebase';
 
 function App() {
   const [userCountry, setUserCountry] = useState('');
+  const { t } = useTranslation();
 
   useEffect(() => {
     getUserLocation()
@@ -41,7 +43,7 @@ function App() {
           <div>
             <b>{payload.data.match}</b>
             <br />
-            You have earned {payload.data.points} points
+            {t('notificationNewPoints', { points: payload.data.points })}
           </div>
         );
       }

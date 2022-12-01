@@ -30,7 +30,7 @@ const resources = {
         'First of all, you need to be on Home, go to the fixture, and touch the matches to be played',
       tuto2: 'Then you will see all the available matches here',
       tuto3: 'Here you can guess your winner and the amount of each team goals',
-      tuto4: 'If you accert the exact result, you will win 5 points',
+      tuto4: 'If you accert the exact result, you will win 8 points',
       tuto5:
         'If you accert the winner but not the exact result, you will win 3 points',
       tuto6: 'If you dont accert anything, you will not win points',
@@ -46,6 +46,7 @@ const resources = {
       leftToPlay: 'left to play',
       user: 'User',
       totalPoints: 'Total points',
+      notificationNewPoints: 'You have earned {{points}} points',
     },
   },
   ES: {
@@ -73,7 +74,7 @@ const resources = {
         'Primero que nada dirigite a la pestaña Home, toca en fixture y finalmente en partidos por jugar',
       tuto2: 'Luego podras ver todos los partidos disponibles',
       tuto3: 'Aqui podrás elegir el ganador y la cantidad de goles por equipo',
-      tuto4: 'Si acertás el resultado exacto, ganarás 5 puntos',
+      tuto4: 'Si acertás el resultado exacto, ganarás 8 puntos',
       tuto5:
         'Si acertás el ganador,pero no el resultado exacto, ganarás 3 puntos',
       tuto6: 'Si no acertás el ganador, no recibirás puntos',
@@ -89,6 +90,7 @@ const resources = {
       leftToPlay: 'restantes para jugar',
       user: 'Usuario',
       totalPoints: 'Puntos totales',
+      notificationNewPoints: 'Has ganado {{points}} puntos',
     },
   },
   PT: {
@@ -116,7 +118,7 @@ const resources = {
         'Em primeiro lugar, vá para a guia Home, toque em fixture e, finalmente, em jogos para jogar',
       tuto2: 'Então você pode ver todas as correspondências disponíveis',
       tuto3: 'Aqui você pode escolher o vencedor e o número de gols por equipe',
-      tuto4: 'Se você acertar o resultado exato, ganhará 5 pontos',
+      tuto4: 'Se você acertar o resultado exato, ganhará 8 pontos',
       tuto5:
         'Se você adivinhar o vencedor, mas não o resultado exato, ganhará 3 pontos',
       tuto6: 'Se você não adivinhar o vencedor, não receberá pontos',
@@ -132,6 +134,7 @@ const resources = {
       leftToPlay: 'restante para jogar',
       user: 'Usuario',
       totalPoints: 'Total de pontos',
+      notificationNewPoints: 'Você ganhou {{points}} pontos',
     },
   },
 };

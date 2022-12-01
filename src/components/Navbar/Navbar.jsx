@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import pelota from '../../assets/log.jpg';
 import { tokenValidated } from '../../service/userApi';
 import { setAxiosConfig } from '../../utils/axiosConfig';
 import './navbar.css';
@@ -49,6 +48,10 @@ const Navbar = () => {
     localStorageLogin();
   }, [location.pathname]);
 
+  const onClickLogout = () => {
+    localStorage.removeItem('token');
+  };
+
   return (
     <nav className='navbar fixed-top navbar-dark bg-dark p-0 '>
       <div
@@ -59,7 +62,7 @@ const Navbar = () => {
         }
       >
         <img
-          src={pelota}
+          src='https://tonic3.com/static/Tonic3_RGB_1-c2d1d8ad7f534000ba675313197f5fe4.webp'
           alt=''
           width='30'
           height='24'
@@ -70,8 +73,11 @@ const Navbar = () => {
         ) : (
           <p className='m-0'></p>
         )}
-        <Link to={'/settings'}>
-          <i className='bi mb-1 bi-gear  '></i>
+        <Link to={'/'}>
+          <i
+            className='bi bi-box-arrow-in-left'
+            onClick={() => onClickLogout()}
+          ></i>
         </Link>
       </div>
     </nav>
