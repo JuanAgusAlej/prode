@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 import axios from 'axios';
 import { setAxiosConfig } from '../utils/axiosConfig';
 
@@ -9,10 +10,12 @@ export const getUsersAll = async () => {
 };
 export const deleteUser = async (id) => {
   const axiosConfig = setAxiosConfig();
-  console.log(axiosConfig);
-  console.log(id);
   try {
-    const { data } = await axios.put(`${url}/user/${id}/status`, axiosConfig);
+    const { data } = await axios.put(
+      `${url}/user/${id}/status`,
+      {},
+      axiosConfig
+    );
     return data;
   } catch (error) {
     console.log(error);
@@ -20,10 +23,8 @@ export const deleteUser = async (id) => {
 };
 export const changeRolUserApi = async (id) => {
   const axiosConfig = setAxiosConfig();
-  console.log(axiosConfig);
-  console.log(id);
   try {
-    const { data } = await axios.put(`${url}/user/${id}/role`, axiosConfig);
+    const { data } = await axios.put(`${url}/user/${id}/role`, {}, axiosConfig);
     return data;
   } catch (error) {
     console.log(error);
