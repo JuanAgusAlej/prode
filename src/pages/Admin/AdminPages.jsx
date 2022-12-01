@@ -9,7 +9,6 @@ const AdminPages = () => {
   const [path, setPath] = useState();
   useEffect(() => {
     setPath(location.pathname);
-    console.log(screen.width);
   }, [location]);
   const buttons = [
     {
@@ -33,7 +32,6 @@ const AdminPages = () => {
       direction: '/admin/matchs',
     },
   ];
-  console.log(path);
   return (
     <div className="container-fluid p-0">
       <div className="row">
