@@ -16,4 +16,9 @@ const activePulse = async (page) => {
   await axios.post(`${url}/metrics`, { action: 'ACTIVE' }, setAxiosConfig());
 };
 
-export { pageview, activePulse };
+const getMetrics = async () => {
+  const { data } = await axios.get(`${url}/metrics`, setAxiosConfig());
+  return data;
+};
+
+export { pageview, activePulse, getMetrics };
