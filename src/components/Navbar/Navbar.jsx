@@ -41,7 +41,12 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    if (location.pathname === '/' || location.pathname === '/validation') {
+    console.log(location.pathname.search('admin'));
+    if (
+      location.pathname === '/'
+      || location.pathname === '/validation'
+      || location.pathname.search('admin') === 1
+    ) {
       setHide(true);
     } else {
       setHide(false);
