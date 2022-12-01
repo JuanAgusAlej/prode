@@ -7,6 +7,7 @@ import CardPartidos from '../../components/CardPartidos/CardPartidos.jsx';
 import './profilePagesDesktop.css';
 import { getUser } from '../../state/user';
 import { getTournament } from '../../state/tournament';
+import Siderbars from '../../commons/Siderbars/Siderbars.jsx';
 import { getMatches } from '../../service/matches';
 
 const ProfilePagesDesktop = () => {
@@ -61,51 +62,56 @@ const ProfilePagesDesktop = () => {
   }
 
   return (
-    <div>
-      <div className="container1">
-        <div className="imgProfileDiv">
-          <img
-            src={user?.userData?.avatar}
-            alt="icon placeholder"
-            className="imgProfile2"
-          />
-        </div>
-        <div className="userNameDiv">
-          <h1 className="userName">{user?.userData?.alias}</h1>
-          <button className="btnEdit" onClick={buttonHandler}>
-            <i className="bi bi-pencil-square"></i>
-          </button>
-        </div>
+    <div className="father">
+      <div className="menu col-1">
+        <Siderbars dropdown={false} adm={false} />
       </div>
-      <div className="container2">
-        <div className="info1">
-          <ul className="list-group list-group-flush">
-            <li className="list-group-item abc">
-              {t('email')}: {user?.userData?.email}
-            </li>
-            <li className="list-group-item abc">
-              {t('name')}: {user?.userData?.name}
-            </li>
-            <li className="list-group-item abc">
-              {t('region')}: {user?.userData?.region}
-            </li>
-            <li className="list-group-item abc">
-              {t('points')}: {user?.userData?.points}
-            </li>
-            <li className="list-group-item abc">
-              {t('language')}: {user?.userData?.language}
-            </li>
-          </ul>
+      <div className="children">
+        <div className="container1">
+          <div className="imgProfileDiv">
+            <img
+              src={user?.userData?.avatar}
+              alt="icon placeholder"
+              className="imgProfile2"
+            />
+          </div>
+          <div className="userNameDiv">
+            <h1 className="userName">{user?.userData?.alias}</h1>
+            <button className="btnEdit" onClick={buttonHandler}>
+              <i className="bi bi-pencil-square"></i>
+            </button>
+          </div>
         </div>
-        <div className="info2">
-          <div className="resul">Your last results</div>
-          {!tournament.isLoading ? (
-            matchs?.map((match) => (
-              <CardPartidos key={match._id} match={match} />
-            ))
-          ) : (
-            <></>
-          )}
+        <div className="container2">
+          <div className="info1">
+            <ul className="list-group list-group-flush">
+              <li className="list-group-item abc">
+                {t('email')}: {user?.userData?.email}
+              </li>
+              <li className="list-group-item abc">
+                {t('name')}: {user?.userData?.name}
+              </li>
+              <li className="list-group-item abc">
+                {t('region')}: {user?.userData?.region}
+              </li>
+              <li className="list-group-item abc">
+                {t('points')}: {user?.userData?.points}
+              </li>
+              <li className="list-group-item abc">
+                {t('language')}: {user?.userData?.language}
+              </li>
+            </ul>
+          </div>
+          <div className="info2">
+            <div className="resul">Your last results</div>
+            {!tournament.isLoading ? (
+              matchs?.map((match) => (
+                <CardPartidos key={match._id} match={match} />
+              ))
+            ) : (
+              <></>
+            )}
+          </div>
         </div>
       </div>
     </div>

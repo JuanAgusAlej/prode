@@ -1,3 +1,13 @@
 .fix {
- margin-top: -130px;
+  margin-top: -130px;
+}
+.father {
+  display: flex;
+  min-height: 100vh;
+}
+.children {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-left: 10px;
 }

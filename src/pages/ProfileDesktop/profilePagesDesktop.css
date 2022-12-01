@@ -16,10 +16,6 @@
   border: 0px;
 }
 
-/* .imgProfileDiv {
-  width: 25%;
-} */
-
 .imgProfile2 {
   width: 150px;
 }
@@ -64,4 +60,14 @@ button {
   text-align: center;
   font-size: 22px;
   margin-bottom: 10px;
+}
+.father {
+  display: flex;
+  min-height: 100vh;
+}
+.children {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-left: 10px;
 }
