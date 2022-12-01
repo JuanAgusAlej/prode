@@ -12,6 +12,7 @@ import CardPartidos from '../../components/CardPartidos/CardPartidos.jsx';
 import MatchCardProde from '../../components/MatchCardProde/MatchCardProde.jsx';
 import Leaderboard from '../../components/Leaderboard/Leaderboard.jsx';
 import { getUsers } from '../../service/leaderboard';
+import Siderbars from '../../commons/Siderbars/Siderbars.jsx';
 
 const HomeDesktop = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,28 @@ const HomeDesktop = () => {
   const [users, setUsers] = useState([]);
   const tournament = useSelector((state) => state.tournament.tournament);
   const user = useSelector((state) => state.user.userData);
-
+  const buttons = [
+    {
+      text: 'Home',
+      direction: '/admin',
+    },
+    {
+      text: 'Users',
+      direction: '/admin/users',
+    },
+    {
+      text: 'Teams',
+      direction: '/admin/teams',
+    },
+    {
+      text: 'Tournament',
+      direction: '/admin/tournaments',
+    },
+    {
+      text: 'Match',
+      direction: '/admin/matchs',
+    },
+  ];
   useEffect(() => {
     if (tournament) {
       console.log(tournament);
@@ -57,9 +79,11 @@ const HomeDesktop = () => {
   }, []);
 
   return (
-    <div className="father fondo">
-      <div className="menu col-1">menu</div>
-      <div className="children">
+    <div className="father">
+      <div className="menu col-1">
+        <Siderbars buttons={buttons} dropdown={false}/>
+      </div>
+      <div className="children m-3">
         <div className="row divImg"></div>
         <div className="container">
           <div className="row headers">

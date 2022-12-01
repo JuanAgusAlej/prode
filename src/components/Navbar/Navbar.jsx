@@ -41,14 +41,21 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    if (location.pathname === '/' || location.pathname === '/validation') {
+    console.log(location.pathname.search('admin'));
+    if (
+      location.pathname === '/'
+      || location.pathname === '/validation'
+      || location.pathname.search('admin') === 1
+    ) {
       setHide(true);
     } else {
       setHide(false);
     }
     localStorageLogin();
   }, [location.pathname]);
-
+  const onClickLogout = () => {
+    localStorage.removeItem('token');
+  };
   return (
     <nav className="navbar fixed-top navbar-dark bg-dark p-0 ">
       <div
@@ -56,8 +63,7 @@ const Navbar = () => {
           hide === true
             ? 'd-none'
             : 'container-fluid my-1 align-items-center mx-2 icon'
-        }
-      >
+        }>
         <img
           src={pelota}
           alt=""
@@ -68,7 +74,7 @@ const Navbar = () => {
         <p className="m-0">{userPoints} pts</p>
 
         <Link to={'/settings'}>
-          <i className="bi mb-1 bi-gear  "></i>
+            <i className="bi mb-1 bi-gear" onClick={() => onClickLogout()}></i>
         </Link>
       </div>
     </nav>
