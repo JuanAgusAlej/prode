@@ -1,5 +1,5 @@
 import React from 'react';
-import HomAdmin from '../../../components/Admin/Home/HomAdmin.jsx';
+import HomeAdmin from '../../../components/Admin/Home/HomeAdmin.jsx';
 import MatchAdmin from '../../../components/Admin/Match/MatchAdmin.jsx';
 import TeamAdmin from '../../../components/Admin/TeamAdmin/TeamAdmin.jsx';
 import TournamentAdmin from '../../../components/Admin/TournamentAdmin/TournamentAdmin.jsx';
@@ -21,7 +21,7 @@ const Root = ({ pathname }) => {
       return <MatchAdmin />;
 
     case '/admin':
-      return <HomAdmin />;
+      return <HomeAdmin />;
     default:
       return <Page404 />;
   }
