@@ -1,3 +1,4 @@
+/* eslint-disable operator-linebreak */
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -42,9 +43,9 @@ const Navbar = () => {
   useEffect(() => {
     console.log(location.pathname.search('admin'));
     if (
-      location.pathname === '/'
-      || location.pathname === '/validation'
-      || location.pathname.search('admin') === 1
+      location.pathname === '/' ||
+      location.pathname === '/validation' ||
+      location.pathname.search('admin') === 1
     ) {
       setHide(true);
     } else {
@@ -62,22 +63,19 @@ const Navbar = () => {
           hide === true
             ? 'd-none'
             : 'container-fluid my-1 align-items-center mx-2 icon'
-        }>
+        }
+      >
         <img
-          src='https://tonic3.com/static/Tonic3_RGB_1-c2d1d8ad7f534000ba675313197f5fe4.webp'
-          alt=''
-          width='30'
-          height='24'
-          className='d-inline-block align-text-top'
+          src="https://tonic3.com/static/Tonic3_RGB_1-c2d1d8ad7f534000ba675313197f5fe4.webp"
+          alt=""
+          width="30"
+          height="24"
+          className="d-inline-block align-text-top"
         />
-        {userPoints ? (
-          <p className='m-0'>{userPoints} pts</p>
-        ) : (
-          <p className='m-0'></p>
-        )}
+        <p className="m-0">{userPoints} pts</p>
         <Link to={'/'}>
           <i
-            className='bi bi-box-arrow-in-left'
+            className="bi bi-box-arrow-in-left"
             onClick={() => onClickLogout()}
           ></i>
         </Link>
