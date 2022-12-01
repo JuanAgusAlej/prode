@@ -20,15 +20,19 @@ const ProfilePagesDesktop = () => {
 
   const matchsGet = async () => {
     const data = await getMatches(tournament.tournament._id);
-    console.log(data);
+    const data2 = data.filter((mtch) => mtch.result !== 'PENDING');
+    console.log(data, data2);
     const arr = [];
-    arr.push(
-      data[data.length - 1],
-      data[data.length - 2],
-      data[data.length - 3],
-    );
-    console.log(arr);
-    setMatchs(arr);
+    if (data2.length > 3) {
+      arr.push(
+        data2[data2.length - 1],
+        data2[data2.length - 2],
+        data2[data2.length - 3],
+      );
+      setMatchs(arr);
+    } else {
+      setMatchs(data2);
+    }
   };
 
   useEffect(() => {
