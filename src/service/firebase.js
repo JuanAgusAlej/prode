@@ -1,10 +1,11 @@
-/* eslint-disable object-curly-newline */
-/* eslint-disable implicit-arrow-linebreak */
-/* eslint-disable comma-dangle */
+// Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
-import { getMessaging, getToken, onMessage } from 'firebase/messaging';
-import { setPushToken } from './userApi';
+// import { getAnalytics } from 'firebase/analytics';
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: 'AIzaSyAOsglt91e9wRm6aqQDyGqqTNq3eRfa5ck',
   authDomain: 'prode-f3134.firebaseapp.com',
@@ -15,29 +16,8 @@ const firebaseConfig = {
   measurementId: 'G-YKKEX8XVF4',
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const messaging = getMessaging(app);
+// const analytics = getAnalytics(app);
 
-const getTokenPush = () => {
-  return getToken(messaging, {
-    vapidKey:
-      'BIRurMVEEPL5FTg6CCNAanpKShjanyLi5To7WT-GUdxc-zFmQdRZsIuktGWz5kTmoEipG4Gt_H93CWizQ__z0Jg',
-  })
-    .then((currentToken) => {
-      if (currentToken) {
-        setPushToken(currentToken);
-      }
-    })
-    .catch((err) => {
-      console.log('An error occurred while retrieving push token. ', err);
-    });
-};
-
-const onMessageListener = () =>
-  new Promise((resolve) => {
-    onMessage(messaging, (payload) => {
-      resolve(payload);
-    });
-  });
-
-export { app, getTokenPush, onMessageListener, messaging };
+export default app;

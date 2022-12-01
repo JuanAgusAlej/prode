@@ -9,7 +9,7 @@ const Page404 = () => {
       <div className='i404 container'>
         <img
           className='img'
-          src='https://previews.123rf.com/images/sania01/sania011911/sania01191100169/135546530-a-soccer-ball-with-an-unusual-pattern-lies-among-the-fallen-autumn-leaves-in-the-forest-forgotten-th.jpg'
+          src='https://pbs.twimg.com/media/DL5ieKFW0AAwEGe.jpg'
           alt='chilecampeon'
         />
       </div>
