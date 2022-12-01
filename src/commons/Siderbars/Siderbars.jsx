@@ -3,17 +3,20 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { tokenValidated } from '../../service/userApi';
 import { setAxiosConfig } from '../../utils/axiosConfig';
-import './navbar.css';
+import ButtonSiderbars from './ButtonSiderbars.jsx';
+import './siderbars.css';
 
-const Navbar = () => {
+const Siderbars = ({ buttons, dropdown }) => {
   const url = process.env.REACT_APP_URL;
   const location = useLocation();
   const navigate = useNavigate();
-  const [hide, setHide] = useState(false);
+  const [user, setUser] = useState();
   const [userPoints, setuserPoints] = useState(0);
   const localStorageLogin = async () => {
     if (localStorage.getItem('token')) {
       const data = await tokenValidated();
+      setUser(data);
+      console.log(data);
       if (!data.validated && location.pathname !== `/${data.direction}`) {
         navigate(data.direction);
       }
@@ -21,6 +24,10 @@ const Navbar = () => {
       navigate('/');
     }
   };
+
+  useEffect(() => {
+    localStorageLogin();
+  }, []);
 
   useEffect(() => {
     const getUserPoints = async () => {
@@ -38,52 +45,46 @@ const Navbar = () => {
     }, 5000);
     return () => clearInterval(interval);
   }, []);
-
-  useEffect(() => {
-    console.log(location.pathname.search('admin'));
-    if (
-      location.pathname === '/'
-      || location.pathname === '/validation'
-      || location.pathname.search('admin') === 1
-    ) {
-      setHide(true);
-    } else {
-      setHide(false);
-    }
-    localStorageLogin();
-  }, [location.pathname]);
   const onClickLogout = () => {
     localStorage.removeItem('token');
   };
+
   return (
-    <nav className="navbar fixed-top navbar-dark bg-dark p-0 ">
-      <div
-        className={
-          hide === true
-            ? 'd-none'
-            : 'container-fluid my-1 align-items-center mx-2 icon'
-        }>
-        <img
-          src='https://tonic3.com/static/Tonic3_RGB_1-c2d1d8ad7f534000ba675313197f5fe4.webp'
-          alt=''
-          width='30'
-          height='24'
-          className='d-inline-block align-text-top'
-        />
-        {userPoints ? (
-          <p className='m-0'>{userPoints} pts</p>
+    <div
+      className='d-flex flex-column flex-shrink-0 p-3 text-white bg-dark navBarAdmin'>
+      <ul className="nav  nav-pills flex-column mb-auto  ">
+        {buttons.map((button, i) => (
+          <ButtonSiderbars
+            key={i}
+            text={button.text}
+            direction={button.direction}
+          />
+        ))}
+        {user?.role ? (
+          <ButtonSiderbars
+            key={buttons.length + 1}
+            text={'Admin'}
+            direction={'/admin'}
+          />
         ) : (
-          <p className='m-0'></p>
+          <></>
         )}
-        <Link to={'/'}>
-          <i
-            className='bi bi-box-arrow-in-left'
-            onClick={() => onClickLogout()}
-          ></i>
-        </Link>
-      </div>
-    </nav>
+      </ul>
+      {dropdown ? (
+        <div className="dropdown text-center">
+          <Link className="nav-link" to={'/home'}>
+            <i className="bi bi-arrow-left text-white"></i>
+          </Link>
+        </div>
+      ) : (
+          <div className="dropdown text-center">
+            <Link className="nav-link bi-box-arrow-in-left" to={'/'}
+          onClick={() => onClickLogout()}>
+          </Link>
+        </div>
+      )}
+    </div>
   );
 };
 
-export default Navbar;
+export default Siderbars;

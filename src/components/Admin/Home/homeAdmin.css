@@ -1,0 +1,20 @@
+.MetricCard {
+  border-radius: 8px;
+  background-color: #fff;
+  color: #222;
+  padding: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.MetricCard .count {
+  color: #000;
+}
+
+.MetricCard .description {
+  color: #555;
+}
+.MetricCard .item {
+  background: #fafafa;
+  border-color: #ddd;
+}

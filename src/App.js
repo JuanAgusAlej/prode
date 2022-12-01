@@ -8,7 +8,6 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { useTranslation } from 'react-i18next';
-
 import LoginPages from './pages/Login/LoginPages.jsx';
 import ProfilePages from './pages/Profile/ProfilePages.jsx';
 import ProfileEditorPages from './pages/Profile/ProfileEditor/ProfileEditorPages.jsx';
@@ -25,8 +24,10 @@ import Leaderboard from './pages/Leaderboard/Leaderboard.jsx';
 import Prizes from './pages/Prizes/Prizes.jsx';
 import Page404 from './pages/404/Page404.jsx';
 import { onMessageListener } from './service/firebase';
+import AdminPages from './pages/Admin/AdminPages.jsx';
 import ProfilePagesDesktop from './pages/ProfileDesktop/ProfilePagesDesktop.jsx';
 import ProfileEditorPagesDesktop from './pages/ProfileDesktop/ProfileEditorDesktop/ProfileEditorPagesDesktop.jsx';
+import Metrics from './components/Metrics/Metrics';
 
 function App() {
   const [size, setSize] = useState('');
@@ -52,7 +53,7 @@ function App() {
             <b>{payload.data.match}</b>
             <br />
             {t('notificationNewPoints', { points: payload.data.points })}
-          </div>,
+          </div>
         );
       }
     })
@@ -66,7 +67,8 @@ function App() {
     return (
       <BrowserRouter>
         <ToastContainer />
-        <Navbar />
+        <Metrics />
+        {/* <Navbar /> */}
         <Routes>
           <Route path="/profile/:id" index element={<ProfilePagesDesktop />} />
           <Route
@@ -79,6 +81,11 @@ function App() {
           <Route path="/validation" index element={<ConfirmRegister />} />
           <Route path="/tutorial" index element={<Tutorial />} />
           <Route path="/prizes" index element={<Prizes />} />
+          <Route path="/admin" index element={<AdminPages />} />
+          <Route path="/admin/users" index element={<AdminPages />} />
+          <Route path="/admin/teams" index element={<AdminPages />} />
+          <Route path="/admin/tournaments" index element={<AdminPages />} />
+          <Route path="/admin/matchs" index element={<AdminPages />} />
           <Route path="*" index element={<Page404 />} />
         </Routes>
       </BrowserRouter>
@@ -88,6 +95,7 @@ function App() {
   return (
     <BrowserRouter>
       <ToastContainer />
+      <Metrics />
       <Navbar />
       <Routes>
         <Route path="/profile/:id" index element={<ProfilePages />} />

@@ -8,7 +8,7 @@
 .rowColor {
   background-color: rgba(217, 217, 217, 1);
 }
-th {
+.leaderboard th{
   color: white;
 }
 .position {
