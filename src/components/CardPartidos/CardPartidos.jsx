@@ -1,11 +1,16 @@
+/* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import Visitor from '../../commons/Visitor/Visitor.jsx';
 import './cardPartidos.css';
 
 const CardPartidos = ({ match }) => {
   const date = new Date(match.date);
   const fecha = date.toLocaleDateString();
+  const user = useSelector(state => state.user.userData);
   const [time, setTime] = useState('');
+  const [prediction, setPrediction] = useState({});
+
   useEffect(() => {
     const hours = date.getHours();
     const minutes = date.getMinutes();
@@ -14,29 +19,67 @@ const CardPartidos = ({ match }) => {
     } else {
       setTime(`${hours}:${minutes}`);
     }
+    user.predictions.forEach(pred => {
+      if (pred.matchId === match._id) {
+        setPrediction(pred);
+      }
+    });
   }, []);
+
   return (
-    <div className="iconHome d-flex flex-column">
-      <div className="fecha mt-1">
+    <div className='iconHome d-flex flex-column'>
+      <div className='fecha mt-1'>
         <p>{time}</p>
+        {prediction.state === true ? (
+          <div className='pts win'>
+            Obtained {prediction.points ? prediction.points : 0} pts
+          </div>
+        ) : (
+          <div className='pts los'>
+            Obtained {prediction.points ? prediction.points : 0} pts
+          </div>
+        )}
         <p>{fecha}</p>
       </div>
-      <div className="d-flex m-2 row cont">
+      <div className='d-flex row cont'>
         <Visitor
           gol={match.goalsA}
           team={match.teamAId}
           local={true}
           win={match.result}
-          className='col-5'
-          />
-        <p className="my-2 col-1 instance">-</p>
+        />
+        <p className='my-2 col-1 instance' id='dash'>
+          -
+        </p>
         <Visitor
           gol={match.goalsB}
           team={match.teamBId}
           local={false}
           win={match.result}
-          className='col-5'
         />
+      </div>
+      <div className='row pred'>
+        {prediction.state === true ? (
+          <>
+            <div className='col-5 predDiv predDivLeft win'>
+              {prediction.goalsA ? prediction.goalsA : '-'}
+            </div>
+            <div className='col-1 predDiv instance win'>-</div>
+            <div className='col-5 predDiv predDivRight win'>
+              {prediction.goalsB ? prediction.goalsB : '-'}
+            </div>
+          </>
+        ) : (
+          <>
+            <div className='col-5 predDiv predDivLeft los'>
+              {prediction.goalsA ? prediction.goalsA : '-'}
+            </div>
+            <div className='col-1 predDiv instance los'>-</div>
+            <div className='col-5 predDiv predDivRight los'>
+              {prediction.goalsB ? prediction.goalsB : '-'}
+            </div>
+          </>
+        )}
       </div>
       <p className='instance'>{match.instance}</p>
     </div>

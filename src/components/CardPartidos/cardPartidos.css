@@ -13,7 +13,7 @@
 }
 .fecha p{
     font-size: small;
-    margin-inline:15px ;
+    margin-inline:10px ;
 }
 .cont {
     justify-content: space-evenly;
@@ -21,4 +21,33 @@
 }
 .instance {
     text-align: center;
+}
+.pred {
+    justify-content: center;
+    margin-bottom: 5px;
+}
+.predDiv {
+    height: 20px;
+    font-weight: bolder;
+}
+.predDivLeft {
+    text-align: end;
+    padding-right: 15px;
+}
+.predDivRight {
+    padding-left: 15px;
+}
+.pts {
+    margin-left: 34px;
+    font-size: small;
+    font-weight: bolder;
+}
+#dash {
+    font-weight: bolder;
+}
+.win {
+    color: rgb(11, 202, 11);
+}
+.los {
+    color: rgb(112, 112, 112);
 }

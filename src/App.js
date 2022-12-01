@@ -20,7 +20,6 @@ import MenuBar from './components/MenuBar/MenuBar.jsx';
 import Navbar from './components/Navbar/Navbar.jsx';
 import Tutorial from './pages/Tutorial/Tutorial.jsx';
 import { getUserLocation } from './service/userApi';
-import SettingsPages from './pages/settings/SettingsPages.jsx';
 import Leaderboard from './pages/Leaderboard/Leaderboard.jsx';
 import Prizes from './pages/Prizes/Prizes.jsx';
 import Page404 from './pages/404/Page404.jsx';

@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import fondo from '../../assets/homePages.jpg';
 import './home.css';
 import { getUser } from '../../state/user';
 import { getTournament } from '../../state/tournament';

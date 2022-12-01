@@ -69,7 +69,7 @@ const HomeDesktop = () => {
 
   useEffect(() => {
     if (user) {
-      i18n.changeLanguage(user?.userData?.language);
+      i18n.changeLanguage(user?.language);
     }
   }, [user]);
 
@@ -79,7 +79,7 @@ const HomeDesktop = () => {
   }, []);
 
   return (
-    <div className="father">
+    <div className="father fondo">
       <div className="menu col-1">
         <Siderbars buttons={buttons} dropdown={false}/>
       </div>
