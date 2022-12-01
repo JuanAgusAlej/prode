@@ -103,7 +103,7 @@ const HomeAdmin = () => {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-3">
       <div className="row justify-content-center">
         {metricsObject.kpi.map((kpi, index) => (
           <KpiCard key={index} data={kpi} />

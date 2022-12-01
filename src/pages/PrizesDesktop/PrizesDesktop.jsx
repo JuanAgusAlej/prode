@@ -13,11 +13,11 @@ const PrizesDesktop = () => {
   }, [tournament]);
 
   return (
-    <div className="father">
+    <div className="father ">
       <div className="menu col-1">
         <Siderbars dropdown={false} adm={false} />
       </div>
-      <div className="children">
+      <div className="children mb-3">
         <div className="fix">
           {prizes.length ? (
             <div className="prize container">

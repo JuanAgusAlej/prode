@@ -19,7 +19,7 @@ const CardPartidos = ({ match }) => {
     } else {
       setTime(`${hours}:${minutes}`);
     }
-    user.predictions.forEach(pred => {
+    user?.predictions.forEach(pred => {
       if (pred.matchId === match._id) {
         setPrediction(pred);
       }

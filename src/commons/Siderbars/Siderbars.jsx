@@ -26,7 +26,7 @@ const Siderbars = ({ dropdown, adm }) => {
 
   let buttons = [
     {
-      text: 'Home',
+      text: 'Dashboard',
       direction: '/admin',
     },
     {
@@ -102,7 +102,7 @@ const Siderbars = ({ dropdown, adm }) => {
             direction={button.direction}
           />
         ))}
-        {user?.role === 'ADMIN_ROLE' ? (
+        {user?.role === 'ADMIN_ROLE' && !adm ? (
           <ButtonSiderbars
             key={buttons.length + 1}
             text={'Admin'}
@@ -112,7 +112,7 @@ const Siderbars = ({ dropdown, adm }) => {
           <></>
         )}
       </ul>
-      {dropdown ? (
+      {adm ? (
         <div className="dropdown text-center">
           <Link className="nav-link" to={'/home'}>
             <i className="bi bi-arrow-left text-white"></i>

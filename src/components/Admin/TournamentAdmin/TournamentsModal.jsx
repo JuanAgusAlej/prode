@@ -78,7 +78,7 @@ const TournamentsModal = ({ isOpen, closeModal, update }) => {
 
   console.log(data);
   return (
-    <div className={`box modal ${isOpen && 'is-open'}`}>
+    <div className={` modal ${isOpen && 'is-open'}`}>
       <div>
         <div className="container text-end">
           <button

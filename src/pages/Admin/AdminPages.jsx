@@ -15,7 +15,7 @@ const AdminPages = () => {
     <div className="container-fluid p-0">
       <div className="row">
         <div className="col-1 p-0">
-          <Siderbars dropdown={true} />
+          <Siderbars adm={true} />
         </div>
         <div className="admin col-10">
           <Root pathname={path} />
