@@ -35,51 +35,51 @@
 # Flujo del usuario
 
 ## Modo Mobile
-####Login del Usuario
+###Login del Usuario
 ![](https://snipboard.io/uCUDcr.jpg)
-####Perfil del Usuario
+###Perfil del Usuario
 ![](https://snipboard.io/ZvwWIN.jpg)
-####Editar Perfil del Usuario
+###Editar Perfil del Usuario
 ![](https://snipboard.io/5bcDYx.jpg)
-####Home Page
+###Home Page
 ![](https://snipboard.io/0TEOly.jpg)
-####Fixture
+###Fixture
 ![](https://snipboard.io/F0HpDB.jpg)
 ![](https://snipboard.io/aBHVqr.jpg)
-####Tutorial
+###Tutorial
 ![](https://snipboard.io/Ox8yXD.jpg)
-####Premios
+###Premios
 ![](https://snipboard.io/g7DMwp.jpg)
-####Leaderboard
+###Leaderboard
 ![](https://snipboard.io/FuagbX.jpg)
 
 ## Modo Desktop
 
-####Login del Usuario
+###Login del Usuario
 ![](https://snipboard.io/tICelu.jpg)
-####Perfil del Usuario
+###Perfil del Usuario
 ![](https://snipboard.io/DcBRdH.jpg)
-####Editar Perfil del Usuario
+###Editar Perfil del Usuario
 ![](https://snipboard.io/7TWeAP.jpg)
-####Home Page (Fixture, Leaderboard incluidos)
+###Home Page (Fixture, Leaderboard incluidos)
 ![](https://snipboard.io/Dp1fXd.jpg)
-####Tutorial
+###Tutorial
 ![](https://snipboard.io/DmcTHY.jpg)
-####Premios
+###Premios
 ![](https://snipboard.io/7bUuxQ.jpg)
 
 
 # Panel del Administrador (Solo Desktop)
 
-####Dashboard Metricas
+###Dashboard Metricas
 ![](https://snipboard.io/Fmy1aQ.jpg)
-####Usuarios
+###Usuarios
 ![](https://snipboard.io/hpkXmz.jpg)
-####Equipos
+###Equipos
 ![](https://snipboard.io/Ns1Lue.jpg)
-####Torneos
+###Torneos
 ![](https://snipboard.io/Zc7F6B.jpg)
-####Partidos
+###Partidos
 
 
 
