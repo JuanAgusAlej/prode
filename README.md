@@ -50,7 +50,7 @@
 ![](https://snipboard.io/Ox8yXD.jpg)
 ### Premios
 ![](https://snipboard.io/g7DMwp.jpg)
-###Leaderboard
+### Leaderboard
 ![](https://snipboard.io/FuagbX.jpg)
 
 ## Modo Desktop
