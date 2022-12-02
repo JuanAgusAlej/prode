@@ -56,7 +56,7 @@ const TournamentAdmin = () => {
             className="btn btn-success m-0 p-0 bi bi-plus"
             style={{ fontSize: 16 }}
             onClick={handleModalContainerClick}>
-            Team
+            Tournament
           </button>
           <tr>
             <th>Name</th>
@@ -73,13 +73,21 @@ const TournamentAdmin = () => {
             <p>Loading</p>
           ) : (
             tournaments.data.map((tournament) => (
-              <TourmamentTable key={tournament._id} tourmament={tournament} update={update} />
+              <TourmamentTable
+                key={tournament._id}
+                tourmament={tournament}
+                update={update}
+              />
             ))
           )}
         </tbody>
       </table>
       <div onClick={handleModalContainerClick}>
-        <TournamentsModal isOpen={isOpenModal} closeModal={closeModal} update={update} />
+        <TournamentsModal
+          isOpen={isOpenModal}
+          closeModal={closeModal}
+          update={update}
+        />
       </div>
     </div>
   );

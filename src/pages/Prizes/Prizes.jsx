@@ -12,7 +12,7 @@ const Prizes = () => {
   }, [tournament]);
 
   return (
-    <div className='bodyPaging '>
+    <div className='bodyPaging mb-5'>
       {prizes.length ? (
         <div className='prize container'>
           <div>

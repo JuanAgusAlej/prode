@@ -10,7 +10,6 @@ export const getTournamentsAll = async () => {
 
 export const createdTournamentsApi = async (dato) => {
   const axiosConfig = setAxiosConfig();
-  console.log('asdasdasdasdasdasdasdasdasasdasdasdas');
   console.log(dato);
   try {
     const { data } = await axios.post(`${url}/tournament`, dato, axiosConfig);
@@ -33,6 +32,8 @@ export const deleteTournamentsApi = async (id) => {
 };
 export const editTournamentsApi = async (id, update) => {
   const axiosConfig = setAxiosConfig();
+  console.log('asdasdasdasdassdasd');
+  console.log(update);
   try {
     const { data } = await axios.put(`${url}/tournament/${id}`, update, axiosConfig);
     return data;

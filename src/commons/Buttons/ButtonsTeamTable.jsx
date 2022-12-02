@@ -1,12 +1,12 @@
 import React from 'react';
 
-const ButtonsTeamTable = ({ action, objectKey }) => {
+const ButtonsTeamTable = ({ action, objectKey, position = null }) => {
   return (
     <button
       type="button"
       id={objectKey}
       className="btn btn-link p-0"
-      onClick={() => action(objectKey)}
+      onClick={() => action(objectKey, position)}
       style={{
         width: 25,
         height: 25,

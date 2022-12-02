@@ -1,3 +1,4 @@
+/* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable comma-dangle */
 /* eslint-disable no-restricted-globals */
 import React, { useEffect, useState } from 'react';
@@ -38,6 +39,18 @@ function App() {
   const [userCountry, setUserCountry] = useState('');
   const { t } = useTranslation();
 
+  const onNotification = ({ data: payload }) => {
+    if (payload.data.type === 'NEW_POINTS') {
+      toast.success(
+        <div>
+          <b>{payload.data.match}</b>
+          <br />
+          {t('notificationNewPoints', { points: payload.data.points })}
+        </div>
+      );
+    }
+  };
+
   useEffect(() => {
     healthCheck();
     const healthInterval = setInterval(() => {
@@ -52,7 +65,12 @@ function App() {
       .then(res => res.data)
       .then(({ country }) => setUserCountry(country));
 
-    return () => clearInterval(healthInterval);
+    navigator.serviceWorker.addEventListener('message', onNotification);
+
+    return () => {
+      navigator.serviceWorker.removeEventListener('message', onNotification);
+      clearInterval(healthInterval);
+     }
   }, []);
 
   onMessageListener()

@@ -6,7 +6,7 @@ const Leaderboard = ({ users }) => {
   const { t } = useTranslation();
 
   return (
-    <div className="container tableSettings bodyPaging">
+    <div className="container tableSettings bodyPaging mt-5">
       <table className="table leaderboard">
         <thead>
           <tr>
