@@ -1,4 +1,4 @@
-# Bienvenido al Prode Tonic3
+# Welcome to Tonic3 Prode
 
 <div align="center">
 <a href="https://tonic3.com/" style="margin-right: 30px" target="_blank">
@@ -10,14 +10,12 @@
 </div>
 
 ------------
-Proyecto realizado como practica profesional del Coding Bootcamp de Plataforma 5 a mano de la empresa Tonic3.
+### Features
 
-## Descripcion
-Crear una PWA, reutilizable y adaptable, llave en mano, para la realización de Prodes para eventos deportivos. 
-La PWA deberá ser adaptable y autoadministrable, se deberá poder acceder desde Argentina, Brasil y Estados Unidos, localizando por IP para cada país. 
-Deberá poder usarse como PWA y como Web App tanto en mobile, tablets y desktop. Redirigir países de habla hispana a Argentina, Brasil a la versión en portugués, y USA versión inglés. 
+- PWA application
+- Full-featured: Real time prediction betting page, 3 idioms supported (EN, ES, PT), Available in 3 regions (ARG, USA, BR), Different prizes by region, Unique leaderboard by region, Custom Metrics implemented, Full Back Office support
+- Full-featured: Pagina web de apuestas deportivas, 3 lenguajes disponibles(EN, ES, PT), Disponible unicamente en 3 regiones (ARG, USA, BR), Diversos premios dependiendo de cada region, Back Office del administrador, Custom Metrics incorporadas, Notificaciones Push y Email
 
-------------
 # Instalacion
 
 ## <a href="https://github.com/JuanAgusAlej/prode" target="_blank"> Instalacion Front </a>
@@ -30,28 +28,59 @@ Deberá poder usarse como PWA y como Web App tanto en mobile, tablets y desktop.
 - En la carpeta prode realizar un `npm i`
 - Generar un archivo .env.local con los datos del .temple.env.local en los mismos rellenar los campos de las variables de entorno
 		
-        REACT_APP_URL = url de la peticion al back ej. http://localhost:8080/api
+        REACT_APP_URL = url de la peticion al back EJEMPLO: http://localhost:8080/api
 
 - Una vez configurado ejecutar el proyecto con `npm start`
 
-## <a href="https://github.com/JuanAgusAlej/prode-api" target="_blank">Instalacion Back</a>
-- Realizar un git clone:
-	1. HTTPS: `git clone https://github.com/JuanAgusAlej/prode-api.git`
+# Flujo del usuario
 
-	2. SSH: `git clone git@github.com:JuanAgusAlej/prode-api.git`
+## Modo Mobile
+####Login del Usuario
+![](https://snipboard.io/uCUDcr.jpg)
+####Perfil del Usuario
+![](https://snipboard.io/ZvwWIN.jpg)
+####Editar Perfil del Usuario
+![](https://snipboard.io/5bcDYx.jpg)
+####Home Page
+![](https://snipboard.io/0TEOly.jpg)
+####Fixture
+![](https://snipboard.io/F0HpDB.jpg)
+![](https://snipboard.io/aBHVqr.jpg)
+####Tutorial
+![](https://snipboard.io/Ox8yXD.jpg)
+####Premios
+![](https://snipboard.io/g7DMwp.jpg)
+####Leaderboard
+![](https://snipboard.io/FuagbX.jpg)
 
-- En la carpeta prode-api realizar un `npm i`
-- Generar un archivo .env con los datos del .temple.env en los mismos rellenar los campos de las variables de entorno
-		
-		PORT = (ingresar el puerto en el que se ejecutaría)
-		MONGODB_CNN = (ingresar ruta de Mongo)
-		TOKEN_PASSPHRASE = (ingresar un token para cifrado de token)
-		
-- Una vez configurado ejecutar el proyecto con `npm start`
+## Modo Desktop
 
-## Documentacion
-- ### <a href="https://github.com/JuanAgusAlej/prode-api" target="_blank">Front</a>
-- ###  <a href="https://github.com/JuanAgusAlej/prode-api" target="_blank">Back</a>
+####Login del Usuario
+![](https://snipboard.io/tICelu.jpg)
+####Perfil del Usuario
+![](https://snipboard.io/DcBRdH.jpg)
+####Editar Perfil del Usuario
+![](https://snipboard.io/7TWeAP.jpg)
+####Home Page (Fixture, Leaderboard incluidos)
+![](https://snipboard.io/Dp1fXd.jpg)
+####Tutorial
+![](https://snipboard.io/DmcTHY.jpg)
+####Premios
+![](https://snipboard.io/7bUuxQ.jpg)
+
+
+# Panel del Administrador (Solo Desktop)
+
+####Dashboard Metricas
+![](https://snipboard.io/Fmy1aQ.jpg)
+####Usuarios
+![](https://snipboard.io/hpkXmz.jpg)
+####Equipos
+![](https://snipboard.io/Ns1Lue.jpg)
+####Torneos
+![](https://snipboard.io/Zc7F6B.jpg)
+####Partidos
+
 
 
 # Integrantes
@@ -70,4 +99,3 @@ Deberá poder usarse como PWA y como Web App tanto en mobile, tablets y desktop.
 - Rober Fonseca
 - Agustin Sa 
 - Juan Agustin Alejandro
-
