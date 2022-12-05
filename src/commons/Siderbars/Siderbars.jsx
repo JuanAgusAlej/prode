@@ -40,7 +40,7 @@ const Siderbars = ({ dropdown, adm }) => {
       direction: '/admin/teams',
     },
     {
-      text: t('tournament'),
+      text: t('tournaments'),
       direction: '/admin/tournaments',
     },
     {

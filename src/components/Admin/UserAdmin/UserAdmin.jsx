@@ -1,9 +1,11 @@
 /* eslint-disable array-callback-return */
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { getUsersAll } from '../../../service/userAdminApi';
 import UserTable from './UserTable.jsx';
 
 const UserAdmin = () => {
+  const { t } = useTranslation();
   const [users, setUsers] = useState({
     loading: true,
     data: [],
@@ -26,9 +28,9 @@ const UserAdmin = () => {
       <thead>
         <tr>
           <th scope="col-4">Alias</th>
-          <th scope="col-4">Name</th>
-          <th scope="col-4">Email</th>
-          <th scope="col-4">State</th>
+          <th scope="col-4">{t('name')}</th>
+          <th scope="col-4">{t('email')}</th>
+          <th scope="col-4">{t('state')}</th>
         </tr>
       </thead>
       <tbody>
@@ -38,7 +40,7 @@ const UserAdmin = () => {
           ))
         ) : (
           <tr>
-            <td>Loading</td>
+            <td>{t('loading')}</td>
           </tr>
         )}
       </tbody>
