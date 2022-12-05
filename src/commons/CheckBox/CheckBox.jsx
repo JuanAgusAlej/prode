@@ -1,7 +1,6 @@
 import React from 'react';
 
 const CheckBox = ({ estado, propiedad, handleChange }) => {
-  console.log(propiedad);
   return (
     <div>
       <input

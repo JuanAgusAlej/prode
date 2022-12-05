@@ -1,0 +1,17 @@
+.modal {
+    display: none;
+}
+
+.modal.is-open {
+    display: block;
+    margin-left: 30vw;
+    margin-top: 15vh;
+    max-width: 35%;
+    background-color: #ba3d3d;
+    height: auto;
+    border: 1px solid #1C6EA4;
+    border-radius: 15px;
+}
+.modal.is-open a{
+    color: white;
+}

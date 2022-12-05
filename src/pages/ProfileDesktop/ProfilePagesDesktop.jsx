@@ -21,7 +21,6 @@ const ProfilePagesDesktop = () => {
   const matchsGet = async () => {
     const data = await getMatches(tournament.tournament._id);
     const data2 = data.filter((mtch) => mtch.result !== 'PENDING');
-    console.log(data, data2);
     const arr = [];
     if (data2.length > 3) {
       arr.push(

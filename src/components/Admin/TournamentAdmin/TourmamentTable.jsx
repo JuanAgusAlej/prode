@@ -2,12 +2,16 @@
 import React from 'react';
 import Swal from 'sweetalert2';
 import ButtonsTeamTable from '../../../commons/Buttons/ButtonsTeamTable.jsx';
+import { useModal } from '../../../hooks/useModal';
 import {
   deleteTournamentsApi,
   editTournamentsApi,
 } from '../../../service/tournamentApi';
+import TournamentsTeamModal from './TourmamentTeam/TournamentsTeamModal.jsx';
 
 const TourmamentTable = ({ tourmament, update }) => {
+  const [isOpenModal, openModal, closeModal] = useModal(false);
+
   const MySwal = Swal.mixin({
     customClass: {
       confirmButton: 'btn btn-success py-0 ms-2',
@@ -15,9 +19,9 @@ const TourmamentTable = ({ tourmament, update }) => {
     },
     buttonsStyling: false,
   });
+
   const editPrizer = (propiety, rating) => {
     const listRating = tourmament[propiety].map((prize) => prize.position);
-    console.log(listRating);
     MySwal.fire({
       title: `Cambiar ${propiety}`,
       html: `
@@ -50,7 +54,6 @@ const TourmamentTable = ({ tourmament, update }) => {
         return data;
       },
     }).then(async (result) => {
-      console.log(result);
       if (result.value) {
         tourmament[propiety][rating] = result.value;
         await editTournamentsApi(tourmament._id, tourmament);
@@ -61,7 +64,6 @@ const TourmamentTable = ({ tourmament, update }) => {
   const addPrizer = (propiety) => {
     const listRating = tourmament[propiety].map((prize) => prize.position);
     const data = {};
-    console.log(listRating);
     MySwal.fire({
       title: `Cambiar ${propiety}`,
       html: `
@@ -128,10 +130,26 @@ const TourmamentTable = ({ tourmament, update }) => {
         return genre;
       },
     }).then(async (result) => {
-      console.log(result);
       if (result.value) {
         tourmament[propiety] = result.value;
 
+        await editTournamentsApi(tourmament._id, tourmament);
+        update();
+      }
+    });
+  };
+  const endTournament = () => {
+    MySwal.fire({
+      title: 'Estas seguro?',
+      text: `De finalizar el Torneo ${tourmament.name}`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#FF3270',
+      cancelButtonColor: '#12a696',
+      confirmButtonText: 'yeah, do it!',
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        tourmament.finished = true;
         await editTournamentsApi(tourmament._id, tourmament);
         update();
       }
@@ -153,46 +171,67 @@ const TourmamentTable = ({ tourmament, update }) => {
       }
     });
   };
+  const handleModalContainerClick = (e) => {
+    e.stopPropagation();
+    openModal();
+  };
   return (
+    <>
     <tr>
       <td>
         {tourmament.name}
-        <ButtonsTeamTable action={editTournament} objectKey="name" />
+        {
+          !tourmament.finished ? (
+            <ButtonsTeamTable action={editTournament} objectKey="name" />
+          ) : (<></>)
+        }
       </td>
       <td className="col-1">
         {tourmament.predictionResultPoints}
+        {
+          !tourmament.finished ? (
         <ButtonsTeamTable
           action={editTournament}
           objectKey="predictionResultPoints"
-        />
+        />) : (<></>)
+      }
       </td>
       <td className="col-1">
         {tourmament.predictionGoalsPoints}
+        {
+          !tourmament.finished ? (
         <ButtonsTeamTable
           action={editTournament}
           objectKey="predictionGoalsPoints"
-        />
+        />) : (<></>)
+      }
       </td>
       <td>{tourmament.region}</td>
       <td className="">
         <ul className="list-unstyled">
           <li>
-            <button
+          {
+          !tourmament.finished ? (
+        <button
               type="button"
               className="btn btn-success m-0 p-0"
               onClick={() => addPrizer('prizes')}
               style={{ fontSize: 16 }}>
               Add Prize
-            </button>
+            </button>) : (<></>)
+              }
           </li>
           {tourmament.prizes?.map((prize, i) => (
             <li className="mt-2" key={i}>
               {prize.position} - {prize.prize}
+              {
+                !tourmament.finished ? (
               <ButtonsTeamTable
                 action={editPrizer}
                 objectKey="prizes"
                 position={i}
-              />
+              />) : (<></>)
+            }
             </li>
           ))}
         </ul>
@@ -200,28 +239,21 @@ const TourmamentTable = ({ tourmament, update }) => {
       <td className="">
         <ul className="list-unstyled">
           <li>
-            <button
-              type="button"
-              className="btn btn-success m-0 p-0"
-              style={{ fontSize: 16 }}>
-              Add Team
-            </button>
+            {
+              !tourmament.finished ? (
+                <button
+                  type="button"
+            className="btn btn-success m-0 p-0"
+            onClick={handleModalContainerClick}
+                  style={{ fontSize: 16 }}>
+                  Edit Team
+                </button>
+              ) : (<></>)
+            }
           </li>
-          {tourmament.teamsId?.map((team, i) => (
-            <li className="mt-2" key={i}>
+          {tourmament.teamsId?.map((team) => (
+            <li className="mt-2" key={team._id}>
               {team.name}
-              <button
-                type="button"
-                className="btn btn-link p-0"
-                style={{
-                  width: 25,
-                  height: 25,
-                  fontSize: 16,
-                  color: 'black',
-                  marginLeft: 5,
-                }}>
-                <i className="bi bi-pencil-square"></i>
-              </button>
             </li>
           ))}
         </ul>
@@ -231,6 +263,7 @@ const TourmamentTable = ({ tourmament, update }) => {
         {!tourmament.finished ? (
           <button
             type="button"
+            onClick={() => endTournament()}
             className="btn btn-success m-0 p-0"
             style={{ fontSize: 16 }}>
             Finish
@@ -247,6 +280,15 @@ const TourmamentTable = ({ tourmament, update }) => {
         </button>
       </td>
     </tr>
+    <div>
+    <TournamentsTeamModal
+      isOpen={isOpenModal}
+      closeModal={closeModal}
+          update={update}
+          tournament={tourmament}
+    />
+  </div>
+    </>
   );
 };
 

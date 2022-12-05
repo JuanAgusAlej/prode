@@ -1,6 +1,5 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react';
-import Swal from 'sweetalert2';
 import { useModal } from '../../../hooks/useModal';
 import {
   getTournamentsAll,
@@ -10,13 +9,6 @@ import TournamentsModal from './TournamentsModal.jsx';
 
 const TournamentAdmin = () => {
   const [isOpenModal, openModal, closeModal] = useModal(false);
-  const MySwal = Swal.mixin({
-    customClass: {
-      confirmButton: 'btn btn-success py-0 ms-2',
-      cancelButton: 'btn btn-danger py-0 ms-2',
-    },
-    buttonsStyling: false,
-  });
 
   const [tournaments, setTournaments] = useState({
     loading: true,
@@ -43,7 +35,7 @@ const TournamentAdmin = () => {
       teamsGet();
     }
   }, [tournaments.loading]);
-   const handleModalContainerClick = (e) => {
+  const handleModalContainerClick = (e) => {
     e.stopPropagation();
     openModal();
   };
@@ -53,8 +45,8 @@ const TournamentAdmin = () => {
         <thead>
           <button
             type="button"
-            className="btn btn-success m-0 p-0 bi bi-plus"
-            style={{ fontSize: 16 }}
+            className="btn btn-success px-2 py-0 bi bi-plus"
+            style={{ fontSize: 16, width: 'auto' }}
             onClick={handleModalContainerClick}>
             Tournament
           </button>
