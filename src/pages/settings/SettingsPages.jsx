@@ -9,8 +9,6 @@ const SettingsPages = () => {
   const [notificationsKeys, setNotificationsKeys] = useState();
   const [language, setLanguage] = useState();
   const updateDatosSetting = () => {
-    console.log(language);
-    console.log(notifications);
   };
   useEffect(() => {
     if (!user.isLoading) {
@@ -20,7 +18,6 @@ const SettingsPages = () => {
     }
   }, [user]);
   const handleChange = (e) => {
-    console.log(e.target.checked);
     setNotifications({
       ...notifications,
       [e.target.name]: e.target.checked,

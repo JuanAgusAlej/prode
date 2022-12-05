@@ -15,7 +15,6 @@ const HomeAdmin = () => {
   useEffect(() => {
     getAllMetrics();
   }, []);
-  console.log('Metrics: ', metrics);
   if (!metrics?.total) {
     return <h4 style={{ padding: '20px' }}>Loading metrics...</h4>;
   }

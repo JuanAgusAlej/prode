@@ -41,7 +41,6 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    console.log(location.pathname.search('admin'));
     if (
       location.pathname === '/' ||
       location.pathname === '/validation' ||
