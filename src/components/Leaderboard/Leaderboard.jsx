@@ -6,8 +6,6 @@ import { useSelector } from 'react-redux';
 const Leaderboard = ({ users }) => {
   const actualUser = useSelector(state => state.user.userData);
   const { t } = useTranslation();
-  console.log(users);
-  console.log(actualUser);
 
   return (
     <div className="container tableSettings bodyPaging">
