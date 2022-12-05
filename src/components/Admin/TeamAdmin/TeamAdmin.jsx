@@ -1,10 +1,12 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import Swal from 'sweetalert2';
 import { getTeamsAll, createdTeamApi } from '../../../service/teamsApi';
 import TeamTable from './TeamTable.jsx';
 
 const TeamAdmin = () => {
+  const { t } = useTranslation();
   const MySwal = Swal.mixin({
     customClass: {
       confirmButton: 'btn btn-success py-0 ms-2',
@@ -88,19 +90,20 @@ const TeamAdmin = () => {
             type="button"
             className="btn btn-success m-0 p-0 bi bi-plus"
             style={{ fontSize: 16 }}
-            onClick={() => createdTeam()}>
-            Team
+            onClick={() => createdTeam()}
+          >
+            {t('team')}
           </button>
           <tr>
             <th scope="col-4">Logo</th>
-            <th scope="col-4">Name</th>
-            <th scope="col-4">Short Name</th>
-            <th scope="col-4">Country</th>
+            <th scope="col-4">{t('name')}</th>
+            <th scope="col-4">{t('shortName')}</th>
+            <th scope="col-4">{t('country')}</th>
           </tr>
         </thead>
         <tbody>
           {teams.loading ? (
-            <p>Loading</p>
+            <p>{t('loading')}</p>
           ) : (
             teams.data.map((team) => (
               <TeamTable key={team._id} team={team} update={update} />
