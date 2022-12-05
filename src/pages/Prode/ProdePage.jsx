@@ -19,7 +19,6 @@ const ProdePage = () => {
     if (tournament) {
       getMatches(tournament._id).then((data) => {
         const dataFiltered = data.filter((match) => {
-          console.log(match);
           const matchDate = new Date(`${match.date}`);
           const now = new Date();
           if (

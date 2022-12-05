@@ -18,7 +18,7 @@ export const deleteUser = async (id) => {
     );
     return data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 export const changeRolUserApi = async (id) => {
@@ -27,6 +27,6 @@ export const changeRolUserApi = async (id) => {
     const { data } = await axios.put(`${url}/user/${id}/role`, {}, axiosConfig);
     return data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };

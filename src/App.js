@@ -70,7 +70,7 @@ function App() {
     return () => {
       navigator.serviceWorker.removeEventListener('message', onNotification);
       clearInterval(healthInterval);
-     }
+    };
   }, []);
 
   onMessageListener()

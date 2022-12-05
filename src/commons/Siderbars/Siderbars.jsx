@@ -81,7 +81,7 @@ const Siderbars = ({ dropdown, adm }) => {
         const data = await axios.get(`${url}/user/me`, axiosConfig);
         if (data.data.points) setuserPoints(data.data.points);
       } catch (err) {
-        console.log(err);
+        console.error(err);
       }
     };
     getUserPoints();

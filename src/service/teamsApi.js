@@ -8,6 +8,11 @@ export const getTeamsAll = async () => {
   const { data } = await axios(`${url}/teams`, axiosConfig);
   return data;
 };
+export const getTeamsId = async (id) => {
+  const axiosConfig = setAxiosConfig();
+  const { data } = await axios(`${url}/teams/${id}`, axiosConfig);
+  return data;
+};
 
 export const deleteTeamApi = async (id) => {
   const axiosConfig = setAxiosConfig();
@@ -15,7 +20,7 @@ export const deleteTeamApi = async (id) => {
     const { data } = await axios.delete(`${url}/teams/${id}`, axiosConfig);
     return data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 export const editTeamApi = async (id, update) => {
@@ -24,7 +29,7 @@ export const editTeamApi = async (id, update) => {
     const { data } = await axios.put(`${url}/teams/${id}`, update, axiosConfig);
     return data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 export const createdTeamApi = async (dato) => {
@@ -33,8 +38,6 @@ export const createdTeamApi = async (dato) => {
     const { data } = await axios.post(`${url}/teams`, dato, axiosConfig);
     return data;
   } catch (error) {
-    console.log('4562354');
-    console.log(error);
     error.error = true;
     return error;
   }

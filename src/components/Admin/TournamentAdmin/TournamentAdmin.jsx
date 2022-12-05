@@ -10,13 +10,6 @@ import TournamentsModal from './TournamentsModal.jsx';
 const TournamentAdmin = () => {
   const { t } = useTranslation();
   const [isOpenModal, openModal, closeModal] = useModal(false);
-  const MySwal = Swal.mixin({
-    customClass: {
-      confirmButton: 'btn btn-success py-0 ms-2',
-      cancelButton: 'btn btn-danger py-0 ms-2',
-    },
-    buttonsStyling: false,
-  });
 
   const [tournaments, setTournaments] = useState({
     loading: true,
@@ -53,10 +46,9 @@ const TournamentAdmin = () => {
         <thead>
           <button
             type="button"
-            className="btn btn-success m-0 p-0 bi bi-plus"
-            style={{ fontSize: 16 }}
-            onClick={handleModalContainerClick}
-          >
+            className="btn btn-success px-2 py-0 bi bi-plus"
+            style={{ fontSize: 16, width: 'auto' }}
+            onClick={handleModalContainerClick}>
             {t('tournaments')}
           </button>
           <tr>

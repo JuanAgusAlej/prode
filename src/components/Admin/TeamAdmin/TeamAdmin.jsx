@@ -68,10 +68,8 @@ const TeamAdmin = () => {
         return dato;
       },
     }).then(async (result) => {
-      console.log(result);
       if (result.isConfirmed) {
         const info = await createdTeamApi(result.value);
-        console.log(info);
         if (!info.error) {
           MySwal.fire('Creado', `${result.value.name}`, 'success').then(
             update(),
