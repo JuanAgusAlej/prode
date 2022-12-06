@@ -56,8 +56,8 @@ const TournamentsTeamModal = ({
   };
   const editTournament = async () => {
     console.log('asdasdasd');
-    const dataTeamId = data.teamsId.map((dataTeam) => dataTeam._id);
-    data.teamsId = dataTeamId;
+    // const dataTeamId = data.teamsId.map((dataTeam) => dataTeam._id);
+    // data.teamsId = dataTeamId;
     try {
       await editTournamentsApi(data._id, data);
       MySwal.fire(
