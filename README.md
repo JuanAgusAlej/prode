@@ -32,6 +32,10 @@
 
 - Una vez configurado ejecutar el proyecto con `npm start`
 
+# Paleta de Colores
+![](https://snipboard.io/U9uAVf.jpg)
+![](https://snipboard.io/HYSZC6.jpg)
+
 # Flujo del usuario
 
 ## Modo Mobile
