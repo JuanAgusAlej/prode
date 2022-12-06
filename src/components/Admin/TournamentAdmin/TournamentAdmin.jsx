@@ -1,22 +1,15 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import Swal from 'sweetalert2';
 import { useModal } from '../../../hooks/useModal';
-import {
-  getTournamentsAll,
-} from '../../../service/tournamentApi';
+import { getTournamentsAll } from '../../../service/tournamentApi';
 import TourmamentTable from './TourmamentTable.jsx';
 import TournamentsModal from './TournamentsModal.jsx';
 
 const TournamentAdmin = () => {
+  const { t } = useTranslation();
   const [isOpenModal, openModal, closeModal] = useModal(false);
-  const MySwal = Swal.mixin({
-    customClass: {
-      confirmButton: 'btn btn-success py-0 ms-2',
-      cancelButton: 'btn btn-danger py-0 ms-2',
-    },
-    buttonsStyling: false,
-  });
 
   const [tournaments, setTournaments] = useState({
     loading: true,
@@ -43,7 +36,7 @@ const TournamentAdmin = () => {
       teamsGet();
     }
   }, [tournaments.loading]);
-   const handleModalContainerClick = (e) => {
+  const handleModalContainerClick = (e) => {
     e.stopPropagation();
     openModal();
   };
@@ -53,24 +46,24 @@ const TournamentAdmin = () => {
         <thead>
           <button
             type="button"
-            className="btn btn-success m-0 p-0 bi bi-plus"
-            style={{ fontSize: 16 }}
+            className="btn btn-success px-2 py-0 bi bi-plus"
+            style={{ fontSize: 16, width: 'auto' }}
             onClick={handleModalContainerClick}>
-            Tournament
+            {t('tournaments')}
           </button>
           <tr>
-            <th>Name</th>
-            <th>Prediction Points</th>
-            <th>Prediction Goals Points</th>
-            <th>Region</th>
-            <th>Prize</th>
-            <th>Teams</th>
-            <th>Estado</th>
+            <th>{t('name')}</th>
+            <th>{t('predictionPoints')}</th>
+            <th>{t('predictionGoalsPoints')}</th>
+            <th>{t('region')}</th>
+            <th>{t('prizes')}</th>
+            <th>{t('teams')}</th>
+            <th>{t('state')}</th>
           </tr>
         </thead>
         <tbody className="justify-content-end">
           {tournaments.loading ? (
-            <p>Loading</p>
+            <p>{t('loading')}</p>
           ) : (
             tournaments.data.map((tournament) => (
               <TourmamentTable

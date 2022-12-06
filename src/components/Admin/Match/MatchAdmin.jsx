@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import MatchTable from './MatchTable.jsx';
 import { getTournamentsAll } from '../../../service/tournamentApi';
 import { addMatch } from '../../../service/matchAdminApi';
+import { useTranslation } from 'react-i18next';
 
 const MatchAdmin = () => {
   const [tournaments, setTournaments] = useState([]);
@@ -14,6 +15,7 @@ const MatchAdmin = () => {
   const [teamASelect, setTeamASelect] = useState('');
   const [teamBSelect, setTeamBSelect] = useState('');
   const [update, setUpdate] = useState('');
+  const { t } = useTranslation();
 
   const getTournaments = async () => {
     const data = await getTournamentsAll();
@@ -187,11 +189,11 @@ const MatchAdmin = () => {
         </button>
         <tr>
           <th>Tournament</th>
-          <th>Date</th>
-          <th>Local</th>
-          <th>Visitor</th>
-          <th>Instance</th>
-          <th>Result</th>
+          <th>{t('date')}</th>
+          <th>{t('home2')}</th>
+          <th>{t('away')}</th>
+          <th>{t('instance')}</th>
+          <th>{t('result')}</th>
         </tr>
       </thead>
       <tbody className="justify-content-end">
