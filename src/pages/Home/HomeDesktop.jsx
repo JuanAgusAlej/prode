@@ -74,7 +74,7 @@ const HomeDesktop = () => {
               {tournament
                 ? matchs?.map((match) => (
                     <CardPartidos key={match._id} match={match} />
-                  ))
+                ))
                 : null}
             </div>
             <div className="col-5 container">
@@ -90,11 +90,13 @@ const HomeDesktop = () => {
                       user={user}
                       key={match._id}
                     />
-                  ))
+                ))
                 : null}
             </div>
             <div className="col-3 container">
+              {users.length < 1 ? <p>Loading</p> :
               <Leaderboard users={users} />
+              }
             </div>
           </div>
         </div>
