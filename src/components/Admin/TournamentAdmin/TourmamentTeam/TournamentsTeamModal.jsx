@@ -43,10 +43,19 @@ const TournamentsTeamModal = ({
     });
   };
   const addTeam = (teamSelect) => {
-    data.teamsId.push(teamSelect);
-    teamData(data.teamsId);
+    const addTeamTour = data.teamsId.find(team => team._id === teamSelect._id);
+    if (!addTeamTour) {
+      data.teamsId.push(teamSelect);
+      teamData(data.teamsId);
+    } else {
+      const removeTeam = data.teamsId.filter(team => team._id !== teamSelect._id);
+      data.teamsId = removeTeam;
+      teamData(removeTeam);
+    }
+    console.log(data.teamsId);
   };
   const editTournament = async () => {
+    console.log('asdasdasd');
     const dataTeamId = data.teamsId.map((dataTeam) => dataTeam._id);
     data.teamsId = dataTeamId;
     try {
