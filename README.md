@@ -81,10 +81,13 @@
 ![](https://snipboard.io/hpkXmz.jpg)
 ### Equipos
 ![](https://snipboard.io/Ns1Lue.jpg)
+![](https://snipboard.io/S7r4Qn.jpg)
 ### Torneos
 ![](https://snipboard.io/f3dhb9.jpg)
+![](https://snipboard.io/K1jCaS.jpg)
 ### Partidos
 ![](https://snipboard.io/mHja3X.jpg)
+![](https://snipboard.io/VA5WZF.jpg)
 
 
 # Integrantes
