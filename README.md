@@ -82,7 +82,7 @@
 ### Equipos
 ![](https://snipboard.io/Ns1Lue.jpg)
 ### Torneos
-![](https://snipboard.io/Zc7F6B.jpg)
+![](https://snipboard.io/f3dhb9.jpg)
 ### Partidos
 ![](https://snipboard.io/mHja3X.jpg)
 
