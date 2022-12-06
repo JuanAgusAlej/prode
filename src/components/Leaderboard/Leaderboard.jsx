@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 
 const Leaderboard = ({ users }) => {
   const actualUser = useSelector(state => state.user.userData);
-  const [loadin, setLoadin] = useState(false);
   const { t } = useTranslation();
   console.log('asdasdasdasdasdasdasdasdasdasdasdasdasd');
   console.log(users);
