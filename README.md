@@ -84,7 +84,7 @@
 ### Torneos
 ![](https://snipboard.io/Zc7F6B.jpg)
 ### Partidos
-
+![](https://snipboard.io/mHja3X.jpg)
 
 
 # Integrantes
