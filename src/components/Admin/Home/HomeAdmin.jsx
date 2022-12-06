@@ -98,7 +98,7 @@ const HomeAdmin = () => {
       },
       {
         count: metrics.kpi.emailNotificationsPerUser,
-        description: t('notificationsEmialPerUser'),
+        description: t('notificationsEmailPerUser'),
       },
     ],
   };
