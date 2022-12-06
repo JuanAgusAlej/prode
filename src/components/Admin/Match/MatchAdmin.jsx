@@ -4,10 +4,10 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
+import { useTranslation } from 'react-i18next';
 import MatchTable from './MatchTable.jsx';
 import { getTournamentsAll } from '../../../service/tournamentApi';
 import { addMatch } from '../../../service/matchAdminApi';
-import { useTranslation } from 'react-i18next';
 
 const MatchAdmin = () => {
   const [tournaments, setTournaments] = useState([]);
@@ -147,9 +147,9 @@ const MatchAdmin = () => {
     } else if (property === 'Date') {
       input = `<input type="datetime-local" id=${property} class="swal2-input">`;
     } else if (property === 'Local') {
-      input = `<select id='localEdit' class="swal2-input"><option value=''>Select local team</option></select>`;
+      input = '<select id=\'localEdit\' class="swal2-input"><option value=\'\'>Select local team</option></select>';
     } else if (property === 'Visitor') {
-      input = `<select id='visitorEdit' class="swal2-input"><option value=''>Select visitor team</option></select>`;
+      input = '<select id=\'visitorEdit\' class="swal2-input"><option value=\'\'>Select visitor team</option></select>';
     } else if (property === 'Instance') {
       input = `<input type="text" id='instanceEdit' autocomplete="nope"  class="swal2-input" placeholder=${property}>`;
     }

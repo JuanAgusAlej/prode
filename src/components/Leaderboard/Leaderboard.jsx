@@ -16,8 +16,8 @@ const Leaderboard = ({ users }) => {
             <th scope="col">{t('user')}</th>
             <th scope="col">{t('totalPoints')}</th>
           </tr>
-          {users.map((user, i) => (
-            user.data[0]?.alias === actualUser.alias ? (
+          {users?.map((user, i) => (
+            user.data[0].alias === actualUser.alias ? (
               <tr className="rowColor" key={user._id}>
                 <td className='position actualUser' scope="row">{i + 1}</td>
                 <td className='actualUser'>{user.data[0].alias}</td>
