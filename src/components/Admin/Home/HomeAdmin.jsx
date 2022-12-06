@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { getMetrics } from '../../../service/metrics';
 import './homeAdmin.css';
 import KpiCard from './KpiCard/KpiCard.jsx';
 import TotalCard from './TotalCard/TotalCard.jsx';
 
 const HomeAdmin = () => {
+  const { t } = useTranslation();
   const [metrics, setMetrics] = useState({});
 
   const getAllMetrics = async () => {
@@ -16,87 +18,87 @@ const HomeAdmin = () => {
     getAllMetrics();
   }, []);
   if (!metrics?.total) {
-    return <h4 style={{ padding: '20px' }}>Loading metrics...</h4>;
+    return <h4 style={{ padding: '20px' }}>{t('loading')}.</h4>;
   }
   const metricsObject = {
     total: [
       {
         main: {
           count: metrics.total.users.total,
-          description: 'Total registered users',
+          description: t('totalRegistered'),
         },
         list: [
-          `${metrics.total.users.activeToday} users active today`,
-          `${metrics.total.users.activeYesterday} users active yesterday`,
-          `${metrics.total.users.blocked} users blocked`,
+          `${metrics.total.users.activeToday} ${t('usersActiveToday')}`,
+          `${metrics.total.users.activeYesterday} ${t('usersActiveYesterday')}`,
+          `${metrics.total.users.blocked} ${t('usersBlocked')}`,
         ],
       },
       {
         main: {
           count: metrics.total.tournaments.total,
-          description: 'Total tournaments created',
+          description: t('tournamentsCreated'),
         },
         list: [
-          `${metrics.total.tournaments.active} tournaments active`,
-          `${metrics.total.tournaments.finished} tournaments finished`,
+          `${metrics.total.tournaments.active} ${t('tournamentsActive')}`,
+          `${metrics.total.tournaments.finished} ${t('tournamentsFinished')}`,
         ],
       },
       {
         main: {
           count: metrics.total.matches.total,
-          description: 'Total matches created',
+          description: t('matchesCreated'),
         },
         list: [
-          `${metrics.total.matches.active} matches active`,
-          `${metrics.total.matches.finished} matches finished`,
+          `${metrics.total.matches.active} ${t('matchesActive')}`,
+          `${metrics.total.matches.finished} ${t('matchesFinished')}`,
         ],
       },
       {
         main: {
           count: metrics.total.predictions.total,
-          description: 'Total predictions created',
+          description: t('predictionsCreated'),
         },
         list: [
-          `${metrics.total.predictions.pending} predictions pending`,
-          `${metrics.total.predictions.won} winning predictions`,
-          `${metrics.total.predictions.loss} losing predictions`,
+          `${metrics.total.predictions.pending} ${t('predictionsPending')}`,
+          `${metrics.total.predictions.won} ${t('predictionsWinning')}`,
+          `${metrics.total.predictions.loss} ${t('predictionLosing')}`,
         ],
       },
       {
         main: {
           count: metrics.total.notifications.total,
-          description: 'Total notifications sended',
+          description: t('notificationsTotal'),
         },
         list: [
-          `${metrics.total.notifications.push} push notifications sended`,
-          `${metrics.total.notifications.email} email notifications sended`,
+          `${metrics.total.notifications.push} ${t('notificationsPush')}`,
+          `${metrics.total.notifications.email} ${t('notificationsEmail')}`,
         ],
       },
     ],
     kpi: [
       {
         count: metrics.kpi.userPermanence,
-        description: 'User permanence (min)',
+        description: t('userPermanence'),
       },
       {
         count: metrics.kpi.pageviewsPerUser,
-        description: 'Pageviews per user',
+        description: t('pageviews'),
       },
       {
         count: metrics.kpi.predictionsWinRate,
-        description: 'Predictions win rate (%)',
+        description: t('predictionsWinrate'),
       },
       {
         count: metrics.kpi.predictionsPerUser,
-        description: 'Predictions per user',
+        description: t('predictionsPerUser'),
       },
       {
         count: metrics.kpi.pushNotificationsPerUser,
-        description: 'Push notifications per user',
+        description: t('notificationsPushPerUser'),
       },
       {
         count: metrics.kpi.emailNotificationsPerUser,
-        description: 'Email notifications per user',
+        description: t('notificationsEmialPerUser'),
       },
     ],
   };
