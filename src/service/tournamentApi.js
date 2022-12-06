@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import axios from 'axios';
 import { setAxiosConfig } from '../utils/axiosConfig';
 
@@ -30,6 +31,10 @@ export const deleteTournamentsApi = async (id) => {
   }
 };
 export const editTournamentsApi = async (id, update) => {
+  console.log(id);
+  console.log(update);
+  const dataTeamId = update.teamsId.map((dataTeam) => dataTeam._id);
+  update.teamsId = dataTeamId;
   const axiosConfig = setAxiosConfig();
   try {
     const { data } = await axios.put(`${url}/tournament/${id}`, update, axiosConfig);
