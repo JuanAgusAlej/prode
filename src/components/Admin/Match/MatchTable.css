@@ -1,0 +1,15 @@
+.setResults > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 32px;
+}
+.setResults .goalsInput label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.setResults .goalsInput input {
+  width: 130px;
+}
