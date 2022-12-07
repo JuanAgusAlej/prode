@@ -27,7 +27,6 @@ import Prizes from './pages/Prizes/Prizes.jsx';
 import PrizesDesktop from './pages/PrizesDesktop/PrizesDesktop.jsx';
 import Page404 from './pages/404/Page404.jsx';
 import Page404Desktop from './pages/404Desktop/Page404Desktop.jsx';
-import { onMessageListener } from './service/firebase';
 import AdminPages from './pages/Admin/AdminPages.jsx';
 import ProfilePagesDesktop from './pages/ProfileDesktop/ProfilePagesDesktop.jsx';
 import ProfileEditorPagesDesktop from './pages/ProfileDesktop/ProfileEditorDesktop/ProfileEditorPagesDesktop.jsx';
@@ -37,6 +36,7 @@ import { healthCheck } from './service/healthCheck';
 function App() {
   const [size, setSize] = useState('');
   const [userCountry, setUserCountry] = useState('');
+  const [refreshNotification, setRefreshNotification] = useState('');
   const { t } = useTranslation();
 
   const onNotification = ({ data: payload }) => {
@@ -48,6 +48,7 @@ function App() {
           {t('notificationNewPoints', { points: payload.data.points })}
         </div>
       );
+      setRefreshNotification(Math.random());
     }
   };
 
@@ -62,7 +63,7 @@ function App() {
     }
 
     getUserLocation()
-      .then(res => res.data)
+      .then((res) => res.data)
       .then(({ country }) => setUserCountry(country));
 
     navigator.serviceWorker.addEventListener('message', onNotification);
@@ -72,21 +73,6 @@ function App() {
       clearInterval(healthInterval);
     };
   }, []);
-
-  onMessageListener()
-    .then(payload => {
-      console.log('New push ', payload);
-      if (payload.data.type === 'NEW_POINTS') {
-        toast.success(
-          <div>
-            <b>{payload.data.match}</b>
-            <br />
-            {t('notificationNewPoints', { points: payload.data.points })}
-          </div>
-        );
-      }
-    })
-    .catch(err => console.log('failed: ', err));
 
   if (!['AR', 'BR', 'US'].includes(userCountry) && userCountry !== '') {
     return '<h2>Sorry, our app is not available in your country<h2>';
@@ -98,23 +84,27 @@ function App() {
         <ToastContainer />
         <Metrics />
         <Routes>
-          <Route path='/profile/:id' index element={<ProfilePagesDesktop />} />
+          <Route path="/profile/:id" index element={<ProfilePagesDesktop />} />
           <Route
-            path='/profile/:id/edit'
+            path="/profile/:id/edit"
             index
             element={<ProfileEditorPagesDesktop />}
           />
-          <Route path='/' index element={<LoginPages />} />
-          <Route path='/home' index element={<HomeDesktop />} />
-          <Route path='/validation' index element={<ConfirmRegister />} />
-          <Route path='/tutorial' index element={<TutorialDesktop />} />
-          <Route path='/prizes' index element={<PrizesDesktop />} />
-          <Route path='/admin' index element={<AdminPages />} />
-          <Route path='/admin/users' index element={<AdminPages />} />
-          <Route path='/admin/teams' index element={<AdminPages />} />
-          <Route path='/admin/tournaments' index element={<AdminPages />} />
-          <Route path='/admin/matchs' index element={<AdminPages />} />
-          <Route path='*' index element={<Page404Desktop />} />
+          <Route path="/" index element={<LoginPages />} />
+          <Route
+            path="/home"
+            index
+            element={<HomeDesktop refreshNotification={refreshNotification} />}
+          />
+          <Route path="/validation" index element={<ConfirmRegister />} />
+          <Route path="/tutorial" index element={<TutorialDesktop />} />
+          <Route path="/prizes" index element={<PrizesDesktop />} />
+          <Route path="/admin" index element={<AdminPages />} />
+          <Route path="/admin/users" index element={<AdminPages />} />
+          <Route path="/admin/teams" index element={<AdminPages />} />
+          <Route path="/admin/tournaments" index element={<AdminPages />} />
+          <Route path="/admin/matchs" index element={<AdminPages />} />
+          <Route path="*" index element={<Page404Desktop />} />
         </Routes>
       </BrowserRouter>
     );
@@ -126,21 +116,21 @@ function App() {
       <Metrics />
       <Navbar />
       <Routes>
-        <Route path='/profile/:id' index element={<ProfilePages />} />
+        <Route path="/profile/:id" index element={<ProfilePages />} />
         <Route
-          path='/profile/:id/edit'
+          path="/profile/:id/edit"
           index
           element={<ProfileEditorPages />}
         />
-        <Route path='/' index element={<LoginPages />} />
-        <Route path='/home' index element={<HomePages />} />
-        <Route path='/fixture/prode' element={<ProdePage />} />
-        <Route path='/fixture' index element={<FixturePages />} />
-        <Route path='/validation' index element={<ConfirmRegister />} />
-        <Route path='/tutorial' index element={<Tutorial />} />
-        <Route path='/leaderboard' index element={<Leaderboard />} />
-        <Route path='/prizes' index element={<Prizes />} />
-        <Route path='*' index element={<Page404 />} />
+        <Route path="/" index element={<LoginPages />} />
+        <Route path="/home" index element={<HomePages />} />
+        <Route path="/fixture/prode" element={<ProdePage />} />
+        <Route path="/fixture" index element={<FixturePages />} />
+        <Route path="/validation" index element={<ConfirmRegister />} />
+        <Route path="/tutorial" index element={<Tutorial />} />
+        <Route path="/leaderboard" index element={<Leaderboard />} />
+        <Route path="/prizes" index element={<Prizes />} />
+        <Route path="*" index element={<Page404 />} />
       </Routes>
       <MenuBar />
     </BrowserRouter>

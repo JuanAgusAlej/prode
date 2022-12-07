@@ -35,3 +35,22 @@ export const deleteMatch = async (tournamentId, matchId) => {
   );
   return data;
 };
+
+export const setMatchResults = async (
+  tournamentId,
+  matchId,
+  goalsA,
+  goalsB
+) => {
+  const axiosConfig = setAxiosConfig();
+  try {
+    const { data } = await axios.put(
+      `${url}/tournament/${tournamentId}/match/${matchId}/results`,
+      { goalsA, goalsB },
+      axiosConfig
+    );
+    return data;
+  } catch (e) {
+    return e.response.data;
+  }
+};

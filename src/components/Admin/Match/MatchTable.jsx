@@ -1,18 +1,67 @@
+/* eslint-disable comma-dangle */
 /* eslint-disable object-curly-newline */
 /* eslint-disable no-underscore-dangle */
 import React from 'react';
 import Swal from 'sweetalert2';
-import { deleteMatch } from '../../../service/matchAdminApi';
-import ButtonsMatchTable from './ButtonsMatchTable.jsx';
+import { deleteMatch, setMatchResults } from '../../../service/matchAdminApi';
+import './MatchTable.css';
 
 const MatchTable = ({ tournament, match, setUpdate, editMatch }) => {
   const MySwal = Swal.mixin({
     customClass: {
       confirmButton: 'btn btn-success py-0 ms-2',
       cancelButton: 'btn btn-danger py-0 ms-2',
+      htmlContainer: 'setResults',
     },
     buttonsStyling: false,
   });
+
+  const setResults = () => {
+    MySwal.fire({
+      title: 'Set match results',
+      html: `<div>
+                <div class="goalsInput">
+                  <label for="local-goals"><img src=${match.teamAId.logo} width="34" /><b>${match.teamAId.shortName}</b></label>
+                  <input id="local-goals" type="number" min="0" class="swal2-input" placeholder="0"/>
+                </div>
+                <div class="goalsInput">
+                  <label for="visitor-goals"><img src=${match.teamBId.logo} width="34" /><b>${match.teamBId.shortName}</b></label>
+                  <input id="visitor-goals" type="number" min="0" class="swal2-input" placeholder="0"/>
+                </div>
+              </div>`,
+      showCancelButton: true,
+      confirmButtonColor: '#FF3270',
+      cancelButtonColor: '#12a696',
+      confirmButtonText: 'Set results',
+      preConfirm: () => {
+        const goalsA = Swal.getPopup().querySelector('#local-goals').value;
+        const goalsB = Swal.getPopup().querySelector('#visitor-goals').value;
+        if (!goalsA || !goalsA) {
+          return Swal.showValidationMessage('Please complete all fields');
+        }
+        if (goalsA < 0 || goalsB < 0) {
+          return Swal.showValidationMessage(
+            'Goals cannot be a negative number'
+          );
+        }
+        const data = {
+          goalsA,
+          goalsB,
+        };
+        return data;
+      },
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        await setMatchResults(
+          tournament._id,
+          match._id,
+          result.value.goalsA,
+          result.value.goalsB
+        );
+        setUpdate(`${match._id}-${Math.random()}`);
+      }
+    });
+  };
 
   const deleteTeam = () => {
     MySwal.fire({
@@ -33,22 +82,8 @@ const MatchTable = ({ tournament, match, setUpdate, editMatch }) => {
 
   return (
     <tr>
-      <td>
-        {tournament.name}
-        <ButtonsMatchTable
-          action={editMatch}
-          objectKey="Tournament"
-          popupTitle="Change tournament"
-        />
-      </td>
-      <td>
-        {new Date(match.date).toLocaleString(navigator.language)}
-        <ButtonsMatchTable
-          action={editMatch}
-          objectKey="Date"
-          popupTitle="Change date"
-        />
-      </td>
+      <td>{tournament.name}</td>
+      <td>{new Date(match.date).toLocaleString(navigator.language)}</td>
       <td>
         <img
           src={match.teamAId.logo}
@@ -57,11 +92,6 @@ const MatchTable = ({ tournament, match, setUpdate, editMatch }) => {
         />
         &nbsp;
         {match.teamAId.shortName}
-        <ButtonsMatchTable
-          action={editMatch}
-          objectKey="Local"
-          popupTitle="Change local team"
-        />
       </td>
       <td>
         <img
@@ -71,26 +101,15 @@ const MatchTable = ({ tournament, match, setUpdate, editMatch }) => {
         />
         &nbsp;
         {match.teamBId.shortName}
-        <ButtonsMatchTable
-          action={editMatch}
-          objectKey="Visitor"
-          popupTitle="Change visitor team"
-        />
       </td>
-      <td>
-        {match.instance}
-        <ButtonsMatchTable
-          action={editMatch}
-          objectKey="Instance"
-          popupTitle="Change instance"
-        />
-      </td>
+      <td>{match.instance}</td>
       <td className="col-2">
         {match.result === 'PENDING' ? (
           <button
             type="button"
             className="btn btn-success m-0 p-0"
             style={{ fontSize: 16 }}
+            onClick={setResults}
           >
             Set result
           </button>
