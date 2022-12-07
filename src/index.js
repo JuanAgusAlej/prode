@@ -4,8 +4,10 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import './utils/i18n';
 import App from './App';
-import { registerServiceWorker } from './service-worker';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+import reportWebVitals from './reportWebVitals';
 import store from './state/store';
+import { registerServiceWorker } from './registerServiceWorker';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -14,4 +16,6 @@ root.render(
   </Provider>
 );
 
+serviceWorkerRegistration.register();
+reportWebVitals();
 registerServiceWorker();

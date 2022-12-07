@@ -56,6 +56,16 @@ const HomeDesktop = ({ refreshNotification }) => {
     dispatch(getTournament());
   }, [refreshNotification]);
 
+  useEffect(() => {
+    const healthInterval = setInterval(() => {
+      dispatch(getUser());
+      dispatch(getTournament());
+    }, 300000);
+    return () => {
+      clearInterval(healthInterval);
+    };
+  }, []);
+
   return (
     <div className="father">
       <div className="menu col-1">
