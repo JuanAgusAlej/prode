@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { changeRolUserApi, deleteUser } from '../../../service/userAdminApi';
 
 const UserTable = ({ user, setUpdate }) => {
+  console.log(user);
   const MySwal = Swal.mixin({
     customClass: {
       confirmButton: 'btn btn-success py-0 ms-2',
@@ -33,7 +34,7 @@ const UserTable = ({ user, setUpdate }) => {
   };
   const changeRolUser = () => {
     const text =
-      user.role === 'USER_ROLE'
+      user.role.rol === 'USER_ROLE'
         ? `Grant administrartor permissions to ${user.name}`
         : `Remove administrartor permissions to ${user.name}`;
     MySwal.fire({
@@ -77,7 +78,7 @@ const UserTable = ({ user, setUpdate }) => {
             <i className="bi bi-person-fill-add"></i>
           </button>
         )}
-        {user.role === 'USER_ROLE' ? (
+        {user.role.rol === 'USER_ROLE' ? (
           <button
             type="button"
             className="btn btn-success m-0 p-0"

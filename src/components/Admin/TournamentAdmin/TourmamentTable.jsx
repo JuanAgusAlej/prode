@@ -9,6 +9,7 @@ import { useModal } from '../../../hooks/useModal';
 import {
   deleteTournamentsApi,
   editTournamentsApi,
+  endTournamentsApi,
 } from '../../../service/tournamentApi';
 import TournamentsTeamModal from './TourmamentTeam/TournamentsTeamModal.jsx';
 // import './modal.css';
@@ -191,7 +192,7 @@ const TourmamentTable = ({ tourmament, update }) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         tourmament.finished = true;
-        await editTournamentsApi(tourmament._id, tourmament);
+        await endTournamentsApi(tourmament._id, tourmament);
         update();
       }
     });

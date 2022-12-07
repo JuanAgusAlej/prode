@@ -43,3 +43,17 @@ export const editTournamentsApi = async (id, update) => {
     console.error(error);
   }
 };
+export const endTournamentsApi = async (id, update) => {
+  console.log(id);
+  console.log(update);
+  const dataTeamId = update.teamsId.map((dataTeam) => dataTeam._id);
+  update.teamsId = dataTeamId;
+  const axiosConfig = setAxiosConfig();
+  try {
+    const { data } = await axios.put(`${url}/tournament/${id}/finish`, {}, axiosConfig);
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+};
