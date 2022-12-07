@@ -61,7 +61,7 @@ const HomeAdmin = () => {
         list: [
           `${metrics.total.predictions.pending} ${t('predictionsPending')}`,
           `${metrics.total.predictions.won} ${t('predictionsWinning')}`,
-          `${metrics.total.predictions.loss} ${t('predictionLosing')}`,
+          `${metrics.total.predictions.loss} ${t('predictionsLosing')}`,
         ],
       },
       {
