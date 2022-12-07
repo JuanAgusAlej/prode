@@ -50,7 +50,7 @@ Deberá poder usarse como PWA y como Web App tanto en mobile, tablets y desktop.
 - Una vez configurado ejecutar el proyecto con `npm start`
 
 ## Documentacion
-- ### <a href="https://github.com/JuanAgusAlej/prode-api" target="_blank">Front</a>
+- ### <a href="https://github.com/JuanAgusAlej/prode" target="_blank">Front</a>
 - ###  <a href="https://github.com/JuanAgusAlej/prode-api" target="_blank">Back</a>
 
 
